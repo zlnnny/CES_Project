@@ -27,8 +27,6 @@ We aim to bridge this gap by linking the language data of political and economic
 *   Provide real-time notifications for high-impact speeches
 *   Integrate social data (news mentions, tweets, media engagement) to enhance influence measurement
 
-# 미국 현지일정
-<img width="607" height="646" alt="image" src="https://github.com/user-attachments/assets/75f1dd03-5910-476f-ac65-21a4d1c890d6" />
 
 # How to Run (Local Development)
 
