@@ -1,0 +1,282 @@
+/* --- 기본 설정 및 변수 --- */
+:root {
+    --font-main: 'Times New Roman', Times, serif;
+    --color-navy-dark: #0A192F;
+    --color-navy-light: #172A46;
+    --color-blue-steel: #3E6585;
+    --color-text-light: #E0E0E0;
+    --color-text-dark: #333333;
+    --color-white: #FFFFFF;
+    --color-gold-accent: #D4AF37;
+    --color-bg-light: #F4F7F9;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-bg-light);
+    color: var(--color-text-dark);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- 헤더 --- */
+header {
+    background-color: var(--color-white);
+    padding: 1rem 0;
+    border-bottom: 2px solid var(--color-navy-dark);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--color-navy-dark);
+}
+
+nav a {
+    color: var(--color-blue-steel);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-left: 25px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--color-navy-dark);
+}
+
+/* --- 히어로 섹션 --- */
+.hero {
+    background-color: var(--color-navy-dark);
+    color: var(--color-white);
+    text-align: center;
+    padding: 6rem 0;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-style: italic;
+    margin: 0 0 1rem 0;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    color: var(--color-text-light);
+    margin-bottom: 2.5rem;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar input {
+    width: 50%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-family: var(--font-main);
+    border: none;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-bar button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-family: var(--font-main);
+    font-weight: bold;
+    background-color: var(--color-blue-steel);
+    color: var(--color-white);
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+    background-color: #507b9f;
+}
+
+/* --- 공통 섹션 스타일 --- */
+.section-padding {
+    padding: 4rem 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: var(--color-navy-dark);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+}
+
+/* --- 차트 시각화 --- */
+.chart-container {
+    position: relative;
+    width: 100%;
+    background: var(--color-white);
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.chart-image {
+    width: 100%;
+    display: block;
+}
+
+.event-marker {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-navy-dark);
+    color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    border: 2px solid var(--color-white);
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.event-marker:hover {
+    transform: translate(-50%, -50%) scale(1.2);
+    background-color: var(--color-gold-accent);
+}
+
+.tooltip {
+    position: absolute;
+    background: rgba(10, 25, 47, 0.9);
+    color: var(--color-white);
+    padding: 15px;
+    border-radius: 5px;
+    width: 280px;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    pointer-events: none; /* 마우스 이벤트가 툴팁을 통과하도록 */
+}
+
+.tooltip.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tooltip h4 {
+    margin: 0 0 10px 0;
+    color: var(--color-gold-accent);
+}
+
+.nlp-tags { margin-top: 10px; }
+.nlp-tags .tag {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    margin-right: 5px;
+}
+.tag.hawkish { background-color: #983030; }
+.tag.dovish { background-color: #306098; }
+.tag.uncertainty { background-color: #888; }
+.tag.positive { background-color: #287d55; }
+
+
+/* --- 파워 랭킹 테이블 --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-white);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+th, td {
+    padding: 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+thead {
+    background-color: var(--color-navy-light);
+    color: var(--color-white);
+    font-size: 1.1rem;
+}
+
+tbody tr:hover {
+    background-color: #f0f3f5;
+}
+
+td:last-child {
+    font-weight: bold;
+}
+
+td.rank-1 {
+    font-weight: bold;
+    color: var(--color-gold-accent);
+    font-size: 1.2rem;
+}
+
+/* --- 핵심 기능 카드 --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.feature-card {
+    background-color: var(--color-white);
+    padding: 2.5rem;
+    border-left: 5px solid var(--color-blue-steel);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: var(--color-navy-dark);
+}
+
+/* --- 푸터 --- */
+footer {
+    background-color: var(--color-navy-dark);
+    color: var(--color-text-light);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+
+footer p {
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
