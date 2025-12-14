@@ -154,19 +154,49 @@ nav a:hover {
 .chart-container {
     position: relative;
     width: 100%;
+    height: 500px; /* 높이 고정 */
     background: var(--color-bg-card);
-    padding: 20px;
+    padding: 0; /* 패딩 제거 */
     border: 1px solid var(--color-border);
     border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.3); /* 안쪽 그림자 */
 }
 
-.chart-image {
+/* 격자 무늬 배경 */
+.chart-bg {
     width: 100%;
-    display: block;
-    opacity: 0.8;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(100, 255, 218, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100, 255, 218, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    position: relative;
+}
+
+/* 가상의 주가 그래프 라인 (CSS로 그리기) */
+.chart-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent 0%, rgba(100, 255, 218, 0.1) 50%, transparent 100%);
+    /* clip-path로 꺾은선 그래프 모양 흉내 */
+    clip-path: polygon(
+        0% 80%, 10% 70%, 20% 75%, 30% 60%, 
+        40% 65%, 50% 40%, 60% 45%, 70% 30%, 
+        80% 35%, 90% 20%, 100% 10%, 
+        100% 100%, 0% 100%
+    );
+    background-color: rgba(100, 255, 218, 0.1);
+    border-top: 2px solid var(--color-accent);
 }
 
 .event-marker {
+    /* 기존 스타일 유지하되 z-index 확보 */
+    z-index: 10;
+    /* ... 나머지 속성은 기존과 동일하게 유지되거나 아래에서 덮어씀 ... */
     position: absolute;
     width: 24px;
     height: 24px;
