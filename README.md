@@ -29,3 +29,27 @@ We aim to bridge this gap by linking the language data of political and economic
 
 # 미국 현지일정
 <img width="607" height="646" alt="image" src="https://github.com/user-attachments/assets/75f1dd03-5910-476f-ac65-21a4d1c890d6" />
+
+# How to Run (Local Development)
+
+## 1. Environment Setup
+```bash
+# Install Python dependencies
+pip install -r server/requirements.txt
+```
+
+## 2. Run Backend Server (FastAPI)
+The backend server provides API endpoints for analyzed news data.
+```bash
+# Run from the project root
+python3 -m uvicorn server.main:app --reload --host 0.0.0.0 --port 8000
+```
+- API URL: `http://localhost:8000/api/news`
+
+## 3. Run Frontend Server
+To avoid CORS issues, serve the static files using a simple HTTP server.
+```bash
+# Run from the project root
+python3 -m http.server 5500 --directory site
+```
+- Access the website at: `http://localhost:5500`
