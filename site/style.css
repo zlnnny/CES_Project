@@ -55,6 +55,7 @@ header .container {
     font-weight: bold;
     color: var(--color-accent);
     font-family: var(--font-en);
+    text-decoration: none;
 }
 
 nav a {
