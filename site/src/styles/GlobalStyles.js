@@ -6,8 +6,9 @@ const GlobalStyles = createGlobalStyle`
 
     :root {
         --font-en: 'Times New Roman', Times, serif;
-        --font-heading: 'Playfair Display', serif;
-        --font-body: 'Lora', serif;
+        /* Heading과 Body 모두 Times New Roman을 최우선으로 적용 */
+        --font-heading: 'Times New Roman', 'Playfair Display', serif;
+        --font-body: 'Times New Roman', 'Lora', serif;
         --font-ko: 'Gowun Dodum', sans-serif;
         
         /* Dark Theme Colors */

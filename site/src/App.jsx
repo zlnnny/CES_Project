@@ -4,7 +4,7 @@ import GlobalStyles from './styles/GlobalStyles';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Charts from './components/Charts';
-import PowerRanking from './components/PowerRanking';
+import RankingWidget from './components/RankingWidget';
 import AnalysisPreview from './components/AnalysisPreview';
 import Footer from './components/Footer';
 
@@ -13,9 +13,9 @@ const Home = () => {
     return (
         <main>
             <Hero />
-            <Charts />
-            <PowerRanking />
             <AnalysisPreview />
+            <Charts />
+            <RankingWidget />
         </main>
     );
 };

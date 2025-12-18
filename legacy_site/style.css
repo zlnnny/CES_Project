@@ -190,116 +190,71 @@ nav a:hover {
     font-family: var(--font-ko);
 }
 
-/* --- 차트 시각화 --- */
-.chart-container {
-    position: relative;
-    width: 100%;
-    height: 500px; /* 높이 고정 */
-    background: var(--color-bg-card);
-    padding: 0; /* 패딩 제거 */
-    border: 1px solid var(--color-border);
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: inset 0 0 50px rgba(0,0,0,0.3); /* 안쪽 그림자 */
-}
-
-/* 격자 무늬 배경 */
-.chart-bg {
-    width: 100%;
-    height: 100%;
-    background-image: 
-        linear-gradient(rgba(100, 255, 218, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(100, 255, 218, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
-    position: relative;
-}
-
-/* 가상의 주가 그래프 라인 (CSS로 그리기) */
-.chart-line {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent 0%, rgba(100, 255, 218, 0.1) 50%, transparent 100%);
-    /* clip-path로 꺾은선 그래프 모양 흉내 */
-    clip-path: polygon(
-        0% 80%, 10% 70%, 20% 75%, 30% 60%, 
-        40% 65%, 50% 40%, 60% 45%, 70% 30%, 
-        80% 35%, 90% 20%, 100% 10%, 
-        100% 100%, 0% 100%
-    );
-    background-color: rgba(100, 255, 218, 0.1);
-    border-top: 2px solid var(--color-accent);
-}
-
-.event-marker {
-    /* 기존 스타일 유지하되 z-index 확보 */
-    z-index: 10;
-    /* ... 나머지 속성은 기존과 동일하게 유지되거나 아래에서 덮어씀 ... */
-    position: absolute;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 0.9rem;
-    cursor: pointer;
-    color: #fff;
-    border: 2px solid rgba(255,255,255,0.8);
-    transform: translate(-50%, -50%);
-    transition: transform 0.2s;
+/* --- 차트 시각화 (업데이트) --- */
+.chart-section-title {
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--color-accent);
+    padding-left: 15px;
     font-family: var(--font-en);
 }
 
-.event-marker:hover {
-    transform: translate(-50%, -50%) scale(1.3);
-    z-index: 10;
+/* Indices Grid Layout */
+.chart-grid-indices {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 400px 300px;
+    gap: 20px;
 }
 
-.tooltip {
-    position: absolute;
-    background: rgba(23, 42, 70, 0.95); /* bg-card 색상 + 투명도 */
-    color: var(--color-text-main);
-    padding: 15px;
-    border-radius: 8px;
-    width: 300px;
-    z-index: 100;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s;
-    border: 1px solid var(--color-accent);
-    box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
-    font-family: var(--font-ko);
+/* 첫 번째 줄: S&P 500 (3칸), NASDAQ (3칸) - 크게 */
+.chart-grid-indices .chart-large:nth-child(1) { grid-column: 1 / 4; grid-row: 1; }
+.chart-grid-indices .chart-large:nth-child(2) { grid-column: 4 / 7; grid-row: 1; }
+
+/* 두 번째 줄: DJI (2칸), RUT (2칸), VIX (2칸) - 작게 */
+.chart-grid-indices .chart-small:nth-child(3) { grid-column: 1 / 3; grid-row: 2; }
+.chart-grid-indices .chart-small:nth-child(4) { grid-column: 3 / 5; grid-row: 2; }
+.chart-grid-indices .chart-small:nth-child(5) { grid-column: 5 / 7; grid-row: 2; }
+
+
+/* Top 10 Grid Layout */
+.chart-grid-top10 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
-.tooltip.visible {
-    opacity: 1;
-    visibility: visible;
+/* Rank 1: Nvidia (Largest - 2 rows, 2 cols) - 1번째 칸 시작 */
+.chart-largest {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+    height: 100%; /* 부모 그리드 셀 높이에 맞춤 */
+    min-height: 500px;
 }
 
-.tooltip h4 {
-    margin: 0 0 10px 0;
-    color: var(--color-accent);
-    font-size: 1.1rem;
+/* Rank 2 & 3: Apple & MSFT (Medium - 1 row, 2 cols) - 1번째 줄 오른쪽 */
+.chart-medium:nth-of-type(2) { grid-column: 3 / 5; grid-row: 1; height: 240px; } /* Apple */
+.chart-medium:nth-of-type(3) { grid-column: 3 / 5; grid-row: 2; height: 240px; } /* MSFT */
+
+/* Next 7 Small (Small - 1 row, 1 col) - 2번째 줄 이후부터 자동 배치 */
+/* 4열 그리드이므로 한 줄에 4개씩 배치됨 */
+.chart-small {
+    height: 200px;
 }
 
-.tooltip p {
-    font-size: 0.95rem;
-    color: var(--color-text-muted);
+/* 11-50위 리스트 컨테이너 */
+.market-list-container {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-.nlp-tags { margin-top: 10px; }
-.nlp-tags .tag {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    margin-right: 5px;
-    font-weight: bold;
-    color: #fff;
+/* 기존 chart-container 관련 스타일은 삭제 혹은 유지 (다른데서 안쓰면 삭제) */
+.chart-container {
+    /* 기존 스타일 유지하되 필요없으면 display: none 처리하거나 삭제 */
+    display: none; 
 }
 
 /* --- 파워 랭킹 테이블 --- */

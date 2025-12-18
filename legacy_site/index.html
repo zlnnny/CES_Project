@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Voice | The Speech-Market Intelligence</title>
+    <!-- CSS 파일 연결 -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 헤더 및 네비게이션 -->
+    <header>
+        <div class="container">
+            <a href="/" class="logo">Market Voice</a>
+            <nav>
+                <a href="#charts">Charts</a>
+                <a href="#ranking">Power Ranking</a>
+                <div class="dropdown">
+                    <a href="#analysis" class="dropbtn">Analysis</a>
+                    <div class="dropdown-content">
+                        <a href="analysis/nlp.html">NLP 감성 분석</a>
+                        <a href="analysis/mapping.html">자산 자동 매핑</a>
+                        <a href="analysis/impact.html">영향력 시각화</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 메인 히어로 섹션 -->
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>"Words Move Markets."</h1>
+                <p>리더의 발언이 시장을 어떻게 움직이는지 직관적으로 확인하세요.</p>
+                <div class="search-bar">
+                    <input type="text" placeholder="리더, 정책, 자산 검색 (예: Jerome Powell, AI Regulation, NASDAQ)">
+                    <button>분석</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 대시보드 시각화 (핵심 기능) -->
+        <section id="charts" class="container section-padding">
+            <h2 class="section-title">Charts</h2>
+            <p class="section-subtitle">주요 지수 및 우량주의 실시간 시장 동향을 확인하세요.</p>
+            
+            <!-- 1. Top 5 Indices -->
+            <h3 class="chart-section-title">Global Indices</h3>
+            <div class="chart-grid-indices">
+                <!-- Large Charts (S&P 500, NASDAQ) -->
+                <div class="chart-large">
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                        <div class="tradingview-widget-container__widget"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+                        {
+                        "symbols": [["S&P 500","FOREXCOM:SPXUSD|1D"]],
+                        "chartOnly": false,
+                        "width": "100%",
+                        "height": "100%",
+                        "locale": "en",
+                        "colorTheme": "dark",
+                        "autosize": true,
+                        "showVolume": false,
+                        "showMA": false,
+                        "hideDateRanges": false,
+                        "hideMarketStatus": false,
+                        "hideSymbolLogo": false,
+                        "scalePosition": "right",
+                        "scaleMode": "Normal",
+                        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+                        "fontSize": "10",
+                        "noTimeScale": false,
+                        "valuesTracking": "1",
+                        "changeMode": "price-and-percent",
+                        "chartType": "candlesticks",
+                        "headerFontSize": "medium"
+                        }
+                        </script>
+                    </div>
+                </div>
+                <div class="chart-large">
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                        <div class="tradingview-widget-container__widget"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+                        {
+                        "symbols": [["NASDAQ","NASDAQ:NDX|1D"]],
+                        "chartOnly": false,
+                        "width": "100%",
+                        "height": "100%",
+                        "locale": "en",
+                        "colorTheme": "dark",
+                        "autosize": true,
+                        "showVolume": false,
+                        "showMA": false,
+                        "hideDateRanges": false,
+                        "hideMarketStatus": false,
+                        "hideSymbolLogo": false,
+                        "scalePosition": "right",
+                        "scaleMode": "Normal",
+                        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+                        "fontSize": "10",
+                        "noTimeScale": false,
+                        "valuesTracking": "1",
+                        "changeMode": "price-and-percent",
+                        "chartType": "candlesticks",
+                        "headerFontSize": "medium"
+                        }
+                        </script>
+                    </div>
+                </div>
+                <!-- Small Charts (Dow, Gold, Silver) -->
+                <div class="chart-small">
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                        <div class="tradingview-widget-container__widget"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                        {
+                        "symbol": "FOREXCOM:DJI",
+                        "width": "100%",
+                        "height": "100%",
+                        "locale": "en",
+                        "dateRange": "12M",
+                        "colorTheme": "dark",
+                        "isTransparent": false,
+                        "autosize": true,
+                        "largeChartUrl": ""
+                        }
+                        </script>
+                    </div>
+                </div>
+                <div class="chart-small">
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                        <div class="tradingview-widget-container__widget"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                        {
+                        "symbol": "OANDA:XAUUSD",
+                        "width": "100%",
+                        "height": "100%",
+                        "locale": "en",
+                        "dateRange": "12M",
+                        "colorTheme": "dark",
+                        "isTransparent": false,
+                        "autosize": true,
+                        "largeChartUrl": ""
+                        }
+                        </script>
+                    </div>
+                </div>
+                <div class="chart-small">
+                    <!-- TradingView Widget BEGIN -->
+                    <div class="tradingview-widget-container">
+                        <div class="tradingview-widget-container__widget"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                        {
+                        "symbol": "OANDA:XAGUSD",
+                        "width": "100%",
+                        "height": "100%",
+                        "locale": "en",
+                        "dateRange": "12M",
+                        "colorTheme": "dark",
+                        "isTransparent": false,
+                        "autosize": true,
+                        "largeChartUrl": ""
+                        }
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Top 11 Market Cap -->
+            <h3 class="chart-section-title" style="margin-top: 4rem;">Top 11 Market Cap</h3>
+            <div class="chart-grid-top10">
+                <!-- Rank 1: Nvidia (Largest) -->
+                <div class="chart-largest">
+                    <div class="tradingview-widget-container">
+                        <div class="tradingview-widget-container__widget"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+                        {
+                        "symbols": [["Nvidia","NASDAQ:NVDA|1D"]],
+                        "chartOnly": false,
+                        "width": "100%",
+                        "height": "100%",
+                        "locale": "en",
+                        "colorTheme": "dark",
+                        "autosize": true,
+                        "showVolume": false,
+                        "showMA": false,
+                        "hideDateRanges": false,
+                        "hideMarketStatus": false,
+                        "hideSymbolLogo": false,
+                        "scalePosition": "right",
+                        "scaleMode": "Normal",
+                        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+                        "fontSize": "10",
+                        "noTimeScale": false,
+                        "valuesTracking": "1",
+                        "changeMode": "price-and-percent",
+                        "chartType": "candlesticks",
+                        "headerFontSize": "medium"
+                        }
+                        </script>
+                    </div>
+                </div>
+
+                <!-- Rank 2 & 3: Apple & Microsoft (Medium) -->
+                <div class="chart-medium">
+                    <div class="tradingview-widget-container">
+                        <div class="tradingview-widget-container__widget"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+                        {
+                        "symbols": [["Apple","NASDAQ:AAPL|1D"]],
+                        "chartOnly": false,
+                        "width": "100%",
+                        "height": "100%",
+                        "locale": "en",
+                        "colorTheme": "dark",
+                        "autosize": true,
+                        "showVolume": false,
+                        "showMA": false,
+                        "hideDateRanges": false,
+                        "hideMarketStatus": false,
+                        "hideSymbolLogo": false,
+                        "scalePosition": "right",
+                        "scaleMode": "Normal",
+                        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+                        "fontSize": "10",
+                        "noTimeScale": false,
+                        "valuesTracking": "1",
+                        "changeMode": "price-and-percent",
+                        "chartType": "candlesticks",
+                        "headerFontSize": "medium"
+                        }
+                        </script>
+                    </div>
+                </div>
+                <div class="chart-medium">
+                    <div class="tradingview-widget-container">
+                        <div class="tradingview-widget-container__widget"></div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+                        {
+                        "symbols": [["Microsoft","NASDAQ:MSFT|1D"]],
+                        "chartOnly": false,
+                        "width": "100%",
+                        "height": "100%",
+                        "locale": "en",
+                        "colorTheme": "dark",
+                        "autosize": true,
+                        "showVolume": false,
+                        "showMA": false,
+                        "hideDateRanges": false,
+                        "hideMarketStatus": false,
+                        "hideSymbolLogo": false,
+                        "scalePosition": "right",
+                        "scaleMode": "Normal",
+                        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+                        "fontSize": "10",
+                        "noTimeScale": false,
+                        "valuesTracking": "1",
+                        "changeMode": "price-and-percent",
+                        "chartType": "candlesticks",
+                        "headerFontSize": "medium"
+                        }
+                        </script>
+                    </div>
+                </div>
+
+                <!-- Next 7 Small -->
+                <div class="chart-small"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>{"symbol": "NASDAQ:GOOGL","width": "100%","height": "100%","locale": "en","dateRange": "12M","colorTheme": "dark","isTransparent": false,"autosize": true,"largeChartUrl": ""}</script></div></div>
+                <div class="chart-small"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>{"symbol": "NASDAQ:AMZN","width": "100%","height": "100%","locale": "en","dateRange": "12M","colorTheme": "dark","isTransparent": false,"autosize": true,"largeChartUrl": ""}</script></div></div>
+                <div class="chart-small"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>{"symbol": "NASDAQ:META","width": "100%","height": "100%","locale": "en","dateRange": "12M","colorTheme": "dark","isTransparent": false,"autosize": true,"largeChartUrl": ""}</script></div></div>
+                <div class="chart-small"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>{"symbol": "NASDAQ:TSLA","width": "100%","height": "100%","locale": "en","dateRange": "12M","colorTheme": "dark","isTransparent": false,"autosize": true,"largeChartUrl": ""}</script></div></div>
+                <div class="chart-small"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>{"symbol": "NYSE:BRK.B","width": "100%","height": "100%","locale": "en","dateRange": "12M","colorTheme": "dark","isTransparent": false,"autosize": true,"largeChartUrl": ""}</script></div></div>
+                <div class="chart-small"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>{"symbol": "NYSE:TSM","width": "100%","height": "100%","locale": "en","dateRange": "12M","colorTheme": "dark","isTransparent": false,"autosize": true,"largeChartUrl": ""}</script></div></div>
+                <div class="chart-small"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>{"symbol": "NASDAQ:AVGO","width": "100%","height": "100%","locale": "en","dateRange": "12M","colorTheme": "dark","isTransparent": false,"autosize": true,"largeChartUrl": ""}</script></div></div>
+                <!-- Rank 11: Eli Lilly -->
+                <div class="chart-small"><div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div><script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>{"symbol": "NYSE:LLY","width": "100%","height": "100%","locale": "en","dateRange": "12M","colorTheme": "dark","isTransparent": false,"autosize": true,"largeChartUrl": ""}</script></div></div>
+            </div>
+
+            <!-- 3. Market Cap 12-50 List -->
+            <h3 class="chart-section-title" style="margin-top: 4rem;">Market Cap Rank 12-50</h3>
+            <div class="market-list-container" style="height: 600px;">
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+                {
+                "width": "100%",
+                "height": "100%",
+                "defaultColumn": "overview",
+                "defaultScreen": "most_capitalized",
+                "market": "america",
+                "showToolbar": true,
+                "colorTheme": "dark",
+                "locale": "en"
+                }
+                </script>
+                </div>
+                <!-- TradingView Widget END -->
+            </div>
+        </section>
+
+        <!-- 파워 랭킹 -->
+        <section id="ranking" class="container section-padding">
+            <h2 class="section-title">Leader's Power Ranking</h2>
+            <p class="section-subtitle">지난 7일간 시장에 가장 큰 영향을 미친 리더 순위입니다.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>순위</th>
+                        <th>리더</th>
+                        <th>소속</th>
+                        <th>주요 발언 주제</th>
+                        <th>영향력 점수</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="rank-1">1</td>
+                        <td>Jerome Powell</td>
+                        <td>미국 연방준비제도</td>
+                        <td>통화 정책 및 금리 전망</td>
+                        <td>95.8</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Andrew Bailey</td>
+                        <td>영국 중앙은행 (BoE)</td>
+                        <td>영국 인플레이션 보고서</td>
+                        <td>81.2</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>우에다 가즈오</td>
+                        <td>일본은행 (BoJ)</td>
+                        <td>수익률 곡선 제어(YCC) 정책</td>
+                        <td>77.5</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Justin Trudeau</td>
+                        <td>캐나다 총리</td>
+                        <td>탄소세 및 에너지 정책</td>
+                        <td>64.0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 핵심 기능 소개 -->
+        <section id="analysis" class="container section-padding">
+            <h2 class="section-title">Primary Analysis</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>NLP 감성 분석</h3>
+                    <p>발언의 긍·부정, 어조, 불확실성을 자연어 처리 기술로 정량화하여 분석합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>자산 자동 매핑</h3>
+                    <p>모든 발언을 연관성이 가장 높은 금융 자산(주가, ETF, 원자재 등)과 자동으로 연결합니다.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>영향력 시각화</h3>
+                    <p>리더별, 주제별 시장 영향력을 직관적인 대시보드와 영향 감소 곡선으로 제공합니다.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Market Voice | CES Team Project. All Rights Reserved.</p>
+            <p>모든 금융 데이터는 정보 제공 목적으로만 사용되며, 투자 조언이 아닙니다.</p>
+        </div>
+    </footer>
+
+    <!-- JS 파일 연결 -->
+    <script src="script.js"></script>
+</body>
+</html>
+

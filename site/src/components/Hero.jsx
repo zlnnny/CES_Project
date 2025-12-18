@@ -66,7 +66,7 @@ const Hero = () => {
                 <Title>"Words Move Markets."</Title>
                 <Subtitle>리더의 발언이 시장을 어떻게 움직이는지 직관적으로 확인하세요.</Subtitle>
                 <SearchBar>
-                    <input type="text" placeholder="리더, 정책, 자산 검색 (예: Jerome Powell, AI Regulation, NASDAQ)" />
+                    <input type="text" placeholder="리더, 정책, 종목 검색 (예: Jerome Powell, AI Regulation, NASDAQ)" />
                     <button>분석</button>
                 </SearchBar>
             </div>

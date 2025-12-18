@@ -261,10 +261,10 @@ const Charts = () => {
                     }} />
                 </Top10Medium>
 
-                {/* Rank 3: Microsoft */}
+                {/* Rank 3: Google (Alphabet) */}
                 <Top10Medium row="2">
                     <TradingViewWidget type="advanced" settings={{
-                        "symbols": [["Microsoft","NASDAQ:MSFT|1D"]],
+                        "symbols": [["Google","NASDAQ:GOOGL|1D"]],
                         "chartOnly": false,
                         "width": "100%",
                         "height": "100%",
@@ -289,42 +289,42 @@ const Charts = () => {
                 </Top10Medium>
 
                 {/* Next 8 Small (Rank 4-11) */}
-                {/* Google */}
+                {/* 4. Microsoft */}
                 <Top10Small>
-                    <TradingViewWidget type="mini" settings={{ "symbol": "NASDAQ:GOOGL", "width": "100%", "height": "100%", "locale": "en", "dateRange": "12M", "colorTheme": "dark", "isTransparent": false, "autosize": true, "largeChartUrl": "" }} />
+                    <TradingViewWidget type="mini" settings={{ "symbol": "NASDAQ:MSFT", "width": "100%", "height": "100%", "locale": "en", "dateRange": "12M", "colorTheme": "dark", "isTransparent": false, "autosize": true, "largeChartUrl": "" }} />
                 </Top10Small>
-                {/* Amazon */}
+                {/* 5. Amazon */}
                 <Top10Small>
                     <TradingViewWidget type="mini" settings={{ "symbol": "NASDAQ:AMZN", "width": "100%", "height": "100%", "locale": "en", "dateRange": "12M", "colorTheme": "dark", "isTransparent": false, "autosize": true, "largeChartUrl": "" }} />
                 </Top10Small>
-                {/* Meta */}
-                <Top10Small>
-                    <TradingViewWidget type="mini" settings={{ "symbol": "NASDAQ:META", "width": "100%", "height": "100%", "locale": "en", "dateRange": "12M", "colorTheme": "dark", "isTransparent": false, "autosize": true, "largeChartUrl": "" }} />
-                </Top10Small>
-                {/* Tesla */}
-                <Top10Small>
-                    <TradingViewWidget type="mini" settings={{ "symbol": "NASDAQ:TSLA", "width": "100%", "height": "100%", "locale": "en", "dateRange": "12M", "colorTheme": "dark", "isTransparent": false, "autosize": true, "largeChartUrl": "" }} />
-                </Top10Small>
-                {/* Berkshire */}
-                <Top10Small>
-                    <TradingViewWidget type="mini" settings={{ "symbol": "NYSE:BRK.B", "width": "100%", "height": "100%", "locale": "en", "dateRange": "12M", "colorTheme": "dark", "isTransparent": false, "autosize": true, "largeChartUrl": "" }} />
-                </Top10Small>
-                {/* TSMC */}
-                <Top10Small>
-                    <TradingViewWidget type="mini" settings={{ "symbol": "NYSE:TSM", "width": "100%", "height": "100%", "locale": "en", "dateRange": "12M", "colorTheme": "dark", "isTransparent": false, "autosize": true, "largeChartUrl": "" }} />
-                </Top10Small>
-                {/* Broadcom */}
+                {/* 6. Broadcom */}
                 <Top10Small>
                     <TradingViewWidget type="mini" settings={{ "symbol": "NASDAQ:AVGO", "width": "100%", "height": "100%", "locale": "en", "dateRange": "12M", "colorTheme": "dark", "isTransparent": false, "autosize": true, "largeChartUrl": "" }} />
                 </Top10Small>
-                {/* Eli Lilly */}
+                {/* 7. Meta */}
+                <Top10Small>
+                    <TradingViewWidget type="mini" settings={{ "symbol": "NASDAQ:META", "width": "100%", "height": "100%", "locale": "en", "dateRange": "12M", "colorTheme": "dark", "isTransparent": false, "autosize": true, "largeChartUrl": "" }} />
+                </Top10Small>
+                {/* 8. Tesla */}
+                <Top10Small>
+                    <TradingViewWidget type="mini" settings={{ "symbol": "NASDAQ:TSLA", "width": "100%", "height": "100%", "locale": "en", "dateRange": "12M", "colorTheme": "dark", "isTransparent": false, "autosize": true, "largeChartUrl": "" }} />
+                </Top10Small>
+                {/* 9. Berkshire */}
+                <Top10Small>
+                    <TradingViewWidget type="mini" settings={{ "symbol": "NYSE:BRK.B", "width": "100%", "height": "100%", "locale": "en", "dateRange": "12M", "colorTheme": "dark", "isTransparent": false, "autosize": true, "largeChartUrl": "" }} />
+                </Top10Small>
+                {/* 10. TSMC */}
+                <Top10Small>
+                    <TradingViewWidget type="mini" settings={{ "symbol": "NYSE:TSM", "width": "100%", "height": "100%", "locale": "en", "dateRange": "12M", "colorTheme": "dark", "isTransparent": false, "autosize": true, "largeChartUrl": "" }} />
+                </Top10Small>
+                {/* 11. Eli Lilly */}
                 <Top10Small>
                     <TradingViewWidget type="mini" settings={{ "symbol": "NYSE:LLY", "width": "100%", "height": "100%", "locale": "en", "dateRange": "12M", "colorTheme": "dark", "isTransparent": false, "autosize": true, "largeChartUrl": "" }} />
                 </Top10Small>
             </Top10Grid>
 
-            {/* 3. Market Cap 12-50 List */}
-            <ChartSectionTitle marginTop>Market Cap Rank 12-50</ChartSectionTitle>
+            {/* 3. Market Cap Rank */}
+            <ChartSectionTitle marginTop>Market Cap Rank</ChartSectionTitle>
             <MarketListContainer>
                 <TradingViewWidget type="screener" settings={{
                     "width": "100%",
