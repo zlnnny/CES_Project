@@ -44,10 +44,17 @@ python3 -m uvicorn server.main:app --reload --host 0.0.0.0 --port 8000
 ```
 - API URL: `http://localhost:8000/api/news`
 
-## 3. Run Frontend Server
-To avoid CORS issues, serve the static files using a simple HTTP server.
+## 3. Run Frontend Server (React)
+The frontend is built with React (Vite).
+
 ```bash
-# Run from the project root
-python3 -m http.server 5500 --directory site
+# Move to the site directory
+cd site
+
+# Install Node dependencies (first time only)
+npm install
+
+# Run the development server
+npm run dev
 ```
-- Access the website at: `http://localhost:5500`
+- Access the website at: `http://localhost:5173`
