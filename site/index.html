@@ -14,9 +14,16 @@
         <div class="container">
             <a href="/" class="logo">Market Voice</a>
             <nav>
-                <a href="#dashboard">Dashboard</a>
+                <a href="#charts">Charts</a>
                 <a href="#ranking">Power Ranking</a>
-                <a href="#features">Features</a>
+                <div class="dropdown">
+                    <a href="#analysis" class="dropbtn">Analysis</a>
+                    <div class="dropdown-content">
+                        <a href="analysis/nlp.html">NLP 감성 분석</a>
+                        <a href="analysis/mapping.html">자산 자동 매핑</a>
+                        <a href="analysis/impact.html">영향력 시각화</a>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
@@ -35,9 +42,9 @@
         </section>
 
         <!-- 대시보드 시각화 (핵심 기능) -->
-        <section id="dashboard" class="container section-padding">
-            <h2 class="section-title">Speech-Asset Impact Visualization</h2>
-            <p class="section-subtitle">특정 발언이 자산 가격에 미친 영향을 시각적으로 분석합니다.</p>
+        <section id="charts" class="container section-padding">
+            <h2 class="section-title">Charts</h2>
+            <p class="section-subtitle">주요 지수 및 우량주의 실시간 시장 동향을 확인하세요.</p>
             
             <div class="chart-container">
                 <!-- 차트 배경 (CSS Grid Pattern) -->
@@ -98,8 +105,8 @@
         </section>
 
         <!-- 핵심 기능 소개 -->
-        <section id="features" class="container section-padding">
-            <h2 class="section-title">Primary Features</h2>
+        <section id="analysis" class="container section-padding">
+            <h2 class="section-title">Primary Analysis</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <h3>NLP 감성 분석</h3>
