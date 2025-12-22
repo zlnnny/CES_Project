@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from crawler import get_realtime_news
 import json
 import os
 
@@ -20,21 +21,23 @@ def read_root():
 
 @app.get("/api/news")
 def get_news():
-    """
-    분석된 뉴스 데이터를 반환합니다.
-    """
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    file_path = os.path.join(current_dir, "trump_news_analyzed.json")
-    
-    if not os.path.exists(file_path):
-        return {"error": "Analyzed data not found. Please run collection & analysis scripts first."}
-    
     try:
-        with open(file_path, "r", encoding="utf-8") as f:
-            data = json.load(f)
-        return data
+        print("📡 실시간 뉴스 요청 받음...")
+        # 1. 크롤러 실행
+        live_data = get_realtime_news("Donald Trump", limit=3)
+        
+        # 2. 데이터가 비어있으면(크롤링 실패 시) 빈 리스트 반환
+        if not live_data:
+            print("⚠️ 크롤링 결과 없음")
+            return [] 
+            
+        print(f"✅ {len(live_data)}개 뉴스 반환 성공")
+        return live_data
+
     except Exception as e:
-        return {"error": str(e)}
+        print(f"❌ 서버 에러: {e}")
+        # 에러가 나도 객체({"error":...}) 대신 빈 리스트를 보내서 프론트 멈춤 방지
+        return []
 
 if __name__ == "__main__":
     import uvicorn
