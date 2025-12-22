@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import GlobalStyles from './styles/GlobalStyles';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import TodaysNews from './components/TodaysNews';
 import Charts from './components/Charts';
 import RankingWidget from './components/RankingWidget';
 import AnalysisPreview from './components/AnalysisPreview';
@@ -13,6 +14,7 @@ const Home = () => {
     return (
         <main>
             <Hero />
+            <TodaysNews />
             <AnalysisPreview />
             <Charts />
             <RankingWidget />
