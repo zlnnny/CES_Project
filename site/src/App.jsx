@@ -2,20 +2,18 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import GlobalStyles from './styles/GlobalStyles';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import TodaysNews from './components/TodaysNews';
 import Charts from './components/Charts';
+import PowerRanking from './components/PowerRanking';
 import RankingWidget from './components/RankingWidget';
-import AnalysisPreview from './components/AnalysisPreview';
+import TodaysEvent from './components/TodaysEvent';
 import Footer from './components/Footer';
 
 // 메인 페이지 컴포넌트
 const Home = () => {
     return (
         <main>
-            <Hero />
-            <TodaysNews />
-            <AnalysisPreview />
+            <PowerRanking />
+            <TodaysEvent />
             <Charts />
             <RankingWidget />
         </main>

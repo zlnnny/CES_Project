@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FaTrophy, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { totalRows } from '../data/powerRankingDummy';
 
 const WidgetContainer = styled.div`
     position: fixed;
-    top: 100px; /* 헤더 높이만큼 띄움 */
+    top: calc(var(--header-height, 90px) + 14px); /* 헤더 높이에 맞춰 자동으로 아래로 */
     left: 20px;
     width: 220px;
     background-color: rgba(10, 25, 47, 0.85); /* 반투명 네이비 */
@@ -96,7 +97,7 @@ const Score = styled.span`
     color: var(--color-text-main); /* 흰색 */
 `;
 
-const RankingWidget = () => {
+const RankingWidget = ({ rows = totalRows }) => {
     const [isOpen, setIsOpen] = useState(true);
 
     return (
@@ -110,56 +111,13 @@ const RankingWidget = () => {
             </WidgetHeader>
             
             <RankList>
-                <RankItem>
-                    <RankNumber rank={1}>1</RankNumber>
-                    <LeaderName>Jerome Powell</LeaderName>
-                    <Score>95.8</Score>
-                </RankItem>
-                <RankItem>
-                    <RankNumber rank={2}>2</RankNumber>
-                    <LeaderName>Andrew Bailey</LeaderName>
-                    <Score>81.2</Score>
-                </RankItem>
-                <RankItem>
-                    <RankNumber rank={3}>3</RankNumber>
-                    <LeaderName>Ueda Kazuo</LeaderName>
-                    <Score>77.5</Score>
-                </RankItem>
-                <RankItem>
-                    <RankNumber rank={4}>4</RankNumber>
-                    <LeaderName>Justin Trudeau</LeaderName>
-                    <Score>64.0</Score>
-                </RankItem>
-                <RankItem>
-                    <RankNumber rank={5}>5</RankNumber>
-                    <LeaderName>Xi Jinping</LeaderName>
-                    <Score>60.5</Score>
-                </RankItem>
-                <RankItem>
-                    <RankNumber rank={6}>6</RankNumber>
-                    <LeaderName>Christine Lagarde</LeaderName>
-                    <Score>58.2</Score>
-                </RankItem>
-                <RankItem>
-                    <RankNumber rank={7}>7</RankNumber>
-                    <LeaderName>Joe Biden</LeaderName>
-                    <Score>55.9</Score>
-                </RankItem>
-                <RankItem>
-                    <RankNumber rank={8}>8</RankNumber>
-                    <LeaderName>Emmanuel Macron</LeaderName>
-                    <Score>49.3</Score>
-                </RankItem>
-                <RankItem>
-                    <RankNumber rank={9}>9</RankNumber>
-                    <LeaderName>Olaf Scholz</LeaderName>
-                    <Score>45.1</Score>
-                </RankItem>
-                <RankItem>
-                    <RankNumber rank={10}>10</RankNumber>
-                    <LeaderName>Narendra Modi</LeaderName>
-                    <Score>41.8</Score>
-                </RankItem>
+                {rows.slice(0, 10).map((r) => (
+                    <RankItem key={`widget-${r.rank}-${r.name}`}>
+                        <RankNumber rank={r.rank}>{r.rank}</RankNumber>
+                        <LeaderName>{r.name}</LeaderName>
+                        <Score>{typeof r.influence === 'number' ? r.influence.toFixed(1) : r.influence}</Score>
+                    </RankItem>
+                ))}
             </RankList>
         </WidgetContainer>
     );

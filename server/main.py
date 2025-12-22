@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from crawler import get_realtime_news
+from server.crawler import get_realtime_news
 import json
 import os
 

@@ -1,0 +1,14 @@
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Node
+node_modules/
+
+# Frontend build
+site/dist/
