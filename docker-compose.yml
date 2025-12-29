@@ -1,0 +1,18 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: marketvoice-db
+    environment:
+      POSTGRES_DB: marketvoice
+      POSTGRES_USER: marketvoice
+      POSTGRES_PASSWORD: marketvoice
+    ports:
+      - "5432:5432"
+    volumes:
+      - marketvoice_db_data:/var/lib/postgresql/data
+      - ./server/db/init.sql:/docker-entrypoint-initdb.d/001-init.sql:ro
+
+volumes:
+  marketvoice_db_data:
+
+

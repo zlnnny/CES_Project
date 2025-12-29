@@ -36,6 +36,24 @@ We aim to bridge this gap by linking the language data of political and economic
 pip install -r server/requirements.txt
 ```
 
+## 1.5 Run Database (Postgres + pgvector)
+We use **PostgreSQL + pgvector** for team/production-friendly storage of entities, events, edges, and SBERT embeddings.
+
+```bash
+# From the project root
+docker compose up -d db
+```
+
+Default DB settings (see `server/db.py`):
+
+- `DATABASE_URL`: `postgresql+psycopg://marketvoice:marketvoice@localhost:5432/marketvoice`
+
+If you want to override it, create `server/.env`:
+
+```bash
+DATABASE_URL=postgresql+psycopg://marketvoice:marketvoice@localhost:5432/marketvoice
+```
+
 ## 2. Run Backend Server (FastAPI)
 The backend server provides API endpoints for analyzed news data.
 ```bash
@@ -43,6 +61,7 @@ The backend server provides API endpoints for analyzed news data.
 python3 -m uvicorn server.main:app --reload --host 0.0.0.0 --port 8000
 ```
 - API URL: `http://localhost:8000/api/news`
+- DB health: `http://localhost:8000/api/health/db`
 
 ## 3. Run Frontend Server (React)
 The frontend is built with React (Vite).

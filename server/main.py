@@ -1,8 +1,12 @@
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy import text
+from sqlalchemy.orm import Session
+
 from server.crawler import get_realtime_news
-import json
-import os
+from server.db import get_engine
+from server.deps import get_db
+from server.models import Base
 
 app = FastAPI()
 
@@ -18,6 +22,20 @@ app.add_middleware(
 @app.get("/")
 def read_root():
     return {"message": "Market Voice API is running!"}
+
+
+@app.on_event("startup")
+def _startup_create_tables():
+    # Minimal setup for local/dev. For production, prefer Alembic migrations.
+    Base.metadata.create_all(bind=get_engine())
+
+
+@app.get("/api/health/db")
+def health_db(db: Session = Depends(get_db)):
+    # simple connectivity check
+    db.execute(text("SELECT 1"))
+    return {"ok": True}
+
 
 @app.get("/api/news")
 def get_news():
