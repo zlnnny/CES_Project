@@ -45,6 +45,8 @@ class EntityEmbedding(Base):
 
     # SBERT default dimension is commonly 768; adjust if you pick a different model.
     model_name: Mapped[str] = mapped_column(String(128), default="sbert", index=True)
+
+    # Postgres: pgvector, SQLite: JSON list[float]
     embedding: Mapped[list[float] | None] = mapped_column(JSON().with_variant(Vector(768), "postgresql"), nullable=True)
 
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
@@ -58,21 +60,24 @@ class NewsEvent(Base):
 
     leader_name: Mapped[str | None] = mapped_column(String(256), index=True, nullable=True)
     title: Mapped[str] = mapped_column(Text)
-    url: Mapped[str | None] = mapped_column(Text, nullable=True)
+
+    # link/url can be used for de-dup; keep nullable for crawlers that don't provide it
+    url: Mapped[str | None] = mapped_column(Text, unique=True, nullable=True)
+
     source: Mapped[str | None] = mapped_column(String(128), nullable=True)
     published_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
     # Optional analysis fields (can be expanded later)
-    sentiment: Mapped[float | None] = mapped_column(Float, nullable=True)
+    tone: Mapped[str | None] = mapped_column(String(32), nullable=True)  # e.g. Hawkish/Dovish
+    sentiment: Mapped[float | None] = mapped_column(Float, nullable=True)  # -1.0 ~ 1.0
     importance: Mapped[float | None] = mapped_column(Float, nullable=True)
+    impact_assets: Mapped[list | None] = mapped_column(JSON, nullable=True)
 
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
 class InfluenceEdge(Base):
-    """
-    Maintains online-updated influence weights between (person -> asset).
-    """
+    """Maintains online-updated influence weights between (person -> asset)."""
 
     __tablename__ = "influence_edges"
     __table_args__ = (
@@ -86,5 +91,3 @@ class InfluenceEdge(Base):
 
     weight: Mapped[float] = mapped_column(Float, default=0.0)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
-
-

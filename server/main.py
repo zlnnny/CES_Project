@@ -50,25 +50,7 @@ def health_db(db: Session = Depends(get_db)):
     return {"ok": True}
 
 
-@app.get("/api/news")
-def get_news():
-    try:
-        print("📡 실시간 뉴스 요청 받음...")
-        # 1. 크롤러 실행
-        live_data = get_realtime_news("Donald Trump", limit=3)
-        
-        # 2. 데이터가 비어있으면(크롤링 실패 시) 빈 리스트 반환
-        if not live_data:
-            print("⚠️ 크롤링 결과 없음")
-            return [] 
-            
-        print(f"✅ {len(live_data)}개 뉴스 반환 성공")
-        return live_data
 
-    except Exception as e:
-        print(f"❌ 서버 에러: {e}")
-        # 에러가 나도 객체({"error":...}) 대신 빈 리스트를 보내서 프론트 멈춤 방지
-        return []
 
 if __name__ == "__main__":
     import uvicorn

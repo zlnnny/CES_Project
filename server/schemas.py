@@ -4,8 +4,7 @@ from datetime import datetime
 from typing import Literal
 from uuid import UUID
 
-from pydantic import BaseModel, Field
-
+from pydantic import BaseModel, Field, ConfigDict
 
 EntityType = Literal["person", "asset"]
 
@@ -44,20 +43,34 @@ class EmbeddingJobResult(BaseModel):
     model_name: str
 
 
+# News 관련 스키마]
+
 class NewsEventIn(BaseModel):
+    """크롤러나 외부에서 데이터가 들어올 때의 규격"""
     leader_name: str
     title: str
     url: str | None = None
     source: str | None = "Google News"
     published_at: datetime | None = None
 
-    sentiment: float | None = None
+    # 분석 데이터
+    sentiment: float | None = None # -1.0 ~ 1.0
+    tone: str | None = None        # Hawkish / Dovish / Neutral (추가됨)
     importance: float | None = None
 
     # If crawler/mapper provides explicit targets:
     asset_names: list[str] = Field(default_factory=list)
 
 
+class NewsEventOut(NewsEventIn):
+    """API가 프론트엔드에게 응답할 때의 규격 (DB ID 포함)"""
+    id: UUID
+    created_at: datetime
+
+    # ORM 객체를 Pydantic 모델로 변환하기 위해 필수
+    model_config = ConfigDict(from_attributes=True)
+    
+    
 class NewsIngestRequest(BaseModel):
     events: list[NewsEventIn]
     rho: float = 0.9  # decay for online update
