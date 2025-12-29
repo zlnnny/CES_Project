@@ -11,9 +11,10 @@ from sqlalchemy.orm import sessionmaker, declarative_base
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
-    # Example:
+    # Default: SQLite for local dev (no Docker required).
+    # For Postgres (production/team):
     # postgresql+psycopg://marketvoice:marketvoice@localhost:5432/marketvoice
-    database_url: str = "postgresql+psycopg://marketvoice:marketvoice@localhost:5432/marketvoice"
+    database_url: str = "sqlite:///./server/dev.db"
 
 
 @lru_cache

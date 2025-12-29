@@ -15,3 +15,6 @@ site/dist/
 
 .venv/
 server/venv/
+
+# Local dev DB (SQLite)
+server/dev.db
