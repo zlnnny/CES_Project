@@ -48,7 +48,7 @@ def get_realtime_news(leader_name="Donald Trump", limit=3):
     except Exception as e:
         print(f"❌ 크롤링 에러 발생: {e}")
 
-    # [핵심] 만약 수집된 뉴스가 0개라면, 강제로 데이터를 만들어서 반환 (화면이 비지 않게)
+    # 비어있을때 채우기기
     if not news_results:
         print("🚨 뉴스 수집 실패 -> 예시 데이터(Fallback) 생성 중...")
         return _generate_fallback_data(leader_name, limit)

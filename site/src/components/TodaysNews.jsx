@@ -158,7 +158,7 @@ const TodaysNews = () => {
 
     // 렌더링 로직: 조건부 렌더링을 SectionTitle 아래로 이동
     return (
-        <NewsSection>
+        <NewsSection id="news">
             <Container>
                 {/* 제목은 언제나 보임 */}
                 <SectionTitle>Today's Event</SectionTitle>

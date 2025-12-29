@@ -5,7 +5,7 @@ import Header from './components/Header';
 import Charts from './components/Charts';
 import PowerRanking from './components/PowerRanking';
 import RankingWidget from './components/RankingWidget';
-import TodaysEvent from './components/TodaysEvent';
+import TodaysNews from './components/TodaysNews';
 import Footer from './components/Footer';
 
 // 메인 페이지 컴포넌트
@@ -13,7 +13,7 @@ const Home = () => {
     return (
         <main>
             <PowerRanking />
-            <TodaysEvent />
+            <TodaysNews />
             <Charts />
             <RankingWidget />
         </main>
