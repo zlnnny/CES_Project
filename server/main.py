@@ -7,6 +7,9 @@ from server.crawler import get_realtime_news
 from server.db import get_engine
 from server.deps import get_db
 from server.models import Base
+from server.routes import entities as entities_router
+from server.routes import events as events_router
+from server.routes import ranking as ranking_router
 
 app = FastAPI()
 
@@ -30,9 +33,14 @@ def _startup_create_tables():
     # DB가 아직 안 떠있어도 API 자체는 뜰 수 있게(프론트 개발 편의) 실패를 무시합니다.
     try:
         Base.metadata.create_all(bind=get_engine())
-        print('✅ DB connected (tables ensured)')
+        print("✅ DB connected (tables ensured)")
     except Exception as e:
-        print(f'⚠️ DB not available yet: {e}')
+        print(f"⚠️ DB not available yet: {e}")
+
+
+app.include_router(entities_router.router)
+app.include_router(events_router.router)
+app.include_router(ranking_router.router)
 
 
 @app.get("/api/health/db")
