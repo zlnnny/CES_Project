@@ -27,7 +27,12 @@ def read_root():
 @app.on_event("startup")
 def _startup_create_tables():
     # Minimal setup for local/dev. For production, prefer Alembic migrations.
-    Base.metadata.create_all(bind=get_engine())
+    # DB가 아직 안 떠있어도 API 자체는 뜰 수 있게(프론트 개발 편의) 실패를 무시합니다.
+    try:
+        Base.metadata.create_all(bind=get_engine())
+        print('✅ DB connected (tables ensured)')
+    except Exception as e:
+        print(f'⚠️ DB not available yet: {e}')
 
 
 @app.get("/api/health/db")
