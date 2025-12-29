@@ -5,13 +5,12 @@ from datetime import datetime
 from enum import Enum
 
 from pgvector.sqlalchemy import Vector
-from sqlalchemy import DateTime, Float, ForeignKey, Index, String, Text, UniqueConstraint, func
+from sqlalchemy import DateTime, Float, ForeignKey, Index, String, Text, UniqueConstraint, func, JSON
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-
-
-class Base(DeclarativeBase):
-    pass
+from server.db import Base
+# class Base(DeclarativeBase):
+#     pass
 
 
 class EntityType(str, Enum):
@@ -52,20 +51,21 @@ class EntityEmbedding(Base):
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
 
-class NewsEvent(Base):
+class NewsEvent(Base): 
     __tablename__ = "news_events"
 
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
 
     leader_name: Mapped[str | None] = mapped_column(String(256), index=True, nullable=True)
     title: Mapped[str] = mapped_column(Text)
-    url: Mapped[str | None] = mapped_column(Text, nullable=True)
+    url: Mapped[str | None] = mapped_column(Text, unique=True, nullable=True) #url 중복방지지
     source: Mapped[str | None] = mapped_column(String(128), nullable=True)
     published_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
     # Optional analysis fields (can be expanded later)
-    sentiment: Mapped[float | None] = mapped_column(Float, nullable=True)
-    importance: Mapped[float | None] = mapped_column(Float, nullable=True)
+    tone: Mapped[str | None] = mapped_column(String(32), nullable=True) # Hawkish/Dovish
+    sentiment: Mapped[float | None] = mapped_column(Float, nullable=True) # -1.0 ~ 1.0 (score 대체)
+    impact_assets: Mapped[list | None] = mapped_column(JSON, nullable=True) # 관련 자산 리스트
 
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
