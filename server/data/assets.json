@@ -7,7 +7,12 @@
       "keywords": [
         "photoshop",
         "creative cloud",
-        "pdf"
+        "pdf",
+        "illustrator",
+        "premiere pro",
+        "acrobat",
+        "digital media",
+        "experience cloud"
       ]
     },
     {
@@ -15,7 +20,11 @@
       "symbol": "ADP",
       "name": "adp",
       "keywords": [
-        "adp"
+        "adp",
+        "payroll",
+        "hr software",
+        "human capital management",
+        "workforce management"
       ]
     },
     {
@@ -23,7 +32,12 @@
       "symbol": "AIRBNB",
       "name": "airbnb",
       "keywords": [
-        "airbnb"
+        "airbnb",
+        "vacation rental",
+        "travel",
+        "hospitality",
+        "booking",
+        "hosts"
       ]
     },
     {
@@ -31,7 +45,15 @@
       "symbol": "ALPHABET",
       "name": "alphabet",
       "keywords": [
-        "alphabet"
+        "alphabet",
+        "google",
+        "search",
+        "youtube",
+        "android",
+        "chrome",
+        "waymo",
+        "deepmind",
+        "sundar pichai"
       ]
     },
     {
@@ -41,7 +63,13 @@
       "keywords": [
         "aws",
         "bezos",
-        "prime"
+        "prime",
+        "ecommerce",
+        "cloud computing",
+        "alexa",
+        "logistics",
+        "whole foods",
+        "andy jassy"
       ]
     },
     {
@@ -51,7 +79,12 @@
       "keywords": [
         "ryzen",
         "radeon",
-        "lisa su"
+        "lisa su",
+        "epyc",
+        "semiconductor",
+        "gpu",
+        "cpu",
+        "data center"
       ]
     },
     {
@@ -60,7 +93,11 @@
       "name": "amgen",
       "keywords": [
         "biotech",
-        "therapeutics"
+        "therapeutics",
+        "oncology",
+        "inflammation",
+        "nephrology",
+        "bone health"
       ]
     },
     {
@@ -71,7 +108,12 @@
         "iphone",
         "macbook",
         "ipad",
-        "tim cook"
+        "tim cook",
+        "ios",
+        "apple watch",
+        "services",
+        "app store",
+        "vision pro"
       ]
     },
     {
@@ -79,7 +121,11 @@
       "symbol": "",
       "name": "applied materials",
       "keywords": [
-        "applied materials"
+        "applied materials",
+        "semiconductor equipment",
+        "materials engineering",
+        "wafer fabrication",
+        "display technologies"
       ]
     },
     {
@@ -87,7 +133,12 @@
       "symbol": "APPLOVIN",
       "name": "applovin",
       "keywords": [
-        "applovin"
+        "applovin",
+        "mobile marketing",
+        "adtech",
+        "monetization",
+        "software platform",
+        "mobile games"
       ]
     },
     {
@@ -96,7 +147,11 @@
       "name": "asml holding",
       "keywords": [
         "lithography",
-        "euv"
+        "euv",
+        "duv",
+        "semiconductor manufacturing",
+        "chip equipment",
+        "netherlands"
       ]
     },
     {
@@ -106,7 +161,12 @@
       "keywords": [
         "jira",
         "confluence",
-        "devtools"
+        "devtools",
+        "trello",
+        "bitbucket",
+        "agile",
+        "project management",
+        "collaboration"
       ]
     },
     {
@@ -115,7 +175,12 @@
       "name": "berkshire hathaway",
       "keywords": [
         "warren buffett",
-        "insurance"
+        "insurance",
+        "geico",
+        "investment",
+        "conglomerate",
+        "charlie munger",
+        "bnsf"
       ]
     },
     {
@@ -124,7 +189,12 @@
       "name": "blackrock",
       "keywords": [
         "asset management",
-        "larry fink"
+        "larry fink",
+        "etf",
+        "ishares",
+        "investment",
+        "finance",
+        "aladdin"
       ]
     },
     {
@@ -132,7 +202,14 @@
       "symbol": "",
       "name": "booking holdings",
       "keywords": [
-        "booking holdings"
+        "booking holdings",
+        "booking.com",
+        "priceline",
+        "kayak",
+        "agoda",
+        "opentable",
+        "travel",
+        "online travel agency"
       ]
     },
     {
@@ -143,7 +220,11 @@
         "semiconductor",
         "wifi",
         "chip",
-        "networking"
+        "networking",
+        "vmware",
+        "software",
+        "infrastructure",
+        "hock tan"
       ]
     },
     {
@@ -151,7 +232,13 @@
       "symbol": "",
       "name": "cadence design",
       "keywords": [
-        "cadence design"
+        "cadence design",
+        "eda",
+        "electronic design automation",
+        "chip design",
+        "verification",
+        "ip",
+        "software"
       ]
     },
     {
@@ -160,7 +247,12 @@
       "name": "coinbase",
       "keywords": [
         "crypto exchange",
-        "bitcoin"
+        "bitcoin",
+        "ethereum",
+        "cryptocurrency",
+        "blockchain",
+        "wallet",
+        "brian armstrong"
       ]
     },
     {
@@ -169,7 +261,11 @@
       "name": "costco",
       "keywords": [
         "warehouse retail",
-        "bulk shopping"
+        "bulk shopping",
+        "membership",
+        "wholesale",
+        "kirkland signature",
+        "retail"
       ]
     },
     {
@@ -178,7 +274,11 @@
       "name": "crowdstrike",
       "keywords": [
         "endpoint protection",
-        "falcon"
+        "falcon",
+        "cybersecurity",
+        "cloud security",
+        "threat intelligence",
+        "george kurtz"
       ]
     },
     {
@@ -187,7 +287,11 @@
       "name": "datadog",
       "keywords": [
         "monitoring",
-        "observability"
+        "observability",
+        "cloud security",
+        "analytics",
+        "apm",
+        "infrastructure monitoring"
       ]
     },
     {
@@ -195,7 +299,12 @@
       "symbol": "DEXCOM",
       "name": "dexcom",
       "keywords": [
-        "dexcom"
+        "dexcom",
+        "cgm",
+        "continuous glucose monitoring",
+        "diabetes",
+        "medical device",
+        "healthcare"
       ]
     },
     {
@@ -204,7 +313,11 @@
       "name": "fortinet",
       "keywords": [
         "cybersecurity",
-        "network security"
+        "network security",
+        "firewall",
+        "fortigate",
+        "security fabric",
+        "sase"
       ]
     },
     {
@@ -213,7 +326,11 @@
       "name": "gilead sciences",
       "keywords": [
         "antivirals",
-        "biotech"
+        "biotech",
+        "hiv",
+        "oncology",
+        "liver disease",
+        "cell therapy"
       ]
     },
     {
@@ -224,7 +341,11 @@
         "processor",
         "cpu",
         "chip",
-        "gelsinger"
+        "gelsinger",
+        "foundry",
+        "idm 2.0",
+        "data center",
+        "client computing"
       ]
     },
     {
@@ -234,7 +355,11 @@
       "keywords": [
         "turbotax",
         "quickbooks",
-        "fintech"
+        "fintech",
+        "credit karma",
+        "mailchimp",
+        "tax software",
+        "accounting"
       ]
     },
     {
@@ -243,7 +368,10 @@
       "name": "intuitive surgical",
       "keywords": [
         "robotics",
-        "da vinci system"
+        "da vinci system",
+        "surgery",
+        "medical device",
+        "minimally invasive care"
       ]
     },
     {
@@ -252,7 +380,11 @@
       "name": "jpmorgan chase",
       "keywords": [
         "bank",
-        "dimon"
+        "dimon",
+        "finance",
+        "investment banking",
+        "credit card",
+        "wealth management"
       ]
     },
     {
@@ -260,7 +392,12 @@
       "symbol": "",
       "name": "kla corp",
       "keywords": [
-        "kla corp"
+        "kla corp",
+        "process control",
+        "yield management",
+        "semiconductor equipment",
+        "metrology",
+        "inspection"
       ]
     },
     {
@@ -269,7 +406,10 @@
       "name": "lam research",
       "keywords": [
         "wafer fab",
-        "deposition"
+        "deposition",
+        "etch",
+        "semiconductor equipment",
+        "manufacturing"
       ]
     },
     {
@@ -277,7 +417,13 @@
       "symbol": "LULULEMON",
       "name": "lululemon",
       "keywords": [
-        "lululemon"
+        "lululemon",
+        "athleisure",
+        "yoga",
+        "apparel",
+        "retail",
+        "fitness",
+        "athletic wear"
       ]
     },
     {
@@ -285,7 +431,13 @@
       "symbol": "",
       "name": "marvell tech",
       "keywords": [
-        "marvell tech"
+        "marvell tech",
+        "semiconductor",
+        "infrastructure",
+        "networking",
+        "storage",
+        "connectivity",
+        "data center"
       ]
     },
     {
@@ -293,7 +445,12 @@
       "symbol": "",
       "name": "mercadolibre",
       "keywords": [
-        "mercadolibre"
+        "mercadolibre",
+        "ecommerce",
+        "fintech",
+        "latin america",
+        "mercado pago",
+        "logistics"
       ]
     },
     {
@@ -304,7 +461,11 @@
         "facebook",
         "instagram",
         "whatsapp",
-        "zuckerberg"
+        "zuckerberg",
+        "metaverse",
+        "reality labs",
+        "social media",
+        "advertising"
       ]
     },
     {
@@ -312,7 +473,13 @@
       "symbol": "MICRON",
       "name": "micron",
       "keywords": [
-        "micron"
+        "micron",
+        "memory",
+        "storage",
+        "dram",
+        "nand",
+        "semiconductor",
+        "chip"
       ]
     },
     {
@@ -323,7 +490,13 @@
         "windows",
         "azure",
         "office",
-        "satya nadella"
+        "satya nadella",
+        "cloud",
+        "xbox",
+        "linkedin",
+        "teams",
+        "copilot",
+        "ai"
       ]
     },
     {
@@ -333,7 +506,11 @@
       "keywords": [
         "snacks",
         "oreo",
-        "cadbury"
+        "cadbury",
+        "ritz",
+        "food",
+        "beverage",
+        "confectionery"
       ]
     },
     {
@@ -341,7 +518,11 @@
       "symbol": "",
       "name": "monster beverage",
       "keywords": [
-        "monster beverage"
+        "monster beverage",
+        "energy drink",
+        "beverage",
+        "monster energy",
+        "strategic brands"
       ]
     },
     {
@@ -351,7 +532,12 @@
       "keywords": [
         "streaming",
         "entertainment",
-        "content"
+        "content",
+        "original series",
+        "movies",
+        "subscribers",
+        "reed hastings",
+        "ted sarandos"
       ]
     },
     {
@@ -363,7 +549,12 @@
         "h100",
         "a100",
         "blackwell",
-        "jensen huang"
+        "jensen huang",
+        "ai",
+        "data center",
+        "gaming",
+        "cuda",
+        "omniverse"
       ]
     },
     {
@@ -371,7 +562,12 @@
       "symbol": "",
       "name": "old dominion",
       "keywords": [
-        "old dominion"
+        "old dominion",
+        "freight",
+        "trucking",
+        "ltl",
+        "logistics",
+        "transportation"
       ]
     },
     {
@@ -379,7 +575,13 @@
       "symbol": "OPENAI",
       "name": "openai",
       "keywords": [
-        "openai"
+        "openai",
+        "chatgpt",
+        "gpt-4",
+        "sam altman",
+        "artificial intelligence",
+        "generative ai",
+        "dall-e"
       ]
     },
     {
@@ -387,7 +589,13 @@
       "symbol": "PACCAR",
       "name": "paccar",
       "keywords": [
-        "paccar"
+        "paccar",
+        "trucks",
+        "kenworth",
+        "peterbilt",
+        "daf",
+        "commercial vehicles",
+        "transportation"
       ]
     },
     {
@@ -395,7 +603,14 @@
       "symbol": "PALANTIR",
       "name": "palantir",
       "keywords": [
-        "palantir"
+        "palantir",
+        "big data",
+        "analytics",
+        "gotham",
+        "foundry",
+        "defense",
+        "government",
+        "commercial"
       ]
     },
     {
@@ -404,7 +619,11 @@
       "name": "palo alto networks",
       "keywords": [
         "cybersecurity",
-        "firewall"
+        "firewall",
+        "cloud security",
+        "prisma",
+        "cortex",
+        "nikesh arora"
       ]
     },
     {
@@ -412,7 +631,13 @@
       "symbol": "PAYCHEX",
       "name": "paychex",
       "keywords": [
-        "paychex"
+        "paychex",
+        "payroll",
+        "hr",
+        "human resources",
+        "benefits",
+        "insurance",
+        "small business"
       ]
     },
     {
@@ -422,7 +647,11 @@
       "keywords": [
         "modem",
         "snapdragon",
-        "mobile chip"
+        "mobile chip",
+        "5g",
+        "wireless",
+        "semiconductor",
+        "automotive"
       ]
     },
     {
@@ -431,7 +660,11 @@
       "name": "regeneron",
       "keywords": [
         "biotech",
-        "pharmaceuticals"
+        "pharmaceuticals",
+        "antibody",
+        "eye disease",
+        "immunology",
+        "oncology"
       ]
     },
     {
@@ -440,7 +673,11 @@
       "name": "shopify",
       "keywords": [
         "ecommerce",
-        "canada"
+        "canada",
+        "online store",
+        "retail",
+        "platform",
+        "merchant solutions"
       ]
     },
     {
@@ -449,7 +686,10 @@
       "name": "snowflake",
       "keywords": [
         "data warehouse",
-        "cloud analytics"
+        "cloud analytics",
+        "data cloud",
+        "data sharing",
+        "frank slootman"
       ]
     },
     {
@@ -457,7 +697,12 @@
       "symbol": "SPOTIFY",
       "name": "spotify",
       "keywords": [
-        "spotify"
+        "spotify",
+        "music streaming",
+        "podcasts",
+        "audio",
+        "daniel ek",
+        "subscriptions"
       ]
     },
     {
@@ -466,7 +711,11 @@
       "name": "starbucks",
       "keywords": [
         "coffee",
-        "cafe"
+        "cafe",
+        "beverages",
+        "retail",
+        "howard schultz",
+        "laxman narasimhan"
       ]
     },
     {
@@ -475,7 +724,10 @@
       "name": "synopsys",
       "keywords": [
         "eda software",
-        "verification"
+        "verification",
+        "chip design",
+        "silicon ip",
+        "software security"
       ]
     },
     {
@@ -484,7 +736,11 @@
       "name": "t-mobile us",
       "keywords": [
         "telecom",
-        "wireless"
+        "wireless",
+        "5g",
+        "carrier",
+        "mobile",
+        "un-carrier"
       ]
     },
     {
@@ -492,7 +748,15 @@
       "symbol": "",
       "name": "tesla/xai",
       "keywords": [
-        "tesla/xai"
+        "tesla",
+        "xai",
+        "elon musk",
+        "ev",
+        "electric vehicle",
+        "cybertruck",
+        "autopilot",
+        "grok",
+        "ai"
       ]
     },
     {
@@ -501,7 +765,10 @@
       "name": "texas instruments",
       "keywords": [
         "analog",
-        "mixed signal"
+        "mixed signal",
+        "embedded processing",
+        "semiconductor",
+        "chips"
       ]
     },
     {
@@ -509,7 +776,12 @@
       "symbol": "",
       "name": "vertex pharma",
       "keywords": [
-        "vertex pharma"
+        "vertex pharma",
+        "cystic fibrosis",
+        "biotech",
+        "gene editing",
+        "crispr",
+        "pain management"
       ]
     },
     {
@@ -517,7 +789,13 @@
       "symbol": "WORKDAY",
       "name": "workday",
       "keywords": [
-        "workday"
+        "workday",
+        "hcm",
+        "finance",
+        "erp",
+        "cloud",
+        "enterprise software",
+        "human capital management"
       ]
     }
   ]
