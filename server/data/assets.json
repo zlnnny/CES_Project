@@ -1,0 +1,524 @@
+{
+  "assets": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "ADBE",
+      "name": "adobe",
+      "keywords": [
+        "photoshop",
+        "creative cloud",
+        "pdf"
+      ]
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "ADP",
+      "name": "adp",
+      "keywords": [
+        "adp"
+      ]
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "AIRBNB",
+      "name": "airbnb",
+      "keywords": [
+        "airbnb"
+      ]
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "ALPHABET",
+      "name": "alphabet",
+      "keywords": [
+        "alphabet"
+      ]
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "AMZN",
+      "name": "amazon",
+      "keywords": [
+        "aws",
+        "bezos",
+        "prime"
+      ]
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "AMD",
+      "name": "advanced micro devices",
+      "keywords": [
+        "ryzen",
+        "radeon",
+        "lisa su"
+      ]
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "AMGN",
+      "name": "amgen",
+      "keywords": [
+        "biotech",
+        "therapeutics"
+      ]
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "AAPL",
+      "name": "apple",
+      "keywords": [
+        "iphone",
+        "macbook",
+        "ipad",
+        "tim cook"
+      ]
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "keywords": [
+        "applied materials"
+      ]
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "APPLOVIN",
+      "name": "applovin",
+      "keywords": [
+        "applovin"
+      ]
+    },
+    {
+      "asset_id": "asset_asml",
+      "symbol": "ASML",
+      "name": "asml holding",
+      "keywords": [
+        "lithography",
+        "euv"
+      ]
+    },
+    {
+      "asset_id": "asset_team",
+      "symbol": "TEAM",
+      "name": "atlassian",
+      "keywords": [
+        "jira",
+        "confluence",
+        "devtools"
+      ]
+    },
+    {
+      "asset_id": "asset_brk_a",
+      "symbol": "BRK.A",
+      "name": "berkshire hathaway",
+      "keywords": [
+        "warren buffett",
+        "insurance"
+      ]
+    },
+    {
+      "asset_id": "asset_blk",
+      "symbol": "BLK",
+      "name": "blackrock",
+      "keywords": [
+        "asset management",
+        "larry fink"
+      ]
+    },
+    {
+      "asset_id": "asset_booking_holdings",
+      "symbol": "",
+      "name": "booking holdings",
+      "keywords": [
+        "booking holdings"
+      ]
+    },
+    {
+      "asset_id": "asset_avgo",
+      "symbol": "AVGO",
+      "name": "broadcom",
+      "keywords": [
+        "semiconductor",
+        "wifi",
+        "chip",
+        "networking"
+      ]
+    },
+    {
+      "asset_id": "asset_cadence_design",
+      "symbol": "",
+      "name": "cadence design",
+      "keywords": [
+        "cadence design"
+      ]
+    },
+    {
+      "asset_id": "asset_coin",
+      "symbol": "COIN",
+      "name": "coinbase",
+      "keywords": [
+        "crypto exchange",
+        "bitcoin"
+      ]
+    },
+    {
+      "asset_id": "asset_cost",
+      "symbol": "COST",
+      "name": "costco",
+      "keywords": [
+        "warehouse retail",
+        "bulk shopping"
+      ]
+    },
+    {
+      "asset_id": "asset_crwd",
+      "symbol": "CRWD",
+      "name": "crowdstrike",
+      "keywords": [
+        "endpoint protection",
+        "falcon"
+      ]
+    },
+    {
+      "asset_id": "asset_ddog",
+      "symbol": "DDOG",
+      "name": "datadog",
+      "keywords": [
+        "monitoring",
+        "observability"
+      ]
+    },
+    {
+      "asset_id": "asset_dexcom",
+      "symbol": "DEXCOM",
+      "name": "dexcom",
+      "keywords": [
+        "dexcom"
+      ]
+    },
+    {
+      "asset_id": "asset_ftnt",
+      "symbol": "FTNT",
+      "name": "fortinet",
+      "keywords": [
+        "cybersecurity",
+        "network security"
+      ]
+    },
+    {
+      "asset_id": "asset_gild",
+      "symbol": "GILD",
+      "name": "gilead sciences",
+      "keywords": [
+        "antivirals",
+        "biotech"
+      ]
+    },
+    {
+      "asset_id": "asset_intc",
+      "symbol": "INTC",
+      "name": "intel",
+      "keywords": [
+        "processor",
+        "cpu",
+        "chip",
+        "gelsinger"
+      ]
+    },
+    {
+      "asset_id": "asset_intu",
+      "symbol": "INTU",
+      "name": "intuit",
+      "keywords": [
+        "turbotax",
+        "quickbooks",
+        "fintech"
+      ]
+    },
+    {
+      "asset_id": "asset_isrg",
+      "symbol": "ISRG",
+      "name": "intuitive surgical",
+      "keywords": [
+        "robotics",
+        "da vinci system"
+      ]
+    },
+    {
+      "asset_id": "asset_jpm",
+      "symbol": "JPM",
+      "name": "jpmorgan chase",
+      "keywords": [
+        "bank",
+        "dimon"
+      ]
+    },
+    {
+      "asset_id": "asset_kla_corp",
+      "symbol": "",
+      "name": "kla corp",
+      "keywords": [
+        "kla corp"
+      ]
+    },
+    {
+      "asset_id": "asset_lrcx",
+      "symbol": "LRCX",
+      "name": "lam research",
+      "keywords": [
+        "wafer fab",
+        "deposition"
+      ]
+    },
+    {
+      "asset_id": "asset_lululemon",
+      "symbol": "LULULEMON",
+      "name": "lululemon",
+      "keywords": [
+        "lululemon"
+      ]
+    },
+    {
+      "asset_id": "asset_marvell_tech",
+      "symbol": "",
+      "name": "marvell tech",
+      "keywords": [
+        "marvell tech"
+      ]
+    },
+    {
+      "asset_id": "asset_mercadolibre",
+      "symbol": "",
+      "name": "mercadolibre",
+      "keywords": [
+        "mercadolibre"
+      ]
+    },
+    {
+      "asset_id": "asset_meta",
+      "symbol": "META",
+      "name": "meta platforms",
+      "keywords": [
+        "facebook",
+        "instagram",
+        "whatsapp",
+        "zuckerberg"
+      ]
+    },
+    {
+      "asset_id": "asset_micron",
+      "symbol": "MICRON",
+      "name": "micron",
+      "keywords": [
+        "micron"
+      ]
+    },
+    {
+      "asset_id": "asset_msft",
+      "symbol": "MSFT",
+      "name": "microsoft",
+      "keywords": [
+        "windows",
+        "azure",
+        "office",
+        "satya nadella"
+      ]
+    },
+    {
+      "asset_id": "asset_mdlz",
+      "symbol": "MDLZ",
+      "name": "mondelez",
+      "keywords": [
+        "snacks",
+        "oreo",
+        "cadbury"
+      ]
+    },
+    {
+      "asset_id": "asset_monster_beverage",
+      "symbol": "",
+      "name": "monster beverage",
+      "keywords": [
+        "monster beverage"
+      ]
+    },
+    {
+      "asset_id": "asset_nflx",
+      "symbol": "NFLX",
+      "name": "netflix",
+      "keywords": [
+        "streaming",
+        "entertainment",
+        "content"
+      ]
+    },
+    {
+      "asset_id": "asset_nvda",
+      "symbol": "NVDA",
+      "name": "nvidia",
+      "keywords": [
+        "gpu",
+        "h100",
+        "a100",
+        "blackwell",
+        "jensen huang"
+      ]
+    },
+    {
+      "asset_id": "asset_old_dominion",
+      "symbol": "",
+      "name": "old dominion",
+      "keywords": [
+        "old dominion"
+      ]
+    },
+    {
+      "asset_id": "asset_openai",
+      "symbol": "OPENAI",
+      "name": "openai",
+      "keywords": [
+        "openai"
+      ]
+    },
+    {
+      "asset_id": "asset_paccar",
+      "symbol": "PACCAR",
+      "name": "paccar",
+      "keywords": [
+        "paccar"
+      ]
+    },
+    {
+      "asset_id": "asset_palantir",
+      "symbol": "PALANTIR",
+      "name": "palantir",
+      "keywords": [
+        "palantir"
+      ]
+    },
+    {
+      "asset_id": "asset_panw",
+      "symbol": "PANW",
+      "name": "palo alto networks",
+      "keywords": [
+        "cybersecurity",
+        "firewall"
+      ]
+    },
+    {
+      "asset_id": "asset_paychex",
+      "symbol": "PAYCHEX",
+      "name": "paychex",
+      "keywords": [
+        "paychex"
+      ]
+    },
+    {
+      "asset_id": "asset_qcom",
+      "symbol": "QCOM",
+      "name": "qualcomm",
+      "keywords": [
+        "modem",
+        "snapdragon",
+        "mobile chip"
+      ]
+    },
+    {
+      "asset_id": "asset_regn",
+      "symbol": "REGN",
+      "name": "regeneron",
+      "keywords": [
+        "biotech",
+        "pharmaceuticals"
+      ]
+    },
+    {
+      "asset_id": "asset_shop",
+      "symbol": "SHOP",
+      "name": "shopify",
+      "keywords": [
+        "ecommerce",
+        "canada"
+      ]
+    },
+    {
+      "asset_id": "asset_snow",
+      "symbol": "SNOW",
+      "name": "snowflake",
+      "keywords": [
+        "data warehouse",
+        "cloud analytics"
+      ]
+    },
+    {
+      "asset_id": "asset_spotify",
+      "symbol": "SPOTIFY",
+      "name": "spotify",
+      "keywords": [
+        "spotify"
+      ]
+    },
+    {
+      "asset_id": "asset_sbux",
+      "symbol": "SBUX",
+      "name": "starbucks",
+      "keywords": [
+        "coffee",
+        "cafe"
+      ]
+    },
+    {
+      "asset_id": "asset_snps",
+      "symbol": "SNPS",
+      "name": "synopsys",
+      "keywords": [
+        "eda software",
+        "verification"
+      ]
+    },
+    {
+      "asset_id": "asset_tmus",
+      "symbol": "TMUS",
+      "name": "t-mobile us",
+      "keywords": [
+        "telecom",
+        "wireless"
+      ]
+    },
+    {
+      "asset_id": "asset_tesla_xai",
+      "symbol": "",
+      "name": "tesla/xai",
+      "keywords": [
+        "tesla/xai"
+      ]
+    },
+    {
+      "asset_id": "asset_txn",
+      "symbol": "TXN",
+      "name": "texas instruments",
+      "keywords": [
+        "analog",
+        "mixed signal"
+      ]
+    },
+    {
+      "asset_id": "asset_vertex_pharma",
+      "symbol": "",
+      "name": "vertex pharma",
+      "keywords": [
+        "vertex pharma"
+      ]
+    },
+    {
+      "asset_id": "asset_workday",
+      "symbol": "WORKDAY",
+      "name": "workday",
+      "keywords": [
+        "workday"
+      ]
+    }
+  ]
+}

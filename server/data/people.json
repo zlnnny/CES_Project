@@ -1,0 +1,1314 @@
+{
+  "people": [
+    {
+      "entity_id": "pers_donald_trump",
+      "name": "Donald Trump",
+      "aliases": [
+        "trump"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "President of the United States",
+        "tariff policy",
+        "subsidy cuts",
+        "energy independence",
+        "corporate tax cuts"
+      ]
+    },
+    {
+      "entity_id": "pers_friedrich_merz",
+      "name": "Friedrich Merz",
+      "aliases": [
+        "merz"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "Chancellor of Germany",
+        "reviving German manufacturing",
+        "driving changes in EU fiscal policy",
+        "reducing energy costs"
+      ]
+    },
+    {
+      "entity_id": "pers_shigeru_ishiba",
+      "name": "Shigeru Ishiba",
+      "aliases": [
+        "ishiba"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "Prime Minister of Japan",
+        "normalizing the yen’s value",
+        "strengthening the defense industry",
+        "managing the pace of rate hikes"
+      ]
+    },
+    {
+      "entity_id": "pers_keir_starmer",
+      "name": "Keir Starmer",
+      "aliases": [
+        "starmer"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "Prime Minister of the United Kingdom",
+        "post-Brexit economic rebuilding",
+        "labor productivity",
+        "fiscal discipline"
+      ]
+    },
+    {
+      "entity_id": "pers_lee_jae_myung",
+      "name": "Lee Jae-myung",
+      "aliases": [
+        "jae-myung"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "President of South Korea",
+        "semiconductor/energy infrastructure build-out",
+        "universal basic income / economic stimulus",
+        "foreign trade policy"
+      ]
+    },
+    {
+      "entity_id": "pers_emmanuel_macron",
+      "name": "Emmanuel Macron",
+      "aliases": [
+        "macron"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "President of France",
+        "European integrated defense",
+        "nuclear energy leadership",
+        "leading EU regulation"
+      ]
+    },
+    {
+      "entity_id": "pers_mark_carney",
+      "name": "Mark Carney",
+      "aliases": [
+        "carney"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "Prime Minister of Canada",
+        "rebalancing North American trade",
+        "economic policy shaped by monetary-policy expertise"
+      ]
+    },
+    {
+      "entity_id": "pers_giorgia_meloni",
+      "name": "Giorgia Meloni",
+      "aliases": [
+        "meloni"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "Prime Minister of Italy",
+        "right-wing alliance within the EU",
+        "Mediterranean security",
+        "managing fiscal rules"
+      ]
+    },
+    {
+      "entity_id": "pers_anthony_albanese",
+      "name": "Anthony Albanese",
+      "aliases": [
+        "albanese"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "Prime Minister of Australia",
+        "critical minerals supply chains",
+        "pragmatic trade approach toward China",
+        "energy exports"
+      ]
+    },
+    {
+      "entity_id": "pers_claudia_sheinbaum",
+      "name": "Claudia Sheinbaum",
+      "aliases": [
+        "sheinbaum"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "President of Mexico",
+        "USMCA renegotiation",
+        "nearshoring supply-chain hub",
+        "energy nationalization"
+      ]
+    },
+    {
+      "entity_id": "pers_dick_schoof",
+      "name": "Dick Schoof",
+      "aliases": [
+        "schoof"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "Prime Minister of the Netherlands",
+        "ASML export controls",
+        "protecting high-tech manufacturing supply chains"
+      ]
+    },
+    {
+      "entity_id": "pers_simon_harris",
+      "name": "Simon Harris",
+      "aliases": [
+        "harris"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "Prime Minister of Ireland",
+        "big-tech corporate tax policy",
+        "European data regulation",
+        "tech hub policy"
+      ]
+    },
+    {
+      "entity_id": "pers_christopher_luxon",
+      "name": "Christopher Luxon",
+      "aliases": [
+        "luxon"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "Prime Minister of New Zealand",
+        "dairy exports",
+        "Oceania monetary policy",
+        "free-trade agreements"
+      ]
+    },
+    {
+      "entity_id": "pers_ulf_kristersson",
+      "name": "Ulf Kristersson",
+      "aliases": [
+        "kristersson"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "Prime Minister of Sweden",
+        "Nordic security",
+        "defense-tech innovation",
+        "green manufacturing"
+      ]
+    },
+    {
+      "entity_id": "pers_jonas_gahr_st_re",
+      "name": "Jonas Gahr Støre",
+      "aliases": [
+        "støre"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "Prime Minister of Norway",
+        "managing European natural-gas supply",
+        "sovereign wealth fund investment direction"
+      ]
+    },
+    {
+      "entity_id": "pers_mette_frederiksen",
+      "name": "Mette Frederiksen",
+      "aliases": [
+        "frederiksen"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "Prime Minister of Denmark",
+        "offshore wind",
+        "green energy industry",
+        "European security alignment"
+      ]
+    },
+    {
+      "entity_id": "pers_alexander_stubb",
+      "name": "Alexander Stubb",
+      "aliases": [
+        "stubb"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "President of Finland",
+        "border security vis-à-vis Russia",
+        "defense cooperation",
+        "Nordic supply chains"
+      ]
+    },
+    {
+      "entity_id": "pers_pedro_s_nchez",
+      "name": "Pedro Sánchez",
+      "aliases": [
+        "sánchez"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "Prime Minister of Spain",
+        "EU energy transition",
+        "tourism/services spending",
+        "Southern Europe economic policy"
+      ]
+    },
+    {
+      "entity_id": "pers_benjamin_netanyahu",
+      "name": "Benjamin Netanyahu",
+      "aliases": [
+        "netanyahu"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "Prime Minister of Israel",
+        "Middle East geopolitical risk",
+        "technology security",
+        "energy security"
+      ]
+    },
+    {
+      "entity_id": "pers_recep_tayyip_erdo_an",
+      "name": "Recep Tayyip Erdoğan",
+      "aliases": [
+        "erdoğan"
+      ],
+      "descriptors": [
+        "category: OECD Leaders",
+        "President of Türkiye",
+        "emerging-market currency risk",
+        "geopolitical mediation between the Middle East and Europe"
+      ]
+    },
+    {
+      "entity_id": "pers_xi_jinping",
+      "name": "Xi Jinping",
+      "aliases": [
+        "jinping"
+      ],
+      "descriptors": [
+        "category: Non-OECD Leaders",
+        "President of China",
+        "response to the U.S.–China trade war",
+        "stimulating China’s domestic demand",
+        "technology self-reliance"
+      ]
+    },
+    {
+      "entity_id": "pers_vladimir_putin",
+      "name": "Vladimir Putin",
+      "aliases": [
+        "putin"
+      ],
+      "descriptors": [
+        "category: Non-OECD Leaders",
+        "President of Russia",
+        "weaponizing energy resources",
+        "geopolitical risk",
+        "BRICS expansion"
+      ]
+    },
+    {
+      "entity_id": "pers_narendra_modi",
+      "name": "Narendra Modi",
+      "aliases": [
+        "modi"
+      ],
+      "descriptors": [
+        "category: Non-OECD Leaders",
+        "Prime Minister of India",
+        "India as a manufacturing/supply-chain hub",
+        "infrastructure investment",
+        "IT services growth"
+      ]
+    },
+    {
+      "entity_id": "pers_mohammed_bin_salman",
+      "name": "Mohammed bin Salman",
+      "aliases": [
+        "salman"
+      ],
+      "descriptors": [
+        "category: Non-OECD Leaders",
+        "Crown Prince of Saudi Arabia",
+        "oil-price influence (OPEC+)",
+        "Vision 2030",
+        "NEOM city investment"
+      ]
+    },
+    {
+      "entity_id": "pers_prabowo_subianto",
+      "name": "Prabowo Subianto",
+      "aliases": [
+        "subianto"
+      ],
+      "descriptors": [
+        "category: Non-OECD Leaders",
+        "President of Indonesia",
+        "nickel/resource nationalism",
+        "Southeast Asia infrastructure expansion"
+      ]
+    },
+    {
+      "entity_id": "pers_luiz_in_cio_lula_da_silva",
+      "name": "Luiz Inácio Lula da Silva",
+      "aliases": [
+        "silva"
+      ],
+      "descriptors": [
+        "category: Non-OECD Leaders",
+        "President of Brazil",
+        "commodities supply chains",
+        "South America economic integration",
+        "climate finance"
+      ]
+    },
+    {
+      "entity_id": "pers_cyril_ramaphosa",
+      "name": "Cyril Ramaphosa",
+      "aliases": [
+        "ramaphosa"
+      ],
+      "descriptors": [
+        "category: Non-OECD Leaders",
+        "President of South Africa",
+        "managing G20 chairmanship risks",
+        "critical minerals supply"
+      ]
+    },
+    {
+      "entity_id": "pers_javier_milei",
+      "name": "Javier Milei",
+      "aliases": [
+        "milei"
+      ],
+      "descriptors": [
+        "category: Non-OECD Leaders",
+        "President of Argentina",
+        "radical libertarian experiment",
+        "success/failure of inflation stabilization"
+      ]
+    },
+    {
+      "entity_id": "pers_volodymyr_zelenskyy",
+      "name": "Volodymyr Zelenskyy",
+      "aliases": [
+        "zelenskyy"
+      ],
+      "descriptors": [
+        "category: Non-OECD Leaders",
+        "President of Ukraine",
+        "post-war reconstruction",
+        "European defense demand",
+        "grain prices"
+      ]
+    },
+    {
+      "entity_id": "pers_mbz",
+      "name": "MBZ",
+      "aliases": [],
+      "descriptors": [
+        "category: Non-OECD Leaders",
+        "President of the United Arab Emirates",
+        "global tech investment (AI)",
+        "diversifying energy assets"
+      ]
+    },
+    {
+      "entity_id": "pers_jerome_powell",
+      "name": "Jerome Powell",
+      "aliases": [
+        "powell"
+      ],
+      "descriptors": [
+        "category: International Orgs / Central Banks",
+        "Chair of the U.S. Federal Reserve",
+        "policy rate decisions",
+        "inflation targeting",
+        "liquidity management"
+      ]
+    },
+    {
+      "entity_id": "pers_scott_bessent",
+      "name": "Scott Bessent",
+      "aliases": [
+        "bessent"
+      ],
+      "descriptors": [
+        "category: International Orgs / Central Banks",
+        "U.S. Treasury Secretary",
+        "execution of Trump's second-term economic agenda",
+        "Treasury issuance",
+        "managing the dollar's value"
+      ]
+    },
+    {
+      "entity_id": "pers_christine_lagarde",
+      "name": "Christine Lagarde",
+      "aliases": [
+        "lagarde"
+      ],
+      "descriptors": [
+        "category: International Orgs / Central Banks",
+        "President of the European Central Bank",
+        "euro valuation",
+        "eurozone rate policy",
+        "price stability"
+      ]
+    },
+    {
+      "entity_id": "pers_kazuo_ueda",
+      "name": "Kazuo Ueda",
+      "aliases": [
+        "ueda"
+      ],
+      "descriptors": [
+        "category: International Orgs / Central Banks",
+        "Governor of the Bank of Japan",
+        "unwinding the yen carry trade",
+        "normalizing Japanese interest rates"
+      ]
+    },
+    {
+      "entity_id": "pers_ursula_von_der_leyen",
+      "name": "Ursula von der Leyen",
+      "aliases": [
+        "leyen"
+      ],
+      "descriptors": [
+        "category: International Orgs / Central Banks",
+        "President of the European Commission",
+        "carbon border tax",
+        "big-tech regulation (DMA/DSA)",
+        "protecting EU industry"
+      ]
+    },
+    {
+      "entity_id": "pers_kristalina_georgieva",
+      "name": "Kristalina Georgieva",
+      "aliases": [
+        "georgieva"
+      ],
+      "descriptors": [
+        "category: International Orgs / Central Banks",
+        "Managing Director of the IMF",
+        "global debt crisis",
+        "sovereign credit risk management"
+      ]
+    },
+    {
+      "entity_id": "pers_ajay_banga",
+      "name": "Ajay Banga",
+      "aliases": [
+        "banga"
+      ],
+      "descriptors": [
+        "category: International Orgs / Central Banks",
+        "President of the World Bank",
+        "development finance",
+        "EM climate investment",
+        "supply-chain diversification"
+      ]
+    },
+    {
+      "entity_id": "pers_ngozi_okonjo_iweala",
+      "name": "Ngozi Okonjo-Iweala",
+      "aliases": [
+        "okonjo-iweala"
+      ],
+      "descriptors": [
+        "category: International Orgs / Central Banks",
+        "Director-General of the WTO",
+        "trade dispute mediation",
+        "preventing tariff wars",
+        "global trade volume"
+      ]
+    },
+    {
+      "entity_id": "pers_andrew_bailey",
+      "name": "Andrew Bailey",
+      "aliases": [
+        "bailey"
+      ],
+      "descriptors": [
+        "category: International Orgs / Central Banks",
+        "Governor of the Bank of England",
+        "pound sterling stability",
+        "UK rate cycle"
+      ]
+    },
+    {
+      "entity_id": "pers_ant_nio_guterres",
+      "name": "António Guterres",
+      "aliases": [
+        "guterres"
+      ],
+      "descriptors": [
+        "category: International Orgs / Central Banks",
+        "Secretary-General of the UN",
+        "international order and norms",
+        "mediating geopolitical conflicts"
+      ]
+    },
+    {
+      "entity_id": "pers_mark_rutte",
+      "name": "Mark Rutte",
+      "aliases": [
+        "rutte"
+      ],
+      "descriptors": [
+        "category: International Orgs / Central Banks",
+        "Secretary General of NATO",
+        "Western defense spending",
+        "defense supply-chain demand"
+      ]
+    },
+    {
+      "entity_id": "pers_mathias_cormann",
+      "name": "Mathias Cormann",
+      "aliases": [
+        "cormann"
+      ],
+      "descriptors": [
+        "category: International Orgs / Central Banks",
+        "Secretary-General of the OECD",
+        "digital tax standards",
+        "global policy guidelines"
+      ]
+    },
+    {
+      "entity_id": "pers_jensen_huang",
+      "name": "Jensen Huang",
+      "aliases": [
+        "huang"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "NVIDIA",
+        "AI semiconductor demand",
+        "data-center capex cycle"
+      ]
+    },
+    {
+      "entity_id": "pers_tim_cook",
+      "name": "Tim Cook",
+      "aliases": [
+        "cook"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Apple",
+        "on-device AI",
+        "consumer electronics demand",
+        "supply-chain management"
+      ]
+    },
+    {
+      "entity_id": "pers_sundar_pichai",
+      "name": "Sundar Pichai",
+      "aliases": [
+        "pichai"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Alphabet",
+        "AI search",
+        "YouTube ad revenue",
+        "cloud competition"
+      ]
+    },
+    {
+      "entity_id": "pers_satya_nadella",
+      "name": "Satya Nadella",
+      "aliases": [
+        "nadella"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Microsoft",
+        "B2B AI solutions",
+        "cloud (Azure) growth outlook"
+      ]
+    },
+    {
+      "entity_id": "pers_andy_jassy",
+      "name": "Andy Jassy",
+      "aliases": [
+        "jassy"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Amazon",
+        "AWS growth",
+        "indicator of U.S. domestic demand/consumption"
+      ]
+    },
+    {
+      "entity_id": "pers_mark_zuckerberg",
+      "name": "Mark Zuckerberg",
+      "aliases": [
+        "zuckerberg"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Meta",
+        "open-source AI (Llama)",
+        "influence in social advertising platforms"
+      ]
+    },
+    {
+      "entity_id": "pers_hock_tan",
+      "name": "Hock Tan",
+      "aliases": [
+        "tan"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Broadcom",
+        "custom AI chips",
+        "networking infrastructure demand"
+      ]
+    },
+    {
+      "entity_id": "pers_elon_musk",
+      "name": "Elon Musk",
+      "aliases": [
+        "musk"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Tesla/xAI",
+        "autonomous driving",
+        "Tesla regulatory easing",
+        "AI robotics"
+      ]
+    },
+    {
+      "entity_id": "pers_ron_vachris",
+      "name": "Ron Vachris",
+      "aliases": [
+        "vachris"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Costco",
+        "inflation stability",
+        "essential consumer spending trends"
+      ]
+    },
+    {
+      "entity_id": "pers_greg_peters",
+      "name": "Greg Peters",
+      "aliases": [
+        "peters"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Netflix",
+        "subscription content economy",
+        "ad-supported plan performance"
+      ]
+    },
+    {
+      "entity_id": "pers_christophe_fouquet",
+      "name": "Christophe Fouquet",
+      "aliases": [
+        "fouquet"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "ASML",
+        "leading-edge semiconductor equipment supply",
+        "impact of China-related restrictions"
+      ]
+    },
+    {
+      "entity_id": "pers_lisa_su",
+      "name": "Lisa Su",
+      "aliases": [
+        "su"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "AMD",
+        "gaining GPU market share",
+        "server chip competition"
+      ]
+    },
+    {
+      "entity_id": "pers_shantanu_narayen",
+      "name": "Shantanu Narayen",
+      "aliases": [
+        "narayen"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Adobe",
+        "AI monetization model for creative software"
+      ]
+    },
+    {
+      "entity_id": "pers_cristiano_amon",
+      "name": "Cristiano Amon",
+      "aliases": [
+        "amon"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Qualcomm",
+        "mobile AI chips",
+        "automotive semiconductor growth"
+      ]
+    },
+    {
+      "entity_id": "pers_alex_karp",
+      "name": "Alex Karp",
+      "aliases": [
+        "karp"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Palantir",
+        "government/military AI",
+        "enterprise data analytics platform"
+      ]
+    },
+    {
+      "entity_id": "pers_adam_foroughi",
+      "name": "Adam Foroughi",
+      "aliases": [
+        "foroughi"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "AppLovin",
+        "profitability of AI-driven mobile marketing platforms"
+      ]
+    },
+    {
+      "entity_id": "pers_gary_dickerson",
+      "name": "Gary Dickerson",
+      "aliases": [
+        "dickerson"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Applied Materials",
+        "leading indicator for wafer-fab equipment (WFE) spending"
+      ]
+    },
+    {
+      "entity_id": "pers_gary_guthart",
+      "name": "Gary Guthart",
+      "aliases": [
+        "guthart"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Intuitive Surgical",
+        "robotic surgery systems",
+        "medical device spending"
+      ]
+    },
+    {
+      "entity_id": "pers_haviv_ilan",
+      "name": "Haviv Ilan",
+      "aliases": [
+        "ilan"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Texas Instruments",
+        "industrial analog semiconductor demand indicator"
+      ]
+    },
+    {
+      "entity_id": "pers_timothy_archer",
+      "name": "Timothy Archer",
+      "aliases": [
+        "archer"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Lam Research",
+        "HBM manufacturing equipment",
+        "etch process demand"
+      ]
+    },
+    {
+      "entity_id": "pers_nikesh_arora",
+      "name": "Nikesh Arora",
+      "aliases": [
+        "arora"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Palo Alto Networks",
+        "platformization of cloud security",
+        "cybersecurity spending"
+      ]
+    },
+    {
+      "entity_id": "pers_sasan_goodarzi",
+      "name": "Sasan Goodarzi",
+      "aliases": [
+        "goodarzi"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Intuit",
+        "consumer/SMB financial software"
+      ]
+    },
+    {
+      "entity_id": "pers_sanjay_mehrotra",
+      "name": "Sanjay Mehrotra",
+      "aliases": [
+        "mehrotra"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Micron",
+        "risk of HBM oversupply",
+        "memory pricing"
+      ]
+    },
+    {
+      "entity_id": "pers_mike_sievert",
+      "name": "Mike Sievert",
+      "aliases": [
+        "sievert"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "T-Mobile US",
+        "telecom infrastructure spending",
+        "indirect proxy for U.S. employment"
+      ]
+    },
+    {
+      "entity_id": "pers_glenn_fogel",
+      "name": "Glenn Fogel",
+      "aliases": [
+        "fogel"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Booking Holdings",
+        "consumer sentiment for global leisure/travel services"
+      ]
+    },
+    {
+      "entity_id": "pers_brian_niccol",
+      "name": "Brian Niccol",
+      "aliases": [
+        "niccol"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Starbucks",
+        "global consumer sentiment",
+        "food & beverage inflation indicator"
+      ]
+    },
+    {
+      "entity_id": "pers_daniel_o_day",
+      "name": "Daniel O'Day",
+      "aliases": [
+        "o'day"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Gilead Sciences",
+        "biotech drug-trial flow and sentiment"
+      ]
+    },
+    {
+      "entity_id": "pers_robert_bradway",
+      "name": "Robert Bradway",
+      "aliases": [
+        "bradway"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Amgen",
+        "biotech pipeline value",
+        "healthcare investment"
+      ]
+    },
+    {
+      "entity_id": "pers_reshma_kewalramani",
+      "name": "Reshma Kewalramani",
+      "aliases": [
+        "kewalramani"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Vertex Pharma",
+        "capabilities in gene therapy",
+        "rare disease market"
+      ]
+    },
+    {
+      "entity_id": "pers_marcos_galperin",
+      "name": "Marcos Galperin",
+      "aliases": [
+        "galperin"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "MercadoLibre",
+        "LatAm fintech and e-commerce growth"
+      ]
+    },
+    {
+      "entity_id": "pers_rick_wallace",
+      "name": "Rick Wallace",
+      "aliases": [
+        "wallace"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "KLA Corp",
+        "tech moat in semiconductor yield control"
+      ]
+    },
+    {
+      "entity_id": "pers_anirudh_devgan",
+      "name": "Anirudh Devgan",
+      "aliases": [
+        "devgan"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Cadence Design",
+        "EDA software as a critical necessity"
+      ]
+    },
+    {
+      "entity_id": "pers_sassine_ghazi",
+      "name": "Sassine Ghazi",
+      "aliases": [
+        "ghazi"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Synopsys",
+        "semiconductor IP licensing and design market"
+      ]
+    },
+    {
+      "entity_id": "pers_brian_chesky",
+      "name": "Brian Chesky",
+      "aliases": [
+        "chesky"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Airbnb",
+        "platform economy",
+        "global lodging trends"
+      ]
+    },
+    {
+      "entity_id": "pers_leonard_schleifer",
+      "name": "Leonard Schleifer",
+      "aliases": [
+        "schleifer"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Regeneron",
+        "innovative immunology drugs",
+        "biotech investment sentiment index"
+      ]
+    },
+    {
+      "entity_id": "pers_maria_black",
+      "name": "Maria Black",
+      "aliases": [
+        "black"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "ADP",
+        "real-time U.S. private employment data"
+      ]
+    },
+    {
+      "entity_id": "pers_dirk_van_de_put",
+      "name": "Dirk Van de Put",
+      "aliases": [
+        "put"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Mondelez",
+        "defensive equities",
+        "global food inflation"
+      ]
+    },
+    {
+      "entity_id": "pers_rodney_sacks",
+      "name": "Rodney Sacks",
+      "aliases": [
+        "sacks"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Monster Beverage",
+        "Gen Z / millennial consumption",
+        "beverage market margins"
+      ]
+    },
+    {
+      "entity_id": "pers_calvin_mcdonald",
+      "name": "Calvin McDonald",
+      "aliases": [
+        "mcdonald"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Lululemon",
+        "premium apparel consumption",
+        "well-being/fitness demand indicator"
+      ]
+    },
+    {
+      "entity_id": "pers_carl_eschenbach",
+      "name": "Carl Eschenbach",
+      "aliases": [
+        "eschenbach"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Workday",
+        "enterprise SaaS adoption and replacement cycle"
+      ]
+    },
+    {
+      "entity_id": "pers_george_kurtz",
+      "name": "George Kurtz",
+      "aliases": [
+        "kurtz"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "CrowdStrike",
+        "risk around endpoint security incidents"
+      ]
+    },
+    {
+      "entity_id": "pers_kevin_sayer",
+      "name": "Kevin Sayer",
+      "aliases": [
+        "sayer"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Dexcom",
+        "wearable medical device market share"
+      ]
+    },
+    {
+      "entity_id": "pers_preston_feight",
+      "name": "Preston Feight",
+      "aliases": [
+        "feight"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "PACCAR",
+        "freight truck sales",
+        "domestic demand indicator"
+      ]
+    },
+    {
+      "entity_id": "pers_ken_xie",
+      "name": "Ken Xie",
+      "aliases": [
+        "xie"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Fortinet",
+        "demand for integrated network security appliances"
+      ]
+    },
+    {
+      "entity_id": "pers_matt_murphy",
+      "name": "Matt Murphy",
+      "aliases": [
+        "murphy"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Marvell Tech",
+        "growth of data-center optical interconnect chips"
+      ]
+    },
+    {
+      "entity_id": "pers_kevin_freeman",
+      "name": "Kevin Freeman",
+      "aliases": [
+        "freeman"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Old Dominion",
+        "U.S. freight volumes",
+        "logistics index"
+      ]
+    },
+    {
+      "entity_id": "pers_sridhar_ramaswamy",
+      "name": "Sridhar Ramaswamy",
+      "aliases": [
+        "ramaswamy"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Snowflake",
+        "data-cloud adoption/usage",
+        "AI training data"
+      ]
+    },
+    {
+      "entity_id": "pers_mike_cannon_brookes",
+      "name": "Mike Cannon-Brookes",
+      "aliases": [
+        "cannon-brookes"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Atlassian",
+        "demand for developer collaboration tools",
+        "tech employment"
+      ]
+    },
+    {
+      "entity_id": "pers_john_gibson",
+      "name": "John Gibson",
+      "aliases": [
+        "gibson"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Paychex",
+        "SMB payroll data",
+        "late-cycle economic indicator"
+      ]
+    },
+    {
+      "entity_id": "pers_olivier_pomel",
+      "name": "Olivier Pomel",
+      "aliases": [
+        "pomel"
+      ],
+      "descriptors": [
+        "category: NASDAQ / CEOs",
+        "Datadog",
+        "demand for cloud observability/monitoring"
+      ]
+    },
+    {
+      "entity_id": "pers_sam_altman",
+      "name": "Sam Altman",
+      "aliases": [
+        "altman"
+      ],
+      "descriptors": [
+        "category: Iconic Leaders",
+        "OpenAI",
+        "AI regulatory standards",
+        "guidance on the pace of AI progress"
+      ]
+    },
+    {
+      "entity_id": "pers_larry_fink",
+      "name": "Larry Fink",
+      "aliases": [
+        "fink"
+      ],
+      "descriptors": [
+        "category: Iconic Leaders",
+        "BlackRock",
+        "global capital flows",
+        "ETF asset allocation"
+      ]
+    },
+    {
+      "entity_id": "pers_jamie_dimon",
+      "name": "Jamie Dimon",
+      "aliases": [
+        "dimon"
+      ],
+      "descriptors": [
+        "category: Iconic Leaders",
+        "JPMorgan Chase",
+        "financial system stability",
+        "U.S. economic outlook"
+      ]
+    },
+    {
+      "entity_id": "pers_warren_buffett",
+      "name": "Warren Buffett",
+      "aliases": [
+        "buffett"
+      ],
+      "descriptors": [
+        "category: Iconic Leaders",
+        "Berkshire Hathaway",
+        "last backstop for investor sentiment",
+        "value-investing benchmark"
+      ]
+    },
+    {
+      "entity_id": "pers_brian_armstrong",
+      "name": "Brian Armstrong",
+      "aliases": [
+        "armstrong"
+      ],
+      "descriptors": [
+        "category: Iconic Leaders",
+        "Coinbase",
+        "crypto institutionalization",
+        "digital asset regulation"
+      ]
+    },
+    {
+      "entity_id": "pers_pat_gelsinger",
+      "name": "Pat Gelsinger",
+      "aliases": [
+        "gelsinger"
+      ],
+      "descriptors": [
+        "category: Iconic Leaders",
+        "Intel",
+        "U.S. semiconductor manufacturing self-sufficiency"
+      ]
+    },
+    {
+      "entity_id": "pers_daniel_ek",
+      "name": "Daniel Ek",
+      "aliases": [
+        "ek"
+      ],
+      "descriptors": [
+        "category: Iconic Leaders",
+        "Spotify",
+        "audio content IP",
+        "streaming profitability"
+      ]
+    },
+    {
+      "entity_id": "pers_tobi_l_tke",
+      "name": "Tobi Lütke",
+      "aliases": [
+        "lütke"
+      ],
+      "descriptors": [
+        "category: Iconic Leaders",
+        "Shopify",
+        "D2C e-commerce health indicator"
+      ]
+    }
+  ]
+}

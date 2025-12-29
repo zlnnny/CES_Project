@@ -1,0 +1,101 @@
+Category,Name,Title/Company,Market Influence/Key Issues
+OECD Leaders,Donald Trump,President of the United States,"tariff policy, subsidy cuts, energy independence, corporate tax cuts"
+OECD Leaders,Friedrich Merz,Chancellor of Germany,"reviving German manufacturing, driving changes in EU fiscal policy, reducing energy costs"
+OECD Leaders,Shigeru Ishiba,Prime Minister of Japan,"normalizing the yen’s value, strengthening the defense industry, managing the pace of rate hikes"
+OECD Leaders,Keir Starmer,Prime Minister of the United Kingdom,"post-Brexit economic rebuilding, labor productivity, fiscal discipline"
+OECD Leaders,Lee Jae-myung,President of South Korea,"semiconductor/energy infrastructure build-out, universal basic income / economic stimulus, foreign trade policy"
+OECD Leaders,Emmanuel Macron,President of France,"European integrated defense, nuclear energy leadership, leading EU regulation"
+OECD Leaders,Mark Carney,Prime Minister of Canada,"rebalancing North American trade, economic policy shaped by monetary-policy expertise"
+OECD Leaders,Giorgia Meloni,Prime Minister of Italy,"right-wing alliance within the EU, Mediterranean security, managing fiscal rules"
+OECD Leaders,Anthony Albanese,Prime Minister of Australia,"critical minerals supply chains, pragmatic trade approach toward China, energy exports"
+OECD Leaders,Claudia Sheinbaum,President of Mexico,"USMCA renegotiation, nearshoring supply-chain hub, energy nationalization"
+OECD Leaders,Dick Schoof,Prime Minister of the Netherlands,"ASML export controls, protecting high-tech manufacturing supply chains"
+OECD Leaders,Simon Harris,Prime Minister of Ireland,"big-tech corporate tax policy, European data regulation, tech hub policy"
+OECD Leaders,Christopher Luxon,Prime Minister of New Zealand,"dairy exports, Oceania monetary policy, free-trade agreements"
+OECD Leaders,Ulf Kristersson,Prime Minister of Sweden,"Nordic security, defense-tech innovation, green manufacturing"
+OECD Leaders,Jonas Gahr Støre,Prime Minister of Norway,"managing European natural-gas supply, sovereign wealth fund investment direction"
+OECD Leaders,Mette Frederiksen,Prime Minister of Denmark,"offshore wind, green energy industry, European security alignment"
+OECD Leaders,Alexander Stubb,President of Finland,"border security vis-à-vis Russia, defense cooperation, Nordic supply chains"
+OECD Leaders,Pedro Sánchez,Prime Minister of Spain,"EU energy transition, tourism/services spending, Southern Europe economic policy"
+OECD Leaders,Benjamin Netanyahu,Prime Minister of Israel,"Middle East geopolitical risk, technology security, energy security"
+OECD Leaders,Recep Tayyip Erdoğan,President of Türkiye,"emerging-market currency risk, geopolitical mediation between the Middle East and Europe"
+Non-OECD Leaders,Xi Jinping,President of China,"response to the U.S.–China trade war, stimulating China’s domestic demand, technology self-reliance"
+Non-OECD Leaders,Vladimir Putin,President of Russia,"weaponizing energy resources, geopolitical risk, BRICS expansion"
+Non-OECD Leaders,Narendra Modi,Prime Minister of India,"India as a manufacturing/supply-chain hub, infrastructure investment, IT services growth"
+Non-OECD Leaders,Mohammed bin Salman,Crown Prince of Saudi Arabia,"oil-price influence (OPEC+), Vision 2030, NEOM city investment"
+Non-OECD Leaders,Prabowo Subianto,President of Indonesia,"nickel/resource nationalism, Southeast Asia infrastructure expansion"
+Non-OECD Leaders,Luiz Inácio Lula da Silva,President of Brazil,"commodities supply chains, South America economic integration, climate finance"
+Non-OECD Leaders,Cyril Ramaphosa,President of South Africa,"managing G20 chairmanship risks, critical minerals supply"
+Non-OECD Leaders,Javier Milei,President of Argentina,"radical libertarian experiment, success/failure of inflation stabilization"
+Non-OECD Leaders,Volodymyr Zelenskyy,President of Ukraine,"post-war reconstruction, European defense demand, grain prices"
+Non-OECD Leaders,MBZ,President of the United Arab Emirates,"global tech investment (AI), diversifying energy assets"
+International Orgs / Central Banks,Jerome Powell,Chair of the U.S. Federal Reserve,"policy rate decisions, inflation targeting, liquidity management"
+International Orgs / Central Banks,Scott Bessent,U.S. Treasury Secretary,"execution of Trump's second-term economic agenda, Treasury issuance, managing the dollar's value"
+International Orgs / Central Banks,Christine Lagarde,President of the European Central Bank,"euro valuation, eurozone rate policy, price stability"
+International Orgs / Central Banks,Kazuo Ueda,Governor of the Bank of Japan,"unwinding the yen carry trade, normalizing Japanese interest rates"
+International Orgs / Central Banks,Ursula von der Leyen,President of the European Commission,"carbon border tax, big-tech regulation (DMA/DSA), protecting EU industry"
+International Orgs / Central Banks,Kristalina Georgieva,Managing Director of the IMF,"global debt crisis, sovereign credit risk management"
+International Orgs / Central Banks,Ajay Banga,President of the World Bank,"development finance, EM climate investment, supply-chain diversification"
+International Orgs / Central Banks,Ngozi Okonjo-Iweala,Director-General of the WTO,"trade dispute mediation, preventing tariff wars, global trade volume"
+International Orgs / Central Banks,Andrew Bailey,Governor of the Bank of England,"pound sterling stability, UK rate cycle"
+International Orgs / Central Banks,António Guterres,Secretary-General of the UN,"international order and norms, mediating geopolitical conflicts"
+International Orgs / Central Banks,Mark Rutte,Secretary General of NATO,"Western defense spending, defense supply-chain demand"
+International Orgs / Central Banks,Mathias Cormann,Secretary-General of the OECD,"digital tax standards, global policy guidelines"
+NASDAQ / CEOs,Jensen Huang,NVIDIA,"AI semiconductor demand, data-center capex cycle"
+NASDAQ / CEOs,Tim Cook,Apple,"on-device AI, consumer electronics demand, supply-chain management"
+NASDAQ / CEOs,Sundar Pichai,Alphabet,"AI search, YouTube ad revenue, cloud competition"
+NASDAQ / CEOs,Satya Nadella,Microsoft,"B2B AI solutions, cloud (Azure) growth outlook"
+NASDAQ / CEOs,Andy Jassy,Amazon,"AWS growth, indicator of U.S. domestic demand/consumption"
+NASDAQ / CEOs,Mark Zuckerberg,Meta,"open-source AI (Llama), influence in social advertising platforms"
+NASDAQ / CEOs,Hock Tan,Broadcom,"custom AI chips, networking infrastructure demand"
+NASDAQ / CEOs,Elon Musk,Tesla/xAI,"autonomous driving, Tesla regulatory easing, AI robotics"
+NASDAQ / CEOs,Ron Vachris,Costco,"inflation stability, essential consumer spending trends"
+NASDAQ / CEOs,Greg Peters,Netflix,"subscription content economy, ad-supported plan performance"
+NASDAQ / CEOs,Christophe Fouquet,ASML,"leading-edge semiconductor equipment supply, impact of China-related restrictions"
+NASDAQ / CEOs,Lisa Su,AMD,"gaining GPU market share, server chip competition"
+NASDAQ / CEOs,Shantanu Narayen,Adobe,AI monetization model for creative software
+NASDAQ / CEOs,Cristiano Amon,Qualcomm,"mobile AI chips, automotive semiconductor growth"
+NASDAQ / CEOs,Alex Karp,Palantir,"government/military AI, enterprise data analytics platform"
+NASDAQ / CEOs,Adam Foroughi,AppLovin,profitability of AI-driven mobile marketing platforms
+NASDAQ / CEOs,Gary Dickerson,Applied Materials,leading indicator for wafer-fab equipment (WFE) spending
+NASDAQ / CEOs,Gary Guthart,Intuitive Surgical,"robotic surgery systems, medical device spending"
+NASDAQ / CEOs,Haviv Ilan,Texas Instruments,industrial analog semiconductor demand indicator
+NASDAQ / CEOs,Timothy Archer,Lam Research,"HBM manufacturing equipment, etch process demand"
+NASDAQ / CEOs,Nikesh Arora,Palo Alto Networks,"platformization of cloud security, cybersecurity spending"
+NASDAQ / CEOs,Sasan Goodarzi,Intuit,consumer/SMB financial software
+NASDAQ / CEOs,Sanjay Mehrotra,Micron,"risk of HBM oversupply, memory pricing"
+NASDAQ / CEOs,Mike Sievert,T-Mobile US,"telecom infrastructure spending, indirect proxy for U.S. employment"
+NASDAQ / CEOs,Glenn Fogel,Booking Holdings,consumer sentiment for global leisure/travel services
+NASDAQ / CEOs,Brian Niccol,Starbucks,"global consumer sentiment, food & beverage inflation indicator"
+NASDAQ / CEOs,Daniel O'Day,Gilead Sciences,biotech drug-trial flow and sentiment
+NASDAQ / CEOs,Robert Bradway,Amgen,"biotech pipeline value, healthcare investment"
+NASDAQ / CEOs,Reshma Kewalramani,Vertex Pharma,"capabilities in gene therapy, rare disease market"
+NASDAQ / CEOs,Marcos Galperin,MercadoLibre,LatAm fintech and e-commerce growth
+NASDAQ / CEOs,Rick Wallace,KLA Corp,tech moat in semiconductor yield control
+NASDAQ / CEOs,Anirudh Devgan,Cadence Design,EDA software as a critical necessity
+NASDAQ / CEOs,Sassine Ghazi,Synopsys,semiconductor IP licensing and design market
+NASDAQ / CEOs,Brian Chesky,Airbnb,"platform economy, global lodging trends"
+NASDAQ / CEOs,Leonard Schleifer,Regeneron,"innovative immunology drugs, biotech investment sentiment index"
+NASDAQ / CEOs,Maria Black,ADP,real-time U.S. private employment data
+NASDAQ / CEOs,Dirk Van de Put,Mondelez,"defensive equities, global food inflation"
+NASDAQ / CEOs,Rodney Sacks,Monster Beverage,"Gen Z / millennial consumption, beverage market margins"
+NASDAQ / CEOs,Calvin McDonald,Lululemon,"premium apparel consumption, well-being/fitness demand indicator"
+NASDAQ / CEOs,Carl Eschenbach,Workday,enterprise SaaS adoption and replacement cycle
+NASDAQ / CEOs,George Kurtz,CrowdStrike,risk around endpoint security incidents
+NASDAQ / CEOs,Kevin Sayer,Dexcom,wearable medical device market share
+NASDAQ / CEOs,Preston Feight,PACCAR,"freight truck sales, domestic demand indicator"
+NASDAQ / CEOs,Ken Xie,Fortinet,demand for integrated network security appliances
+NASDAQ / CEOs,Matt Murphy,Marvell Tech,growth of data-center optical interconnect chips
+NASDAQ / CEOs,Kevin Freeman,Old Dominion,"U.S. freight volumes, logistics index"
+NASDAQ / CEOs,Sridhar Ramaswamy,Snowflake,"data-cloud adoption/usage, AI training data"
+NASDAQ / CEOs,Mike Cannon-Brookes,Atlassian,"demand for developer collaboration tools, tech employment"
+NASDAQ / CEOs,John Gibson,Paychex,"SMB payroll data, late-cycle economic indicator"
+NASDAQ / CEOs,Olivier Pomel,Datadog,demand for cloud observability/monitoring
+Iconic Leaders,Sam Altman,OpenAI,"AI regulatory standards, guidance on the pace of AI progress"
+Iconic Leaders,Larry Fink,BlackRock,"global capital flows, ETF asset allocation"
+Iconic Leaders,Jamie Dimon,JPMorgan Chase,"financial system stability, U.S. economic outlook"
+Iconic Leaders,Warren Buffett,Berkshire Hathaway,"last backstop for investor sentiment, value-investing benchmark"
+Iconic Leaders,Brian Armstrong,Coinbase,"crypto institutionalization, digital asset regulation"
+Iconic Leaders,Pat Gelsinger,Intel,U.S. semiconductor manufacturing self-sufficiency
+Iconic Leaders,Daniel Ek,Spotify,"audio content IP, streaming profitability"
+Iconic Leaders,Tobi Lütke,Shopify,D2C e-commerce health indicator
