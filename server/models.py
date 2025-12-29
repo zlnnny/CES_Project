@@ -66,7 +66,7 @@ class NewsEvent(Base):
     tone: Mapped[str | None] = mapped_column(String(32), nullable=True) # Hawkish/Dovish
     sentiment: Mapped[float | None] = mapped_column(Float, nullable=True) # -1.0 ~ 1.0 (score 대체)
     impact_assets: Mapped[list | None] = mapped_column(JSON, nullable=True) # 관련 자산 리스트
-
+    importance: Mapped[float | None] = mapped_column(Float, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
 
