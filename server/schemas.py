@@ -74,5 +74,7 @@ class PowerRankingItem(BaseModel):
 class PowerRankingResponse(BaseModel):
     window_days: int | None = None
     items: list[PowerRankingItem]
+    country_items: list[PowerRankingItem] = Field(default_factory=list)
+    industry_items: list[PowerRankingItem] = Field(default_factory=list)
 
 
