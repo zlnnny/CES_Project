@@ -1,113 +1,175 @@
+# crawler.py
 import feedparser
 import urllib.parse
 import json
 import os
-from datetime import datetime
 import requests
+import hashlib
+from datetime import datetime
 from newspaper import Article, Config
-import random
 
-# JSON 파일 경로 설정 (server/data/assets.json)
+# ============================
+# Paths & Constants
+# ============================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-ASSETS_FILE_PATH = os.path.join(BASE_DIR, "data", "assets.json")
-PEOPLE_FILE_PATH = os.path.join(BASE_DIR, "data", "people.json")
+DATA_DIR = os.path.join(BASE_DIR, "data")
 
-def load_assets_from_json():
-    """assets.json 파일을 읽어서 자산 리스트를 반환"""
+ASSETS_PATH = os.path.join(DATA_DIR, "assets.json")
+PEOPLE_PATH = os.path.join(DATA_DIR, "people.json")
+SEEN_PATH   = os.path.join(DATA_DIR, "seen_articles.json")
+RAW_NEWS_PATH = os.path.join(DATA_DIR, "raw_news.json")
+
+TARGET_PER_PERSON = 5
+MAX_RSS_SCAN = 50
+
+# ============================
+# Loaders
+# ============================
+def load_assets():
+    with open(ASSETS_PATH, "r", encoding="utf-8") as f:
+        return json.load(f)["assets"]
+
+def load_people():
+    with open(PEOPLE_PATH, "r", encoding="utf-8") as f:
+        return json.load(f)["people"]
+
+def load_seen():
+    if not os.path.exists(SEEN_PATH):
+        return set()
+    with open(SEEN_PATH, "r") as f:
+        return set(json.load(f))
+
+def save_seen(seen):
+    with open(SEEN_PATH, "w") as f:
+        json.dump(sorted(seen), f, indent=2)
+
+# ============================
+# Helpers
+# ============================
+def article_hash(title, url):
+    return hashlib.sha1(f"{title}|{url}".encode()).hexdigest()
+
+def fetch_article(url):
     try:
-        with open(ASSETS_FILE_PATH, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-            return data.get("assets", [])
-    except Exception as e:
-        print(f"⚠️ 자산 파일 로드 실패: {e}")
-        return []
-
-def get_realtime_news(leader_name="None", limit=3):
-    if not leader_name:
-        leader_name = load_random_leader_from_json()
-    print(f"🔍 [Crawler] {leader_name} 뉴스 수집 시작 (AI 분석 제외, 자산 매칭만 수행)...")
-    
-    # 1. 자산 데이터 로드
-    assets_list = load_assets_from_json()
-    
-    encoded_name = urllib.parse.quote(leader_name)
-    url = f"https://news.google.com/rss/search?q={encoded_name}&hl=en-US&gl=US&ceid=US:en"
-    
-    headers = {"User-Agent": "Mozilla/5.0"}
-    news_results = []
-    
-    try:
-        resp = requests.get(url, headers=headers, timeout=5)
-        if resp.status_code == 200:
-            feed = feedparser.parse(resp.content)
-            
-            for entry in feed.entries[:limit]:
-                try:
-                    pub_date = datetime(*entry.published_parsed[:6])
-                except:
-                    pub_date = datetime.now()
-
-                # 2. 본문 추출
-                full_content = _fetch_article_content(entry.link)
-                
-                # 3. 자산 매칭 (감성 분석 X)
-                search_text = f"{entry.title} {full_content}"
-                found_assets = _extract_assets(search_text, assets_list)
-
-                news_item = {
-                    "leader_name": leader_name,
-                    "title": entry.title,
-                    "url": entry.link,
-                    "source": "Google News",
-                    "published_at": pub_date,
-                    
-                    "tone": None,
-                    "sentiment": None,
-                    
-                    "impact_assets": found_assets
-                }
-                news_results.append(news_item)
-    except Exception as e:
-        print(f"❌ 크롤링 에러: {e}")
-
-    return news_results
-
-def _fetch_article_content(url):
-    try:
-        config = Config()
-        config.browser_user_agent = 'Mozilla/5.0'
-        config.request_timeout = 3
-        article = Article(url, config=config)
+        cfg = Config()
+        cfg.browser_user_agent = "Mozilla/5.0"
+        cfg.request_timeout = 4
+        article = Article(url, config=cfg)
         article.download()
         article.parse()
-        return article.text[:3000] if len(article.text) > 50 else ""
-    except:
+        return article.text[:3000]
+    except Exception:
         return ""
 
-def _extract_assets(text, assets_list):
-    """
-    텍스트에서 JSON에 정의된 자산(키워드)이 있는지 확인
-    """
-    text_lower = text.lower()
-    found_assets = []
-    
-    for asset in assets_list:
-        # 자산의 symbol, name, keywords를 모두 검사
-        # 1. Symbol 확인 (대문자로 비교하거나 앞뒤 공백 체크 추천하지만, 여기선 단순 포함)
-        # if asset['symbol'] and asset['symbol'].lower() in text_lower:
-        #     found_assets.append(asset['name'])
-        #     continue
-            
-        # 2. Name 확인
-        if asset['name'].lower() in text_lower:
-            found_assets.append(asset['name'])
+def extract_assets(text, assets):
+    text = text.lower()
+    hits = []
+    for a in assets:
+        name = a["name"].lower()
+        if name in text:
+            hits.append(a["asset_id"])
+    return list(set(hits))
+
+# ============================
+# Core crawl logic
+# ============================
+def crawl_person(person, assets, seen, verbose=True):
+    name = person["name"]
+    results = []
+
+    if verbose:
+        print(f"[crawler] ▶ crawling person: {name}")
+
+    for asset in assets:
+        if len(results) >= TARGET_PER_PERSON:
+            break
+
+        query = f"{name} {asset['name']}"
+        url = (
+            "https://news.google.com/rss/search?"
+            f"q={urllib.parse.quote(query)}&hl=en-US&gl=US&ceid=US:en"
+        )
+
+        try:
+            resp = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=5)
+            feed = feedparser.parse(resp.content)
+        except Exception as e:
+            if verbose:
+                print(f"[crawler]   ! RSS fetch failed: {e}")
             continue
-            
-        # 3. Keywords 확인
-        for keyword in asset['keywords']:
-            if keyword.lower() in text_lower:
-                found_assets.append(asset['name'])
-                break # 키워드 하나라도 발견되면 해당 자산 추가하고 다음 자산으로
-    
-    unique_assets = list(set(found_assets))
-    return unique_assets[:3]# 중복 제거 후 반환
+
+        for entry in feed.entries[:MAX_RSS_SCAN]:
+            if len(results) >= TARGET_PER_PERSON:
+                break
+
+            h = article_hash(entry.title, entry.link)
+            if h in seen:
+                continue
+
+            text = fetch_article(entry.link)
+            matched_assets = extract_assets(entry.title + " " + text, assets)
+
+            if not matched_assets:
+                continue
+
+            seen.add(h)
+            results.append({
+                "person_name": name,
+                "title": entry.title,
+                "url": entry.link,
+                "published_at": datetime.utcnow().isoformat(),
+                "asset_ids": matched_assets,
+                "raw_text": text,
+            })
+
+            if verbose:
+                print(
+                    f"[crawler]     + article accepted | assets={matched_assets}"
+                )
+
+    if verbose:
+        print(f"[crawler] ◀ done {name} ({len(results)} articles)")
+    return results
+
+# ============================
+# Public API (imported by score.py)
+# ============================
+def run_crawler(verbose=True, save_json=True):
+    """
+    Main crawler entry.
+    - Returns raw_news list (for in-memory use)
+    - Optionally saves raw_news.json (for inspection)
+    """
+    assets = load_assets()
+    people = load_people()
+    seen = load_seen()
+
+    all_news = []
+
+    if verbose:
+        print(f"[crawler] start | people={len(people)}")
+
+    people = people[:3]  # DEBUG: limit to first 3 people , for faster testing
+    for p in people:
+        person_news = crawl_person(p, assets, seen, verbose=verbose)
+        all_news.extend(person_news)
+
+    save_seen(seen)
+
+    if save_json:
+        with open(RAW_NEWS_PATH, "w", encoding="utf-8") as f:
+            json.dump(all_news, f, indent=2, ensure_ascii=False)
+        if verbose:
+            print(f"[crawler] raw_news.json saved ({len(all_news)} articles)")
+
+    if verbose:
+        print(f"[crawler] finished | total={len(all_news)}")
+
+    return all_news
+
+# ============================
+# CLI entry
+# ============================
+if __name__ == "__main__":
+    data = run_crawler(verbose=True, save_json=True)
+    print(f"[crawler] collected {len(data)} valid articles")

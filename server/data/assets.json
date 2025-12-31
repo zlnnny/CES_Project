@@ -8,6 +8,13 @@
         "photoshop",
         "creative cloud",
         "pdf"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Software (Creative + Document)",
+        "subscription revenue (Creative Cloud / Acrobat)",
+        "AI features monetization and pricing power",
+        "enterprise document workflows and productivity demand"
       ]
     },
     {
@@ -16,6 +23,13 @@
       "name": "adp",
       "keywords": [
         "adp"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Business Services (Payroll/HR)",
+        "proxy for employment and payroll volume",
+        "SMB/enterprise HR outsourcing demand",
+        "interest-rate sensitivity via client-fund balances"
       ]
     },
     {
@@ -24,6 +38,14 @@
       "name": "airbnb",
       "keywords": [
         "airbnb"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Travel / Online Platforms",
+        "global leisure and travel demand",
+        "regulatory risk in major cities (short-term rentals)",
+        "FX sensitivity and cross-border booking trends",
+        "host supply growth vs pricing/margins"
       ]
     },
     {
@@ -32,6 +54,14 @@
       "name": "alphabet",
       "keywords": [
         "alphabet"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Internet (Ads + Cloud)",
+        "search and YouTube advertising cycle",
+        "cloud competition and enterprise AI demand",
+        "AI search/product transition risk and opportunity",
+        "regulatory and antitrust pressure"
       ]
     },
     {
@@ -42,6 +72,14 @@
         "aws",
         "bezos",
         "prime"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: E-commerce + Cloud",
+        "AWS cloud growth and enterprise IT spend",
+        "consumer demand and online retail margins",
+        "logistics/fulfillment efficiency and capex cycle",
+        "ad business (retail media) growth"
       ]
     },
     {
@@ -52,6 +90,15 @@
         "ryzen",
         "radeon",
         "lisa su"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Semiconductors (CPU/GPU)",
+        "data-center CPU competition and server demand",
+        "AI accelerator ramp and hyperscaler adoption",
+        "PC cycle sensitivity (client CPUs/GPUs)",
+        "supply-chain/foundry execution risk",
+        "key person: Lisa Su"
       ]
     },
     {
@@ -61,6 +108,13 @@
       "keywords": [
         "biotech",
         "therapeutics"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Biopharma",
+        "drug pipeline and clinical-readout risk",
+        "pricing/reimbursement and regulation sensitivity",
+        "defensive healthcare demand characteristics"
       ]
     },
     {
@@ -72,6 +126,15 @@
         "macbook",
         "ipad",
         "tim cook"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Consumer Tech (Devices + Services)",
+        "iPhone upgrade cycle and global consumer demand",
+        "services growth (App Store / subscriptions) margin driver",
+        "supply-chain concentration and China exposure",
+        "on-device AI features as product differentiator",
+        "key person: Tim Cook"
       ]
     },
     {
@@ -80,6 +143,14 @@
       "name": "applied materials",
       "keywords": [
         "applied materials"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Semiconductor Equipment (WFE)",
+        "wafer-fab capex cycle (foundry + memory)",
+        "leading-edge process demand and node transitions",
+        "export-control and geopolitics sensitivity",
+        "proxy for semiconductor investment cycle"
       ]
     },
     {
@@ -88,6 +159,14 @@
       "name": "applovin",
       "keywords": [
         "applovin"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Digital Advertising / Adtech",
+        "mobile ad demand and app-install economics",
+        "algorithmic ad targeting effectiveness",
+        "platform policy risk (iOS/Android privacy rules)",
+        "cyclicality tied to marketing budgets"
       ]
     },
     {
@@ -97,6 +176,14 @@
       "keywords": [
         "lithography",
         "euv"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Semiconductor Equipment (Lithography)",
+        "EUV/DUV lithography bottleneck for leading-edge chips",
+        "foundry capex and node roadmap dependency",
+        "export controls and geopolitics (China restrictions)",
+        "high-tech supply-chain constraints (tool deliveries)"
       ]
     },
     {
@@ -107,6 +194,14 @@
         "jira",
         "confluence",
         "devtools"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Software (Developer Collaboration)",
+        "developer productivity tooling (Jira/Confluence)",
+        "enterprise seat expansion vs IT budget tightening",
+        "cloud migration and subscription mix shift",
+        "indicator for software spend in engineering teams"
       ]
     },
     {
@@ -116,6 +211,14 @@
       "keywords": [
         "warren buffett",
         "insurance"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Conglomerate (Insurance + Industrials)",
+        "insurance underwriting + investment float",
+        "benefits from higher interest rates on float",
+        "value-investing benchmark and defensive allocation",
+        "key person: Warren Buffett"
       ]
     },
     {
@@ -125,6 +228,14 @@
       "keywords": [
         "asset management",
         "larry fink"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Financials (Asset Management)",
+        "AUM-driven earnings tied to market levels",
+        "ETF flows and passive investing trends",
+        "macro sensitivity: risk-on/risk-off allocation cycles",
+        "key person: Larry Fink"
       ]
     },
     {
@@ -133,6 +244,14 @@
       "name": "booking holdings",
       "keywords": [
         "booking holdings"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Online Travel",
+        "global travel demand and hotel room-night volume",
+        "pricing power via platform network effects",
+        "FX exposure and cross-border tourism trends",
+        "sensitive to recessions and airline/travel shocks"
       ]
     },
     {
@@ -144,6 +263,14 @@
         "wifi",
         "chip",
         "networking"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Semiconductors + Infrastructure Software",
+        "AI networking and custom silicon exposure",
+        "hyperscaler capex cycle and data-center demand",
+        "broad product mix (RF/WiFi/storage/network)",
+        "enterprise software recurring revenue contribution"
       ]
     },
     {
@@ -152,6 +279,14 @@
       "name": "cadence design",
       "keywords": [
         "cadence design"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: EDA Software",
+        "chip design cycle and R&D intensity proxy",
+        "AI/advanced packaging and verification demand",
+        "sticky subscription model with high switching costs",
+        "benefits from semiconductor complexity growth"
       ]
     },
     {
@@ -161,6 +296,14 @@
       "keywords": [
         "crypto exchange",
         "bitcoin"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Crypto Financial Services",
+        "trading volume sensitivity to crypto prices/volatility",
+        "regulatory risk and licensing environment",
+        "custody and institutional adoption trends",
+        "on/off-ramp for retail crypto participation"
       ]
     },
     {
@@ -170,6 +313,14 @@
       "keywords": [
         "warehouse retail",
         "bulk shopping"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Consumer Staples / Retail",
+        "membership model and renewal-rate stability",
+        "defensive consumer spending indicator",
+        "inflation pass-through and margin management",
+        "bulk purchasing and supply-chain efficiency"
       ]
     },
     {
@@ -179,6 +330,14 @@
       "keywords": [
         "endpoint protection",
         "falcon"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Cybersecurity",
+        "endpoint protection and breach-driven demand",
+        "platform expansion (identity/cloud/log management)",
+        "recurring revenue and net retention dynamics",
+        "security spend resilience in downturns"
       ]
     },
     {
@@ -188,6 +347,14 @@
       "keywords": [
         "monitoring",
         "observability"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Cloud Software (Observability)",
+        "usage-based revenue linked to cloud workloads",
+        "DevOps monitoring/analytics demand",
+        "indicator for cloud migration and app complexity",
+        "sensitive to optimization cycles (cost cutting)"
       ]
     },
     {
@@ -196,6 +363,14 @@
       "name": "dexcom",
       "keywords": [
         "dexcom"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Medical Devices",
+        "continuous glucose monitoring (CGM) adoption growth",
+        "reimbursement and regulatory approvals",
+        "diabetes prevalence and healthcare utilization",
+        "product iteration and sensor ecosystem expansion"
       ]
     },
     {
@@ -205,6 +380,14 @@
       "keywords": [
         "cybersecurity",
         "network security"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Cybersecurity (Network Security)",
+        "hardware + subscription security platform mix",
+        "enterprise refresh cycles and IT security budgets",
+        "secure networking convergence trend",
+        "exposure to SMB/enterprise spending cycles"
       ]
     },
     {
@@ -214,6 +397,14 @@
       "keywords": [
         "antivirals",
         "biotech"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Biopharma",
+        "HIV/antiviral franchise cash-flow base",
+        "oncology pipeline and acquisition integration risk",
+        "pricing/reimbursement policy sensitivity",
+        "defensive characteristics vs market cycles"
       ]
     },
     {
@@ -225,6 +416,15 @@
         "cpu",
         "chip",
         "gelsinger"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Semiconductors (CPU + Foundry)",
+        "PC/server CPU cycle and competitive positioning",
+        "foundry roadmap execution and capex intensity",
+        "AI accelerator strategy and ecosystem adoption",
+        "geopolitics and domestic manufacturing incentives",
+        "key person: Pat Gelsinger"
       ]
     },
     {
@@ -235,6 +435,14 @@
         "turbotax",
         "quickbooks",
         "fintech"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Fintech Software",
+        "tax software seasonality (TurboTax)",
+        "SMB accounting/payments ecosystem (QuickBooks)",
+        "credit and consumer/SMB financial health sensitivity",
+        "cross-sell expansion and platform stickiness"
       ]
     },
     {
@@ -244,6 +452,14 @@
       "keywords": [
         "robotics",
         "da vinci system"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Medical Devices (Surgical Robotics)",
+        "procedure volume growth and hospital utilization",
+        "installed base + recurring instrument revenue",
+        "hospital capex cycle sensitivity",
+        "regulatory and clinical adoption dynamics"
       ]
     },
     {
@@ -253,6 +469,14 @@
       "keywords": [
         "bank",
         "dimon"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Banking",
+        "net interest income sensitivity to rates/curve",
+        "credit cycle (consumer + corporate defaults)",
+        "capital regulation and stress-test outcomes",
+        "key person: Jamie Dimon"
       ]
     },
     {
@@ -261,6 +485,14 @@
       "name": "kla corp",
       "keywords": [
         "kla corp"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Semiconductor Equipment (Process Control)",
+        "critical for yield management and defect inspection",
+        "capex cycle exposure (foundry + memory)",
+        "benefits from tighter process tolerances at advanced nodes",
+        "proxy for semiconductor manufacturing complexity"
       ]
     },
     {
@@ -270,6 +502,14 @@
       "keywords": [
         "wafer fab",
         "deposition"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Semiconductor Equipment (Etch/Deposition)",
+        "memory and foundry capex cycle sensitivity",
+        "advanced packaging and 3D structures demand",
+        "export-control and geopolitics exposure",
+        "proxy for WFE spending momentum"
       ]
     },
     {
@@ -278,6 +518,14 @@
       "name": "lululemon",
       "keywords": [
         "lululemon"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Consumer Discretionary (Apparel)",
+        "premium consumer spending and brand strength",
+        "inventory and margin execution risk",
+        "global expansion and store productivity",
+        "sensitive to consumer confidence cycles"
       ]
     },
     {
@@ -286,6 +534,14 @@
       "name": "marvell tech",
       "keywords": [
         "marvell tech"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Semiconductors (Networking/Storage)",
+        "data-center interconnect and networking demand",
+        "custom silicon exposure to hyperscaler capex",
+        "carrier/cloud infrastructure cycles",
+        "AI cluster build-out sensitivity"
       ]
     },
     {
@@ -294,6 +550,14 @@
       "name": "mercadolibre",
       "keywords": [
         "mercadolibre"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: E-commerce + Fintech (LatAm)",
+        "LatAm consumer demand and digital commerce adoption",
+        "payments/credit growth (fintech expansion)",
+        "FX and macro instability sensitivity",
+        "logistics network scaling and margin execution"
       ]
     },
     {
@@ -305,6 +569,15 @@
         "instagram",
         "whatsapp",
         "zuckerberg"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Internet (Advertising)",
+        "digital ad cycle and performance advertising demand",
+        "engagement trends across Facebook/Instagram/WhatsApp",
+        "AI infrastructure capex vs monetization pace",
+        "privacy/regulation risk and platform policy changes",
+        "key person: Mark Zuckerberg"
       ]
     },
     {
@@ -313,6 +586,14 @@
       "name": "micron",
       "keywords": [
         "micron"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Semiconductors (Memory)",
+        "DRAM/NAND pricing cycle and inventory swings",
+        "HBM demand tied to AI accelerators",
+        "capex discipline and supply-demand balance",
+        "geopolitics and customer concentration risk"
       ]
     },
     {
@@ -324,6 +605,15 @@
         "azure",
         "office",
         "satya nadella"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Software + Cloud",
+        "Azure cloud growth and enterprise IT budgets",
+        "AI monetization (copilots, platform services)",
+        "durable subscription base (Office, Windows, enterprise)",
+        "capex cycle driven by data-center expansion",
+        "key person: Satya Nadella"
       ]
     },
     {
@@ -334,6 +624,14 @@
         "snacks",
         "oreo",
         "cadbury"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Consumer Staples (Snacks)",
+        "defensive demand and global brand portfolio",
+        "commodity input costs (cocoa/sugar) impact margins",
+        "pricing power vs volume trade-down",
+        "emerging-market and FX exposure"
       ]
     },
     {
@@ -342,6 +640,14 @@
       "name": "monster beverage",
       "keywords": [
         "monster beverage"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Consumer Staples (Beverages)",
+        "energy drink category growth and brand share",
+        "distribution strength and retail channel dynamics",
+        "input cost and pricing/margin management",
+        "consumer demand resilience vs cycles"
       ]
     },
     {
@@ -352,6 +658,14 @@
         "streaming",
         "entertainment",
         "content"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Media / Streaming",
+        "subscriber growth and churn dynamics",
+        "content spend efficiency and hit-rate risk",
+        "ad-supported tier monetization",
+        "global expansion and FX exposure"
       ]
     },
     {
@@ -364,6 +678,15 @@
         "a100",
         "blackwell",
         "jensen huang"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Semiconductors (AI Accelerators)",
+        "hyperscaler and enterprise AI capex cycle",
+        "GPU platform dominance (hardware + software ecosystem)",
+        "data-center revenue concentration and supply constraints",
+        "export controls/geopolitics sensitivity",
+        "key person: Jensen Huang"
       ]
     },
     {
@@ -372,6 +695,14 @@
       "name": "old dominion",
       "keywords": [
         "old dominion"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Transportation / Logistics",
+        "LTL freight volumes as economic activity proxy",
+        "pricing discipline vs capacity utilization",
+        "industrial demand sensitivity",
+        "fuel cost and wage inflation effects"
       ]
     },
     {
@@ -380,6 +711,13 @@
       "name": "openai",
       "keywords": [
         "openai"
+      ],
+      "descriptors": [
+        "category: Private/Non-listed (Reference Asset)",
+        "AI foundation-model platform and enterprise adoption",
+        "GPU/compute supply constraints and capex dependency",
+        "AI regulation and safety standards exposure",
+        "pricing power via API + productivity products"
       ]
     },
     {
@@ -388,6 +726,14 @@
       "name": "paccar",
       "keywords": [
         "paccar"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Industrials (Commercial Vehicles)",
+        "truck orders tied to freight/industrial cycle",
+        "fleet replacement timing and financing conditions",
+        "margin sensitivity to input costs and pricing",
+        "indicator for North American logistics demand"
       ]
     },
     {
@@ -396,6 +742,14 @@
       "name": "palantir",
       "keywords": [
         "palantir"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Software (Data Analytics / Government)",
+        "government/defense software demand and budgets",
+        "enterprise AI platform adoption (data + workflows)",
+        "contract duration and renewal/expansion risk",
+        "geopolitical cycle sensitivity (defense priorities)"
       ]
     },
     {
@@ -405,6 +759,14 @@
       "keywords": [
         "cybersecurity",
         "firewall"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Cybersecurity (Platform)",
+        "cloud security + network security convergence",
+        "enterprise platform consolidation trend",
+        "security spend resilience and breach-driven urgency",
+        "subscription mix and billings growth"
       ]
     },
     {
@@ -413,6 +775,14 @@
       "name": "paychex",
       "keywords": [
         "paychex"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Business Services (Payroll/HR)",
+        "SMB employment and wage growth proxy",
+        "recurring payroll processing revenue",
+        "interest-rate sensitivity via client funds",
+        "indicator for small-business health"
       ]
     },
     {
@@ -423,6 +793,14 @@
         "modem",
         "snapdragon",
         "mobile chip"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Semiconductors (Mobile/Connectivity)",
+        "smartphone demand cycle and premium-tier share",
+        "licensing/royalty model sensitivity to regulation and OEM mix",
+        "on-device AI features and edge compute trend",
+        "exposure to Android ecosystem momentum"
       ]
     },
     {
@@ -432,6 +810,14 @@
       "keywords": [
         "biotech",
         "pharmaceuticals"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Biopharma",
+        "pipeline/readout risk and R&D productivity",
+        "drug pricing and reimbursement policy sensitivity",
+        "partnership dynamics and commercialization execution",
+        "defensive healthcare demand characteristics"
       ]
     },
     {
@@ -441,6 +827,14 @@
       "keywords": [
         "ecommerce",
         "canada"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: E-commerce Software",
+        "SMB merchant health and GMV growth",
+        "payments and services attach-rate",
+        "consumer demand sensitivity via merchant sales",
+        "platform competition and pricing power"
       ]
     },
     {
@@ -450,6 +844,14 @@
       "keywords": [
         "data warehouse",
         "cloud analytics"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Cloud Software (Data Platform)",
+        "consumption-based revenue tied to customer usage",
+        "data modernization and analytics/AI workloads",
+        "competition in cloud data stacks",
+        "sensitive to optimization cycles (usage throttling)"
       ]
     },
     {
@@ -458,6 +860,14 @@
       "name": "spotify",
       "keywords": [
         "spotify"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Media / Streaming Audio",
+        "subscriber growth vs churn and price increases",
+        "ad revenue cyclicality and podcast monetization",
+        "music licensing costs and margin structure",
+        "global growth and FX exposure"
       ]
     },
     {
@@ -467,6 +877,14 @@
       "keywords": [
         "coffee",
         "cafe"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Consumer Discretionary (Restaurants)",
+        "consumer spending and foot-traffic indicator",
+        "commodity sensitivity (coffee, dairy) and pricing",
+        "international exposure and China demand sensitivity",
+        "store productivity and labor cost dynamics"
       ]
     },
     {
@@ -476,6 +894,14 @@
       "keywords": [
         "eda software",
         "verification"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: EDA Software + Semiconductor IP",
+        "chip design cycle and verification demand",
+        "semiconductor complexity growth tailwind",
+        "high switching costs and recurring revenue profile",
+        "exposure to leading-edge R&D intensity"
       ]
     },
     {
@@ -485,6 +911,14 @@
       "keywords": [
         "telecom",
         "wireless"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Telecom",
+        "subscriber growth and ARPU trends",
+        "capex intensity (5G rollout) and spectrum strategy",
+        "competitive pricing environment",
+        "defensive cash-flow characteristics"
       ]
     },
     {
@@ -493,6 +927,13 @@
       "name": "tesla/xai",
       "keywords": [
         "tesla/xai"
+      ],
+      "descriptors": [
+        "category: Public/Private Mix (Reference Asset)",
+        "EV demand and automotive margin volatility",
+        "regulatory environment (autonomy, safety, incentives)",
+        "AI compute and model development (xAI linkage)",
+        "energy storage and grid products as secondary driver"
       ]
     },
     {
@@ -502,6 +943,14 @@
       "keywords": [
         "analog",
         "mixed signal"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Semiconductors (Analog)",
+        "industrial demand and inventory cycles",
+        "long product lifecycles and pricing discipline",
+        "capex and manufacturing footprint strategy",
+        "proxy for broad-based industrial electronics health"
       ]
     },
     {
@@ -510,6 +959,14 @@
       "name": "vertex pharma",
       "keywords": [
         "vertex pharma"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Biopharma",
+        "core franchise cash flows + pipeline expansion risk",
+        "pricing/reimbursement policy sensitivity",
+        "clinical-readout catalysts and regulatory approvals",
+        "defensive healthcare allocation characteristics"
       ]
     },
     {
@@ -518,6 +975,14 @@
       "name": "workday",
       "keywords": [
         "workday"
+      ],
+      "descriptors": [
+        "category: Public Equities",
+        "sector: Enterprise Software (HR/Finance)",
+        "subscription revenue and renewal/expansion dynamics",
+        "enterprise IT budget sensitivity (but sticky systems of record)",
+        "migration to cloud ERP/HR platforms",
+        "indicator for large-enterprise software modernization"
       ]
     }
   ]

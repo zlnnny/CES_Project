@@ -1,0 +1,6202 @@
+{
+  "pers_donald_trump": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_friedrich_merz": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_shigeru_ishiba": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_keir_starmer": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_lee_jae_myung": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_emmanuel_macron": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_mark_carney": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_giorgia_meloni": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_anthony_albanese": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_claudia_sheinbaum": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_dick_schoof": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_simon_harris": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_christopher_luxon": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_ulf_kristersson": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_jonas_gahr_st_re": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_mette_frederiksen": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_alexander_stubb": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_pedro_s_nchez": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_benjamin_netanyahu": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_recep_tayyip_erdo_an": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_xi_jinping": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_vladimir_putin": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_narendra_modi": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_mohammed_bin_salman": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_prabowo_subianto": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_luiz_in_cio_lula_da_silva": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_cyril_ramaphosa": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_javier_milei": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_volodymyr_zelenskyy": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_mbz": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_jerome_powell": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_scott_bessent": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_christine_lagarde": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_kazuo_ueda": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_ursula_von_der_leyen": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_kristalina_georgieva": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_ajay_banga": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_ngozi_okonjo_iweala": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_andrew_bailey": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_ant_nio_guterres": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_mark_rutte": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_mathias_cormann": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_jensen_huang": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_tim_cook": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_sundar_pichai": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_satya_nadella": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_andy_jassy": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_mark_zuckerberg": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_hock_tan": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_elon_musk": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_ron_vachris": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_greg_peters": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_christophe_fouquet": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_lisa_su": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_shantanu_narayen": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_cristiano_amon": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_alex_karp": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_adam_foroughi": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_gary_dickerson": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_gary_guthart": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_haviv_ilan": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_timothy_archer": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_nikesh_arora": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_sasan_goodarzi": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_sanjay_mehrotra": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_mike_sievert": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_glenn_fogel": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_brian_niccol": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_daniel_o_day": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_robert_bradway": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_reshma_kewalramani": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_marcos_galperin": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_rick_wallace": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_anirudh_devgan": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_sassine_ghazi": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_brian_chesky": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_leonard_schleifer": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_maria_black": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_dirk_van_de_put": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_rodney_sacks": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_calvin_mcdonald": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_carl_eschenbach": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_george_kurtz": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_kevin_sayer": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_preston_feight": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_ken_xie": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_matt_murphy": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_kevin_freeman": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_sridhar_ramaswamy": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_mike_cannon_brookes": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_john_gibson": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_olivier_pomel": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_sam_altman": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_larry_fink": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_jamie_dimon": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_warren_buffett": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_brian_armstrong": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_pat_gelsinger": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_daniel_ek": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ],
+  "pers_tobi_l_tke": [
+    {
+      "asset_id": "asset_adbe",
+      "symbol": "adbe",
+      "name": "adobe",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_adp",
+      "symbol": "adp",
+      "name": "adp",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_airbnb",
+      "symbol": "airbnb",
+      "name": "airbnb",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_alphabet",
+      "symbol": "alphabet",
+      "name": "alphabet",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amzn",
+      "symbol": "amzn",
+      "name": "amazon",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amd",
+      "symbol": "amd",
+      "name": "advanced micro devices",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_amgn",
+      "symbol": "amgn",
+      "name": "amgen",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_aapl",
+      "symbol": "aapl",
+      "name": "apple",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applied_materials",
+      "symbol": "",
+      "name": "applied materials",
+      "weight": 0.0
+    },
+    {
+      "asset_id": "asset_applovin",
+      "symbol": "applovin",
+      "name": "applovin",
+      "weight": 0.0
+    }
+  ]
+}
