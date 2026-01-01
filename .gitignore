@@ -19,3 +19,5 @@ server/venv/
 # Python cache
 __pycache__/
 *.pyc
+# Local dev DB (SQLite)
+server/dev.db

@@ -5,12 +5,12 @@ from datetime import datetime
 from enum import Enum
 
 from pgvector.sqlalchemy import Vector
-from sqlalchemy import DateTime, Float, ForeignKey, Index, String, Text, UniqueConstraint, func, JSON
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import JSON, DateTime, Float, ForeignKey, Index, String, Text, UniqueConstraint, Uuid, func
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
-from server.db import Base
-# class Base(DeclarativeBase):
-#     pass
+
+
+class Base(DeclarativeBase):
+    pass
 
 
 class EntityType(str, Enum):
@@ -21,7 +21,7 @@ class EntityType(str, Enum):
 class Entity(Base):
     __tablename__ = "entities"
 
-    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
     entity_type: Mapped[str] = mapped_column(String(16), index=True)  # EntityType
 
     # Your CSV fields
@@ -40,25 +40,30 @@ class EntityEmbedding(Base):
         UniqueConstraint("entity_id", "model_name", name="uq_entity_embeddings_entity_model"),
     )
 
-    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    entity_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("entities.id", ondelete="CASCADE"), index=True)
+    id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
+    entity_id: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("entities.id", ondelete="CASCADE"), index=True)
 
     # SBERT default dimension is commonly 768; adjust if you pick a different model.
     model_name: Mapped[str] = mapped_column(String(128), default="sbert", index=True)
-    embedding: Mapped[list[float] | None] = mapped_column(Vector(768), nullable=True)
+
+    # Postgres: pgvector, SQLite: JSON list[float]
+    embedding: Mapped[list[float] | None] = mapped_column(JSON().with_variant(Vector(768), "postgresql"), nullable=True)
 
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
 
 
-class NewsEvent(Base): 
+class NewsEvent(Base):
     __tablename__ = "news_events"
 
-    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
 
     leader_name: Mapped[str | None] = mapped_column(String(256), index=True, nullable=True)
     title: Mapped[str] = mapped_column(Text)
-    url: Mapped[str | None] = mapped_column(Text, unique=True, nullable=True) #url 중복방지지
+
+    # link/url can be used for de-dup; keep nullable for crawlers that don't provide it
+    url: Mapped[str | None] = mapped_column(Text, unique=True, nullable=True)
+
     source: Mapped[str | None] = mapped_column(String(128), nullable=True)
     published_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
 
@@ -71,9 +76,7 @@ class NewsEvent(Base):
 
 
 class InfluenceEdge(Base):
-    """
-    Maintains online-updated influence weights between (person -> asset).
-    """
+    """Maintains online-updated influence weights between (person -> asset)."""
 
     __tablename__ = "influence_edges"
     __table_args__ = (
@@ -81,11 +84,9 @@ class InfluenceEdge(Base):
         Index("ix_influence_edges_person_weight", "person_id", "weight"),
     )
 
-    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    person_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("entities.id", ondelete="CASCADE"), index=True)
-    asset_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("entities.id", ondelete="CASCADE"), index=True)
+    id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
+    person_id: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("entities.id", ondelete="CASCADE"), index=True)
+    asset_id: Mapped[uuid.UUID] = mapped_column(Uuid, ForeignKey("entities.id", ondelete="CASCADE"), index=True)
 
     weight: Mapped[float] = mapped_column(Float, default=0.0)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now())
-
-
