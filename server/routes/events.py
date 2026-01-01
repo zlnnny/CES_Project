@@ -2,11 +2,11 @@ from fastapi import APIRouter, Depends
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 from datetime import datetime
-
+from typing import Optional
 from server.db import get_db
 from server.models import Entity, InfluenceEdge, NewsEvent
 from server.schemas import NewsIngestRequest, NewsEventIn, NewsEventOut
-from server.crawler import get_realtime_news
+from server.crawler import get_realtime_news, get_mixed_realtime_news
 
 router = APIRouter(prefix="/api", tags=["events"])
 
@@ -73,6 +73,7 @@ def process_ingestion(db: Session, events: list[NewsEventIn], rho: float = 0.9):
                 edge.weight = rho * float(edge.weight or 0.0) + delta
             else:
                 db.add(InfluenceEdge(person_id=leader.id, asset_id=asset.id, weight=delta))
+                db.flush()  # <--- [핵심!] 이 줄을 추가해주세요. (즉시 저장해서 중복 방지)
             
             updated_edges += 1
 
@@ -82,7 +83,14 @@ def process_ingestion(db: Session, events: list[NewsEventIn], rho: float = 0.9):
 @router.get("/news", response_model=list[NewsEventOut])
 def fetch_news(leader: Optional[str] = None, db: Session = Depends(get_db)):
     # 1. 크롤링 (leader가 None이면 crawler 내부에서 랜덤 선택됨)
-    raw_data = get_realtime_news(leader, limit=3)
+    if leader:
+        # 사용자가 특정 인물을 지정했으면 그 사람 뉴스만 3개 (기존 로직)
+        print(f"👉 특정 인물 요청: {leader}")
+        raw_data = get_realtime_news(leader, limit=3)
+    else:
+        # [변경] 지정된 사람이 없으면 '3명의 서로 다른 인물' 뉴스 가져오기
+        print(f"👉 랜덤 믹스 요청")
+        raw_data = get_mixed_realtime_news(total_count=3)
     
     events_in = []
     for item in raw_data:

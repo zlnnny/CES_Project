@@ -1,215 +1,180 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import axios from 'axios';
-import { FaExternalLinkAlt } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaSyncAlt } from 'react-icons/fa';
 
-const NewsSection = styled.section`
-    padding: 4rem 0;
-    background-color: var(--color-bg-main);
+// ... (기존 레이아웃 스타일들은 그대로 유지) ...
+const NewsSection = styled.section` padding: 4rem 0; background-color: var(--color-bg-main); `;
+const Container = styled.div` width: 90%; max-width: 1200px; margin: 0 auto; `;
+const SectionTitle = styled.h2` font-size: 2rem; color: var(--color-text-main); margin-bottom: 0; font-family: var(--font-heading); border-left: 5px solid var(--color-accent); padding-left: 1rem; `;
+const CardGrid = styled.div` display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; `;
+const NewsCard = styled.div` background-color: var(--color-bg-card, #1e1e1e); border: 1px solid var(--color-border, #333); border-radius: 10px; padding: 1.5rem; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between; &:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); } `;
+const Header = styled.div` display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; `;
+const LeaderBadge = styled.span` font-size: 0.8rem; background-color: var(--color-accent, #007bff); color: white; padding: 0.3rem 0.6rem; border-radius: 20px; font-weight: bold; `;
+const DateText = styled.span` font-size: 0.8rem; color: var(--color-text-muted, #888); `;
+const NewsTitle = styled.h3` font-size: 1.2rem; color: var(--color-text-main, #fff); margin-bottom: 1rem; line-height: 1.4; font-family: var(--font-ko); `;
+const AnalysisBox = styled.div` background-color: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; `;
+const ImpactTag = styled.span` display: inline-block; font-size: 0.75rem; background-color: ${props => props.$tone === 'Hawkish' ? 'rgba(255, 99, 71, 0.2)' : props.$tone === 'Dovish' ? 'rgba(100, 149, 237, 0.2)' : 'rgba(128, 128, 128, 0.2)'}; color: ${props => props.$tone === 'Hawkish' ? '#ff6347' : props.$tone === 'Dovish' ? '#6495ed' : '#ccc'}; padding: 0.2rem 0.5rem; border-radius: 4px; margin-right: 0.5rem; margin-bottom: 0.5rem; `;
+const LinkButton = styled.a` display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.8rem; background-color: transparent; border: 1px solid var(--color-border, #555); color: var(--color-text-main, #fff); border-radius: 5px; text-decoration: none; font-weight: bold; transition: background 0.2s; &:hover { background-color: var(--color-border, #333); } svg { margin-left: 0.5rem; } `;
+const EmptyMessage = styled.div` text-align: center; padding: 3rem; color: var(--color-text-muted, #888); background-color: rgba(255, 255, 255, 0.02); border-radius: 10px; font-size: 1.1rem; `;
+
+// [수정됨] 회전 애니메이션
+const rotate = keyframes`
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 `;
 
-const Container = styled.div`
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-`;
-
-const SectionTitle = styled.h2`
-    font-size: 2rem;
-    color: var(--color-text-main);
+// [수정됨] 상단 헤더 (제목과 리프레시 컨트롤 한 줄 배치)
+const HeaderRow = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; /* 텍스트 베이스라인 맞춤 */
     margin-bottom: 2rem;
-    font-family: var(--font-heading);
-    border-left: 5px solid var(--color-accent);
-    padding-left: 1rem;
 `;
 
-const CardGrid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-`;
-
-const NewsCard = styled.div`
-    background-color: var(--color-bg-card, #1e1e1e);
-    border: 1px solid var(--color-border, #333);
-    border-radius: 10px;
-    padding: 1.5rem;
-    transition: transform 0.2s, box-shadow 0.2s;
+// [수정됨] 리프레시 컨트롤 영역
+const RefreshControl = styled.div`
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    }
-`;
-
-const Header = styled.div`
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    gap: 8px;
+    color: var(--color-text-muted, #aaa);
+    font-size: 0.9rem;
 `;
 
-const LeaderBadge = styled.span`
-    font-size: 0.8rem;
-    background-color: var(--color-accent, #007bff);
-    color: white;
-    padding: 0.3rem 0.6rem;
-    border-radius: 20px;
-    font-weight: bold;
-`;
-
-const DateText = styled.span`
-    font-size: 0.8rem;
-    color: var(--color-text-muted, #888);
-`;
-
-const NewsTitle = styled.h3`
-    font-size: 1.2rem;
+// [수정됨] 원형 아이콘 버튼 스타일
+const IconButton = styled.button`
+    background: transparent;
+    border: 1px solid var(--color-border, #555); 
     color: var(--color-text-main, #fff);
-    margin-bottom: 1rem;
-    line-height: 1.4;
-    font-family: var(--font-ko);
-`;
-
-const AnalysisBox = styled.div`
-    background-color: rgba(255, 255, 255, 0.05);
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-`;
-
-// $tone (Transient Prop) 적용
-const ImpactTag = styled.span`
-    display: inline-block;
-    font-size: 0.75rem;
-    background-color: ${props => props.$tone === 'Hawkish' ? 'rgba(255, 99, 71, 0.2)' : props.$tone === 'Dovish' ? 'rgba(100, 149, 237, 0.2)' : 'rgba(128, 128, 128, 0.2)'};
-    color: ${props => props.$tone === 'Hawkish' ? '#ff6347' : props.$tone === 'Dovish' ? '#6495ed' : '#ccc'};
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
-`;
-
-const LinkButton = styled.a`
+    width: 32px;
+    height: 32px;
+    border-radius: 50%; /* 완전한 원형 */
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    padding: 0.8rem;
-    background-color: transparent;
-    border: 1px solid var(--color-border, #555);
-    color: var(--color-text-main, #fff);
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background 0.2s;
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 0;
 
     &:hover {
-        background-color: var(--color-border, #333);
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--color-accent, #007bff);
+        border-color: var(--color-accent, #007bff);
     }
     
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
     svg {
-        margin-left: 0.5rem;
+        ${props => props.$loading && css`
+            animation: ${rotate} 1s linear infinite;
+        `}
     }
 `;
 
-// 데이터가 없을 때 보여줄 메시지 스타일
-const EmptyMessage = styled.div`
-    text-align: center;
-    padding: 3rem;
+const TimeText = styled.span`
+    font-size: 0.85rem;
+    font-weight: 500;
     color: var(--color-text-muted, #888);
-    background-color: rgba(255, 255, 255, 0.02);
-    border-radius: 10px;
-    font-size: 1.1rem;
 `;
 
 const TodaysNews = () => {
     const [newsData, setNewsData] = useState([]);
+    const [lastUpdated, setLastUpdated] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [refreshing, setRefreshing] = useState(false);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchNews = async () => {
-            try {
-                const response = await axios.get('http://localhost:8000/api/news');
-                console.log("서버 응답:", response.data); // 이 로그를 확인해야 함
+    const fetchNews = async (force = false) => {
+        if (force) setRefreshing(true);
+        try {
+            const url = `http://localhost:8000/api/news/today${force ? '?force_refresh=true' : ''}`;
+            const response = await axios.get(url);
+            
+            const { news, last_updated, message } = response.data;
 
-                if (Array.isArray(response.data)) {
-                    setNewsData(response.data);
-                } else {
-                    // 만약 또 Object 에러가 나면, 그 내용이 뭔지 출력
-                    console.error("데이터 형식 오류 내용:", JSON.stringify(response.data));
-                    setNewsData([]); 
-                    // 에러 메시지가 있다면 화면에 띄우기
-                    if(response.data.error) setError(response.data.error);
-                }
-            } catch (err) {
-                console.error("통신 에러:", err);
-                setError("서버 연결 실패");
-            } finally {
-                setLoading(false);
+            if (Array.isArray(news)) {
+                setNewsData(news);
+                setLastUpdated(last_updated);
+                if (message) console.log(message);
+            } else {
+                setNewsData([]);
             }
-        };
-        fetchNews();
+        } catch (err) {
+            console.error(err);
+            setError("Failed to load");
+        } finally {
+            setLoading(false);
+            setRefreshing(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchNews(false);
     }, []);
 
-    // 렌더링 로직: 조건부 렌더링을 SectionTitle 아래로 이동
+    const handleRefresh = () => {
+        fetchNews(true);
+    };
+
     return (
         <NewsSection id="news">
             <Container>
-                {/* 제목은 언제나 보임 */}
-                <SectionTitle>Today's Event</SectionTitle>
+                <HeaderRow>
+                    <SectionTitle>Today's News</SectionTitle>
+                    
+                    {/* [UI 변경] 아이콘 버튼 + 시간 텍스트 */}
+                    <RefreshControl>
+                        <IconButton 
+                            onClick={handleRefresh} 
+                            disabled={refreshing || loading} 
+                            $loading={refreshing}
+                            title="Refresh News" // 마우스 올리면 툴팁
+                        >
+                            <FaSyncAlt size={14} />
+                        </IconButton>
+                        {lastUpdated && (
+                            <TimeText>
+                                Updated {lastUpdated.split(' ')[1].substring(0, 5)}
+                            </TimeText>
+                        )}
+                    </RefreshControl>
+                </HeaderRow>
 
-                {/* 1. 로딩 중일 때 */}
-                {loading && (
-                    <EmptyMessage>뉴스 데이터를 불러오는 중...</EmptyMessage>
+                {loading && <EmptyMessage>Loading...</EmptyMessage>}
+                
+                {!loading && !error && newsData.length === 0 && (
+                    <EmptyMessage>No news available.</EmptyMessage>
                 )}
 
-                {/* 2. 로딩 끝났는데, 에러가 있거나 데이터가 비어있을 때 */}
-                {!loading && (error || !Array.isArray(newsData) || newsData.length === 0) && (
-                    <EmptyMessage>
-                        표시할 뉴스가 없습니다.
-                        {/* 디버깅용 에러 메시지 (필요 없으면 주석 처리) */}
-                        {/* <br/><small style={{fontSize:'0.8em', opacity: 0.5}}>({error || "데이터 없음"})</small> */}
-                    </EmptyMessage>
-                )}
-
-                {/* 3. 정상적으로 데이터가 있을 때 */}
-                {!loading && !error && Array.isArray(newsData) && newsData.length > 0 && (
+                {!loading && newsData.length > 0 && (
                     <CardGrid>
                         {newsData.map((item, index) => {
-                            const analysis = item.analysis || {};
-                            const tone = analysis.tone || 'Neutral';
-                            
+                            const { leader_name, published_at, title, tone, sentiment, impact_assets, url } = item;
                             return (
                                 <NewsCard key={index}>
                                     <div>
                                         <Header>
-                                            <LeaderBadge>{item.leader}</LeaderBadge>
-                                            <DateText>
-                                                {item.pub_date ? new Date(item.pub_date).toLocaleDateString() : '-'}
-                                            </DateText>
+                                            <LeaderBadge>{leader_name || "Global"}</LeaderBadge>
+                                            <DateText>{published_at ? published_at.split(' ')[0] : '-'}</DateText>
                                         </Header>
-                                        <NewsTitle>{item.title}</NewsTitle>
+                                        <NewsTitle>{title}</NewsTitle>
                                         <AnalysisBox>
                                             <div style={{marginBottom: '0.5rem'}}>
-                                                <ImpactTag $tone={tone}>{tone}</ImpactTag>
-                                                <span style={{fontSize: '0.8rem', color:'#aaa'}}>
-                                                    Score: {analysis.sentiment_score}
-                                                </span>
+                                                <ImpactTag $tone={tone}>{tone || 'Neutral'}</ImpactTag>
+                                                <span style={{fontSize: '0.8rem', color:'#aaa'}}>Sentiment: {sentiment ?? 0}</span>
                                             </div>
                                             <div>
-                                                {(analysis.impact_assets || []).map((asset, i) => (
+                                                {(impact_assets || []).map((asset, i) => (
                                                     <ImpactTag key={i}>{asset}</ImpactTag>
                                                 ))}
                                             </div>
                                         </AnalysisBox>
                                     </div>
-                                    <LinkButton href={item.link} target="_blank">
-                                        View News <FaExternalLinkAlt size={12} />
+                                    <LinkButton href={url} target="_blank" rel="noopener noreferrer">
+                                        View Full Article <FaExternalLinkAlt size={12} />
                                     </LinkButton>
                                 </NewsCard>
                             );
