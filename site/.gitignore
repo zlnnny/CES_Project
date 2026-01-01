@@ -26,3 +26,7 @@ dist-ssr
 #venv
 venv/
 server/venv/
+
+# Python cache
+__pycache__/
+*.pyc

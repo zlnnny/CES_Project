@@ -15,3 +15,7 @@ site/dist/
 
 .venv/
 server/venv/
+
+# Python cache
+__pycache__/
+*.pyc
