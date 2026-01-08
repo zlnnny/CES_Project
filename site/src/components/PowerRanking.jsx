@@ -228,26 +228,20 @@ const StockText = styled.span`
 `;
 
 const PowerRanking = () => {
-    const [activeTab, setActiveTab] = React.useState('Total');
     const [rows, setRows] = React.useState([]);
-    const [countryRows, setCountryRows] = React.useState([]);
-    const [industryRows, setIndustryRows] = React.useState([]);
     const [loading, setLoading] = React.useState(true);
     const [error, setError] = React.useState(null);
     const [lastUpdatedAt, setLastUpdatedAt] = React.useState(null);
+    const [refreshing, setRefreshing] = React.useState(false);
 
     const fetchRanking = React.useCallback(async () => {
         try {
             setError(null);
             const resp = await axios.get('http://localhost:8000/api/power-ranking?limit=10');
             const items = resp?.data?.items;
-            const cItems = resp?.data?.country_items;
-            const iItems = resp?.data?.industry_items;
             if (Array.isArray(items)) setRows(items);
-            if (Array.isArray(cItems)) setCountryRows(cItems);
-            if (Array.isArray(iItems)) setIndustryRows(iItems);
 
-            if (Array.isArray(items) || Array.isArray(cItems) || Array.isArray(iItems)) {
+            if (Array.isArray(items)) {
                 setLastUpdatedAt(new Date());
             }
         } catch (e) {
@@ -257,11 +251,30 @@ const PowerRanking = () => {
         }
     }, []);
 
+    const refreshScores = React.useCallback(async () => {
+        try {
+            setRefreshing(true);
+            // crawl+score+ingest a few random people; ranking polling will reflect updates
+            await axios.post('http://localhost:8000/api/news/refresh?count=5&limit_per_person=1');
+        } catch {
+            // ignore: ranking polling will show latest state
+        } finally {
+            setRefreshing(false);
+        }
+    }, []);
+
     React.useEffect(() => {
         fetchRanking();
         const id = setInterval(fetchRanking, 20000); // poll for near-real-time updates
         return () => clearInterval(id);
     }, [fetchRanking]);
+
+    React.useEffect(() => {
+        // kick once on mount, then periodically refresh scores (lighter than 20s)
+        refreshScores();
+        const id = setInterval(refreshScores, 120000);
+        return () => clearInterval(id);
+    }, [refreshScores]);
 
     const renderAvatar = (r) => (
         <Avatar aria-hidden="true">
@@ -278,26 +291,8 @@ const PowerRanking = () => {
 
             <ControlsRow>
                 <Segmented>
-                    <SegmentButton
-                        type="button"
-                        active={activeTab === 'Total'}
-                        onClick={() => setActiveTab('Total')}
-                    >
-                        Total
-                    </SegmentButton>
-                    <SegmentButton
-                        type="button"
-                        active={activeTab === 'Country'}
-                        onClick={() => setActiveTab('Country')}
-                    >
-                        Country
-                    </SegmentButton>
-                    <SegmentButton
-                        type="button"
-                        active={activeTab === 'Industry'}
-                        onClick={() => setActiveTab('Industry')}
-                    >
-                        Industry
+                    <SegmentButton type="button" active onClick={refreshScores} disabled={refreshing}>
+                        {refreshing ? 'Updating…' : 'Update scores'}
                     </SegmentButton>
                 </Segmented>
             </ControlsRow>
@@ -307,30 +302,14 @@ const PowerRanking = () => {
                     <Table>
                         <thead>
                             <tr>
-                                <th>{activeTab === 'Industry' ? 'Field' : 'Rank'}</th>
+                                <th>Rank</th>
                                 <th>Figure</th>
                                 <th>Influence Score</th>
                                 <th>Stocks</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {activeTab === 'Country' && !loading && !error && countryRows.length === 0 && (
-                                <tr>
-                                    <td colSpan={4}>
-                                        <StockText>No country ranking yet. (Need events for country leaders.)</StockText>
-                                    </td>
-                                </tr>
-                            )}
-
-                            {activeTab === 'Industry' && !loading && !error && industryRows.length === 0 && (
-                                <tr>
-                                    <td colSpan={4}>
-                                        <StockText>No industry ranking yet. (Need events for more figures.)</StockText>
-                                    </td>
-                                </tr>
-                            )}
-
-                            {activeTab === 'Total' && loading && (
+                            {loading && (
                                 <tr>
                                     <td colSpan={4}>
                                         <StockText>Loading ranking…</StockText>
@@ -338,7 +317,7 @@ const PowerRanking = () => {
                                 </tr>
                             )}
 
-                            {activeTab === 'Total' && !loading && error && (
+                            {!loading && error && (
                                 <tr>
                                     <td colSpan={4}>
                                         <StockText>{error}</StockText>
@@ -346,7 +325,7 @@ const PowerRanking = () => {
                                 </tr>
                             )}
 
-                            {activeTab === 'Total' && !loading && !error && rows.length === 0 && (
+                            {!loading && !error && rows.length === 0 && (
                                 <tr>
                                     <td colSpan={4}>
                                         <StockText>No ranking data yet. (Waiting for events to be ingested.)</StockText>
@@ -354,7 +333,7 @@ const PowerRanking = () => {
                                 </tr>
                             )}
 
-                            {activeTab === 'Total' && rows.map((r) => (
+                            {rows.map((r) => (
                                 <tr key={`total-${r.rank}-${r.name}`}>
                                     <td className={r.rank === 1 ? 'rank-1' : undefined}>
                                         <RankCell>
@@ -376,62 +355,6 @@ const PowerRanking = () => {
                                                         Updated {lastUpdatedAt.toLocaleTimeString()}
                                                     </SubLabel>
                                                 )}
-                                            </FigureText>
-                                        </FigureCell>
-                                    </td>
-                                    <td>
-                                        <InfluenceScore value={r.influence}>
-                                            {typeof r.influence === 'number' ? r.influence.toFixed(2) : r.influence}
-                                        </InfluenceScore>
-                                    </td>
-                                    <td>
-                                        <StockText>{r.stocks || '-'}</StockText>
-                                    </td>
-                                </tr>
-                            ))}
-
-                            {activeTab === 'Country' && countryRows.map((r) => (
-                                <tr key={`country-${r.rank}-${r.name}`}>
-                                    <td className={r.rank === 1 ? 'rank-1' : undefined}>
-                                        <RankCell>
-                                            <span>{r.rank}</span>
-                                            {typeof r.delta === 'number' && r.delta !== 0 && (
-                                                <Delta value={r.delta}>
-                                                    {r.delta >= 0 ? `+${r.delta}` : r.delta}
-                                                </Delta>
-                                            )}
-                                        </RankCell>
-                                    </td>
-                                    <td>
-                                        <FigureCell>
-                                            {renderAvatar(r)}
-                                            <FigureText>
-                                                <Name>{r.name}</Name>
-                                                <SubLabel>{r.country || '-'}</SubLabel>
-                                            </FigureText>
-                                        </FigureCell>
-                                    </td>
-                                    <td>
-                                        <InfluenceScore value={r.influence}>
-                                            {typeof r.influence === 'number' ? r.influence.toFixed(2) : r.influence}
-                                        </InfluenceScore>
-                                    </td>
-                                    <td>
-                                        <StockText>{r.stocks || '-'}</StockText>
-                                    </td>
-                                </tr>
-                            ))}
-
-                            {activeTab === 'Industry' && industryRows.map((r) => (
-                                <tr key={`industry-${r.rank}-${r.name}`}>
-                                    <td>
-                                        <StockText>{r.field || '-'}</StockText>
-                                    </td>
-                                    <td>
-                                        <FigureCell>
-                                            {renderAvatar(r)}
-                                            <FigureText>
-                                                <Name>{r.name}</Name>
                                             </FigureText>
                                         </FigureCell>
                                     </td>

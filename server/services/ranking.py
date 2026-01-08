@@ -5,7 +5,8 @@ import re
 from sqlalchemy import desc, func, select
 from sqlalchemy.orm import Session
 
-from server.models import Entity, InfluenceEdge
+from server.models import Entity
+from server.services.gnn_scoring import compute_gnn_person_scores
 
 
 _COUNTRY_RE = re.compile(r"\bof (?:the )?(?P<country>.+)$", re.IGNORECASE)
@@ -65,51 +66,9 @@ def _infer_industry_field(category: str | None, title: str | None, key_issues: s
 
 
 def compute_power_ranking(db: Session, *, limit: int = 10) -> list[dict]:
-    # score(p) = sum_a weight(p,a)
-    rows = (
-        db.execute(
-            select(InfluenceEdge.person_id, func.sum(InfluenceEdge.weight).label("score"))
-            .group_by(InfluenceEdge.person_id)
-            .order_by(desc("score"))
-            .limit(limit)
-        )
-        .all()
-    )
-
-    person_ids = [r.person_id for r in rows]
-    persons = db.execute(select(Entity).where(Entity.id.in_(person_ids))).scalars().all()
-    person_by_id = {p.id: p for p in persons}
-
-    results: list[dict] = []
-    for idx, r in enumerate(rows, start=1):
-        person = person_by_id.get(r.person_id)
-        name = person.name if person else str(r.person_id)
-
-        # Top impacted assets (as "stocks" label)
-        top_assets = (
-            db.execute(
-                select(InfluenceEdge.asset_id, InfluenceEdge.weight)
-                .where(InfluenceEdge.person_id == r.person_id)
-                .order_by(desc(InfluenceEdge.weight))
-                .limit(2)
-            )
-            .all()
-        )
-        asset_ids = [a.asset_id for a in top_assets]
-        assets = db.execute(select(Entity).where(Entity.id.in_(asset_ids))).scalars().all()
-        asset_by_id = {a.id: a for a in assets}
-        stocks = ", ".join([asset_by_id[a.asset_id].name for a in top_assets if a.asset_id in asset_by_id]) or "-"
-
-        results.append(
-            {
-                "rank": idx,
-                "delta": 0,
-                "name": name,
-                "influence": float(r.score or 0.0),
-                "stocks": stocks,
-            }
-        )
-    return results
+    # Default ranking uses GNN-style propagation (prior + online edges).
+    items, _debug = compute_gnn_person_scores(db, limit=limit)
+    return items
 
 
 def compute_country_ranking(db: Session, *, limit: int = 10) -> list[dict]:
@@ -117,7 +76,7 @@ def compute_country_ranking(db: Session, *, limit: int = 10) -> list[dict]:
     Rank top figure per country by total influence score.
     """
     # Get top people by score (take a larger pool, then pick best per country)
-    pool = compute_power_ranking(db, limit=200)
+    pool = [p for p in compute_power_ranking(db, limit=200) if float(p.get("influence") or 0.0) > 0.0]
     if not pool:
         return []
 
@@ -147,7 +106,7 @@ def compute_industry_ranking(db: Session, *, limit: int = 10) -> list[dict]:
     """
     Rank top figure per inferred industry field by total influence score.
     """
-    pool = compute_power_ranking(db, limit=200)
+    pool = [p for p in compute_power_ranking(db, limit=200) if float(p.get("influence") or 0.0) > 0.0]
     if not pool:
         return []
 
