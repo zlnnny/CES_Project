@@ -9,9 +9,13 @@ from server.models import Entity, InfluenceEdge, NewsEvent
 from server.schemas import NewsIngestRequest, NewsEventIn, NewsEventOut
 from server.crawler import get_realtime_news, get_mixed_realtime_news
 from server.services.news_scoring import importance_score, sentiment_score, tone_label
+from server.frontend_crawler import get_latest_frontend_news
+from datetime import timedelta
+
 
 router = APIRouter(prefix="/api", tags=["events"])
-
+cached_news = []
+last_crawled_time = None
 def process_ingestion(db: Session, events: list[NewsEventIn], rho: float = 0.9):
     updated_edges = 0
     inserted_events = 0
@@ -195,3 +199,47 @@ def refresh_news(count: int = 5, limit_per_person: int = 1, db: Session = Depend
 @router.post("/events/ingest")
 def ingest_events_endpoint(req: NewsIngestRequest, db: Session = Depends(get_db)):
     return process_ingestion(db, req.events, req.rho)
+
+# 파일 맨 아래에 추가하세요
+
+@router.get("/news/today")
+def fetch_todays_news(force_refresh: bool = False, db: Session = Depends(get_db)):
+    global cached_news, last_crawled_time
+    
+    current_time = datetime.now()
+    
+    # 1. 캐시 확인 (새로고침 요청이 아니고, 데이터가 있고, 10분이 안 지났으면 -> 저장된 거 리턴)
+    if not force_refresh and cached_news and last_crawled_time:
+        if current_time - last_crawled_time < timedelta(minutes=10):
+            return {
+                "news": cached_news,
+                "last_updated": last_crawled_time.strftime('%Y-%m-%d %H:%M:%S'),
+                "status": "cached"
+            }
+
+    # 2. 크롤링 실행 (작성자님이 만든 함수 사용)
+    print("🐢 [Crawling] 프론트엔드용 뉴스 수집 중...")
+    try:
+        raw_data = get_latest_frontend_news(target_count=3)
+        
+        if raw_data:
+            # [협업 포인트] 팀원이 만든 DB 저장 함수 재사용! (데이터 형식만 맞으면 됨)
+            # 형식이 안 맞아서 에러가 난다면 이 줄(process_ingestion)만 주석 처리하면 됨
+            try:
+                process_ingestion(db, raw_data) 
+            except Exception as db_err:
+                print(f"⚠️ DB 저장 건너뜀: {db_err}")
+
+            # 캐시 업데이트
+            cached_news = raw_data
+            last_crawled_time = current_time
+            
+    except Exception as e:
+        print(f"❌ 크롤링 에러: {e}")
+    
+    # 3. 결과 반환 (프론트엔드가 원하는 포맷)
+    return {
+        "news": cached_news,
+        "last_updated": last_crawled_time.strftime('%Y-%m-%d %H:%M:%S') if last_crawled_time else None,
+        "status": "fresh"
+    }
