@@ -10,7 +10,7 @@ const SectionTitle = styled.h2` font-size: 2rem; color: var(--color-text-main); 
 const CardGrid = styled.div` display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; `;
 const NewsCard = styled.div` background-color: var(--color-bg-card, #1e1e1e); border: 1px solid var(--color-border, #333); border-radius: 10px; padding: 1.5rem; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; justify-content: space-between; &:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); } `;
 const Header = styled.div` display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; `;
-const LeaderBadge = styled.span` font-size: 0.8rem; background-color: var(--color-accent, #007bff); color: white; padding: 0.3rem 0.6rem; border-radius: 20px; font-weight: bold; `;
+const LeaderBadge = styled.span` font-size: 0.8rem; background-color: var(--color-accent, #007bff); color: #0b0f14; padding: 0.3rem 0.6rem; border-radius: 20px; font-weight: bold; `;
 const DateText = styled.span` font-size: 0.8rem; color: var(--color-text-muted, #888); `;
 const NewsTitle = styled.h3` font-size: 1.2rem; color: var(--color-text-main, #fff); margin-bottom: 1rem; line-height: 1.4; font-family: var(--font-ko); `;
 const AnalysisBox = styled.div` background-color: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; `;
@@ -91,7 +91,7 @@ const TodaysNews = () => {
         if (force) setRefreshing(true);
         try {
             const url = `http://localhost:8000/api/news/today${force ? '?force_refresh=true' : ''}`;
-            const response = await axios.get(url);
+            const response = await axios.get(url, { timeout: 12000 });
             
             const { news, last_updated, message } = response.data;
 

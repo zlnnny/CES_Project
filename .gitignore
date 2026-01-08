@@ -16,6 +16,22 @@ site/dist/
 .venv/
 server/venv/
 
+# Env files (never commit secrets)
+.env
+.env.*
+
+# Private data (keep seed files out of git; stored in Supabase DB)
+private_data/
+
+# Seed/generated data files (keep repo light)
+server/data/people.json
+server/data/assets.json
+server/data/raw_news.json
+server/data/events.json
+server/data/weights.json
+server/data/topk_assets.json
+server/data/seen_articles.json
+
 # Python cache
 __pycache__/
 *.pyc

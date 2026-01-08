@@ -78,7 +78,8 @@ def read_todays_news(force_refresh: bool = False):
 
     # 3. 크롤링 실행 (데이터가 없거나, 시간이 만료됐거나, 강제 요청일 때)
     try:
-        new_data = get_latest_frontend_news(target_count=3)
+        # Keep this endpoint responsive for the frontend (time-boxed).
+        new_data = get_latest_frontend_news(target_count=3, time_budget_s=8.0)
         if new_data:
             cached_news = new_data
             last_crawled_time = current_time

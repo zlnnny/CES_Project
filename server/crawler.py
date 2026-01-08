@@ -7,6 +7,11 @@ import requests
 from newspaper import Article, Config
 import random
 
+from sqlalchemy import select
+
+from server.db import SessionLocal
+from server.models import Entity
+
 # ---------------------------------------------------------
 # [설정] 파일 경로 및 디렉토리 설정
 # ---------------------------------------------------------
@@ -24,8 +29,21 @@ def load_assets_from_json():
     """assets.json 파일을 읽어서 자산 리스트를 반환"""
     try:
         if not os.path.exists(ASSETS_FILE_PATH):
-            print(f"⚠️ [에러] 자산 파일이 없습니다: {ASSETS_FILE_PATH}")
-            return []
+            # Fallback: DB
+            db = SessionLocal()
+            try:
+                assets = db.execute(select(Entity).where(Entity.entity_type == "asset")).scalars().all()
+                out = []
+                for a in assets:
+                    keywords = []
+                    if a.key_issues:
+                        keywords.extend([s.strip() for s in a.key_issues.split(",") if s.strip()])
+                    if a.title_or_company:
+                        keywords.append(a.title_or_company)
+                    out.append({"name": a.name, "keywords": keywords})
+                return out
+            finally:
+                db.close()
             
         with open(ASSETS_FILE_PATH, 'r', encoding='utf-8') as f:
             data = json.load(f)
@@ -38,8 +56,15 @@ def load_random_leader_from_json():
     """people.json에서 무작위 인물 이름 하나를 반환"""
     try:
         if not os.path.exists(PEOPLE_FILE_PATH):
-            print(f"❌ [에러] people.json 파일이 없습니다.")
-            return "Donald Trump"
+            # Fallback: DB
+            db = SessionLocal()
+            try:
+                person = db.execute(
+                    select(Entity).where(Entity.entity_type == "person").order_by(Entity.name).limit(1)
+                ).scalar_one_or_none()
+                return person.name if person else "Donald Trump"
+            finally:
+                db.close()
         
         with open(PEOPLE_FILE_PATH, 'r', encoding='utf-8') as f:
             data = json.load(f)
@@ -158,9 +183,20 @@ def get_mixed_realtime_news(total_count=3):
     mixed_results = []
     
     try:
-        with open(PEOPLE_FILE_PATH, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-            people_list = data.get("people", [])
+        if not os.path.exists(PEOPLE_FILE_PATH):
+            # Fallback: DB
+            db = SessionLocal()
+            try:
+                people_list = [
+                    {"name": p.name}
+                    for p in db.execute(select(Entity).where(Entity.entity_type == "person")).scalars().all()
+                ]
+            finally:
+                db.close()
+        else:
+            with open(PEOPLE_FILE_PATH, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                people_list = data.get("people", [])
             
             # 인원이 충분한지 확인
             if len(people_list) < total_count:

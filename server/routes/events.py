@@ -1,12 +1,14 @@
 from fastapi import APIRouter, Depends
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 from datetime import datetime
 from typing import Optional
+
 from server.db import get_db
 from server.models import Entity, InfluenceEdge, NewsEvent
 from server.schemas import NewsIngestRequest, NewsEventIn, NewsEventOut
 from server.crawler import get_realtime_news, get_mixed_realtime_news
+from server.services.news_scoring import importance_score, sentiment_score, tone_label
 
 router = APIRouter(prefix="/api", tags=["events"])
 
@@ -51,8 +53,13 @@ def process_ingestion(db: Session, events: list[NewsEventIn], rho: float = 0.9):
 
         # [변경] 감성 점수가 없으면(None), 가중치 변화(delta)는 0입니다.
         # 나중에 AI 팀원이 sentiment를 업데이트해주면 그때 다시 계산해야 할 수도 있습니다.
-        current_sentiment = ev.sentiment if ev.sentiment is not None else 0.0
-        delta = float(current_sentiment * (ev.importance or 1.0))
+        # Online update rule:
+        # - Always give some credit for "exposure" (importance) even if sentiment is neutral/missing
+        # - Add signed component from sentiment
+        current_sentiment = float(ev.sentiment) if ev.sentiment is not None else 0.0
+        imp = float(ev.importance) if ev.importance is not None else 0.5
+        base_exposure = 0.15 * imp
+        delta = base_exposure + (current_sentiment * imp)
         
         for asset_name in ev.asset_names:
             asset = db.execute(
@@ -94,17 +101,33 @@ def fetch_news(leader: Optional[str] = None, db: Session = Depends(get_db)):
     
     events_in = []
     for item in raw_data:
+        # Only score/update for people that already exist in DB (as requested)
+        person = db.execute(
+            select(Entity).where(Entity.entity_type == "person", Entity.name == item["leader_name"])
+        ).scalar_one_or_none()
+        if not person:
+            continue
+
+        asset_names = item.get("impact_assets") or []
+        s = sentiment_score(item.get("title") or "")
+        t = tone_label(item.get("title") or "")
+        imp = importance_score(
+            title=item.get("title") or "",
+            person=person,
+            asset_hits=len(asset_names),
+            published_at=item.get("published_at"),
+        )
+
         event_obj = NewsEventIn(
             leader_name=item["leader_name"],
             title=item["title"],
             url=item["url"],
             source=item["source"],
             published_at=item["published_at"],
-            # Crawler가 None을 주므로 그대로 전달
-            sentiment=item["sentiment"],
-            tone=item["tone"],
-            importance=0.8, 
-            asset_names=item["impact_assets"]
+            sentiment=s,
+            tone=t,
+            importance=imp,
+            asset_names=asset_names,
         )
         events_in.append(event_obj)
 
@@ -114,6 +137,59 @@ def fetch_news(leader: Optional[str] = None, db: Session = Depends(get_db)):
     saved_events = db.execute(select(NewsEvent).where(NewsEvent.url.in_(urls))).scalars().all()
     
     return saved_events
+
+
+@router.post("/news/refresh")
+def refresh_news(count: int = 5, limit_per_person: int = 1, db: Session = Depends(get_db)):
+    """
+    Crawl + score + ingest for random people from DB.
+    This drives near-real-time Power Ranking updates.
+    """
+    people = (
+        db.execute(select(Entity).where(Entity.entity_type == "person").order_by(func.random()).limit(count))
+        .scalars()
+        .all()
+    )
+    if not people:
+        return {"inserted_events": 0, "updated_edges": 0}
+
+    raw: list[dict] = []
+    for p in people:
+        raw.extend(get_realtime_news(p.name, limit=limit_per_person))
+
+    events_in: list[NewsEventIn] = []
+    for item in raw:
+        person = db.execute(
+            select(Entity).where(Entity.entity_type == "person", Entity.name == item["leader_name"])
+        ).scalar_one_or_none()
+        if not person:
+            continue
+
+        asset_names = item.get("impact_assets") or []
+        s = sentiment_score(item.get("title") or "")
+        t = tone_label(item.get("title") or "")
+        imp = importance_score(
+            title=item.get("title") or "",
+            person=person,
+            asset_hits=len(asset_names),
+            published_at=item.get("published_at"),
+        )
+
+        events_in.append(
+            NewsEventIn(
+                leader_name=item["leader_name"],
+                title=item["title"],
+                url=item.get("url"),
+                source=item.get("source") or "Google News",
+                published_at=item.get("published_at"),
+                sentiment=s,
+                tone=t,
+                importance=imp,
+                asset_names=asset_names,
+            )
+        )
+
+    return process_ingestion(db, events_in, rho=0.9)
 
 # (Ingest endpoint는 그대로 유지)
 @router.post("/events/ingest")
