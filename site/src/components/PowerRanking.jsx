@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+// 추가 : 상세페이지용 모달 컴포넌트 불러오기
+import PersonDetailModal from './PersonDetailModal';
 
 const TableScroll = styled.div`
     width: 100%;
@@ -121,7 +123,10 @@ const Table = styled.table`
         font-weight: bold;
         font-family: var(--font-en);
     }
-
+    tbody tr { / * 클릭 가능 마우스 포인터 설정 */
+        cursor: pointer; 
+        transition: background-color 0.2s;
+    }    
     tbody tr:hover {
         background-color: rgba(100, 255, 218, 0.05);
     }
@@ -233,6 +238,7 @@ const PowerRanking = () => {
     const [error, setError] = React.useState(null);
     const [lastUpdatedAt, setLastUpdatedAt] = React.useState(null);
     const [refreshing, setRefreshing] = React.useState(false);
+    const [selectedPerson, setSelectedPerson] = React.useState(null); // 선택된 인물 정보 저장
 
     const fetchRanking = React.useCallback(async () => {
         try {
@@ -275,7 +281,10 @@ const PowerRanking = () => {
         const id = setInterval(refreshScores, 120000);
         return () => clearInterval(id);
     }, [refreshScores]);
-
+    // 추가 : 행 클릭 핸들러
+    const handleRowClick = (person) => {
+        setSelectedPerson(person);
+    };
     const renderAvatar = (r) => (
         <Avatar aria-hidden="true">
             {r.photoUrl
@@ -334,7 +343,7 @@ const PowerRanking = () => {
                             )}
 
                             {rows.map((r) => (
-                                <tr key={`total-${r.rank}-${r.name}`}>
+                                <tr key={`total-${r.rank}-${r.name}`} onClick={() => handleRowClick(r)}>
                                     <td className={r.rank === 1 ? 'rank-1' : undefined}>
                                         <RankCell>
                                             <span>{r.rank}</span>
@@ -372,6 +381,13 @@ const PowerRanking = () => {
                     </Table>
                 </TableScroll>
             </TableFrame>
+            {/* 추가: 모달 렌더링 (selectedPerson이 있을 때만 뜸) */}
+            {selectedPerson && (
+                <PersonDetailModal 
+                    person={selectedPerson} 
+                    onClose={() => setSelectedPerson(null)} 
+                />
+            )}
         </section>
     );
 };

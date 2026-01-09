@@ -1,27 +1,45 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, BackgroundTasks
 from sqlalchemy import func, select
 from sqlalchemy.orm import Session
-from datetime import datetime
-from typing import Optional
+from datetime import datetime, timedelta
+from typing import Optional, List, Dict
 
 from server.db import get_db
 from server.models import Entity, InfluenceEdge, NewsEvent
 from server.schemas import NewsIngestRequest, NewsEventIn, NewsEventOut
 from server.crawler import get_realtime_news, get_mixed_realtime_news
 from server.services.news_scoring import importance_score, sentiment_score, tone_label
-from server.frontend_crawler import get_latest_frontend_news
-from datetime import timedelta
 
+#  프론트엔드 전용 크롤러 & 백그라운드 워커 임포트
+from server.frontend_crawler import get_latest_frontend_news
+from server.services.background_updater import update_all_leaders_in_background
 
 router = APIRouter(prefix="/api", tags=["events"])
-cached_news = []
-last_crawled_time = None
+
+# 신규 추가 기본 자산 매핑 (크롤러가 자산을 못 찾을 경우 점수 누락 방지용 안전장치)
+DEFAULT_ASSETS = {
+    "Elon Musk": ["Tesla", "SpaceX", "Bitcoin"],
+    "Mark Zuckerberg": ["Meta", "Virtual Reality"],
+    "Tim Cook": ["Apple", "Tech"],
+    "Jensen Huang": ["Nvidia", "AI Chips"],
+    "Sam Altman": ["Microsoft", "OpenAI"],
+    "Joe Biden": ["USD", "Oil"],
+    "Donald Trump": ["Tariffs", "USD"],
+    "Jerome Powell": ["Treasury", "S&P 500"],
+    "Satya Nadella": ["Microsoft", "Cloud"],
+    "Sundar Pichai": ["Google", "Search"]
+}
+
+# 대시보드 속도 최적화를 위한 인메모리 캐시
+cached_news: List[Dict] = []
+last_crawled_time: Optional[datetime] = None
+
+
 def process_ingestion(db: Session, events: list[NewsEventIn], rho: float = 0.9):
     updated_edges = 0
     inserted_events = 0
 
     for ev in events:
-        # 1. 뉴스 저장 (중복 체크)
         existing_event = db.execute(select(NewsEvent).where(NewsEvent.url == ev.url)).scalar_one_or_none()
         
         if not existing_event:
@@ -32,7 +50,6 @@ def process_ingestion(db: Session, events: list[NewsEventIn], rho: float = 0.9):
                     url=ev.url,
                     source=ev.source,
                     published_at=ev.published_at,
-                    # AI가 아직 안 돌아서 None일 수 있음
                     sentiment=ev.sentiment,
                     tone=ev.tone,
                     importance=ev.importance,
@@ -41,7 +58,6 @@ def process_ingestion(db: Session, events: list[NewsEventIn], rho: float = 0.9):
             )
             inserted_events += 1
         
-        # 2. Leader Entity 생성
         leader = db.execute(
             select(Entity).where(Entity.entity_type == "person", Entity.name == ev.leader_name)
         ).scalar_one_or_none()
@@ -51,17 +67,12 @@ def process_ingestion(db: Session, events: list[NewsEventIn], rho: float = 0.9):
             db.add(leader)
             db.flush()
 
-        # 3. 자산 및 엣지 업데이트
         if not ev.asset_names:
             continue
 
-        # [변경] 감성 점수가 없으면(None), 가중치 변화(delta)는 0입니다.
-        # 나중에 AI 팀원이 sentiment를 업데이트해주면 그때 다시 계산해야 할 수도 있습니다.
-        # Online update rule:
-        # - Always give some credit for "exposure" (importance) even if sentiment is neutral/missing
-        # - Add signed component from sentiment
         current_sentiment = float(ev.sentiment) if ev.sentiment is not None else 0.0
         imp = float(ev.importance) if ev.importance is not None else 0.5
+        
         base_exposure = 0.15 * imp
         delta = base_exposure + (current_sentiment * imp)
         
@@ -75,7 +86,6 @@ def process_ingestion(db: Session, events: list[NewsEventIn], rho: float = 0.9):
                 db.add(asset)
                 db.flush()
 
-            # 엣지 업데이트 (sentiment가 0이면 weight 변화 없음, 관계만 생성됨)
             edge = db.execute(
                 select(InfluenceEdge).where(InfluenceEdge.person_id == leader.id, InfluenceEdge.asset_id == asset.id)
             ).scalar_one_or_none()
@@ -84,28 +94,25 @@ def process_ingestion(db: Session, events: list[NewsEventIn], rho: float = 0.9):
                 edge.weight = rho * float(edge.weight or 0.0) + delta
             else:
                 db.add(InfluenceEdge(person_id=leader.id, asset_id=asset.id, weight=delta))
-                db.flush()  # <--- [핵심!] 이 줄을 추가해주세요. (즉시 저장해서 중복 방지)
+                db.flush()
             
             updated_edges += 1
 
     db.commit()
     return {"inserted_events": inserted_events, "updated_edges": updated_edges}
 
+
 @router.get("/news", response_model=list[NewsEventOut])
 def fetch_news(leader: Optional[str] = None, db: Session = Depends(get_db)):
-    # 1. 크롤링 (leader가 None이면 crawler 내부에서 랜덤 선택됨)
     if leader:
-        # 사용자가 특정 인물을 지정했으면 그 사람 뉴스만 3개 (기존 로직)
         print(f"👉 특정 인물 요청: {leader}")
         raw_data = get_realtime_news(leader, limit=3)
     else:
-        # [변경] 지정된 사람이 없으면 '3명의 서로 다른 인물' 뉴스 가져오기
         print(f"👉 랜덤 믹스 요청")
         raw_data = get_mixed_realtime_news(total_count=3)
     
     events_in = []
     for item in raw_data:
-        # Only score/update for people that already exist in DB (as requested)
         person = db.execute(
             select(Entity).where(Entity.entity_type == "person", Entity.name == item["leader_name"])
         ).scalar_one_or_none()
@@ -145,10 +152,6 @@ def fetch_news(leader: Optional[str] = None, db: Session = Depends(get_db)):
 
 @router.post("/news/refresh")
 def refresh_news(count: int = 5, limit_per_person: int = 1, db: Session = Depends(get_db)):
-    """
-    Crawl + score + ingest for random people from DB.
-    This drives near-real-time Power Ranking updates.
-    """
     people = (
         db.execute(select(Entity).where(Entity.entity_type == "person").order_by(func.random()).limit(count))
         .scalars()
@@ -195,49 +198,92 @@ def refresh_news(count: int = 5, limit_per_person: int = 1, db: Session = Depend
 
     return process_ingestion(db, events_in, rho=0.9)
 
-# (Ingest endpoint는 그대로 유지)
+
 @router.post("/events/ingest")
 def ingest_events_endpoint(req: NewsIngestRequest, db: Session = Depends(get_db)):
     return process_ingestion(db, req.events, req.rho)
 
-# 파일 맨 아래에 추가하세요
 
+# 대시보드용 최신 뉴스 조회 
 @router.get("/news/today")
-def fetch_todays_news(force_refresh: bool = False, db: Session = Depends(get_db)):
+def fetch_todays_news(
+    background_tasks: BackgroundTasks,
+    force_refresh: bool = False, 
+    db: Session = Depends(get_db)
+):
+    
     global cached_news, last_crawled_time
     
     current_time = datetime.now()
     
-    # 1. 캐시 확인 (새로고침 요청이 아니고, 데이터가 있고, 10분이 안 지났으면 -> 저장된 거 리턴)
+    # 1. 캐시 확인 및 백그라운드 작업 예약
     if not force_refresh and cached_news and last_crawled_time:
         if current_time - last_crawled_time < timedelta(minutes=10):
+            # [최적화] 캐시된 뉴스 반환 + 백그라운드 랭킹 업데이트 트리거
+            background_tasks.add_task(update_all_leaders_in_background)
+            
             return {
                 "news": cached_news,
                 "last_updated": last_crawled_time.strftime('%Y-%m-%d %H:%M:%S'),
                 "status": "cached"
             }
 
-    # 2. 크롤링 실행 (작성자님이 만든 함수 사용)
-    print("🐢 [Crawling] 프론트엔드용 뉴스 수집 중...")
+    # 2. 동기식 크롤링 (화면 표시용 대표 인물)
+    print("🐢 [Foreground] 대시보드용 뉴스 데이터 수집 시작...")
     try:
         raw_data = get_latest_frontend_news(target_count=3)
         
         if raw_data:
-            # [협업 포인트] 팀원이 만든 DB 저장 함수 재사용! (데이터 형식만 맞으면 됨)
-            # 형식이 안 맞아서 에러가 난다면 이 줄(process_ingestion)만 주석 처리하면 됨
-            try:
-                process_ingestion(db, raw_data) 
-            except Exception as db_err:
-                print(f"⚠️ DB 저장 건너뜀: {db_err}")
+            events_to_save = []
+            for item in raw_data:
+                title_text = item.get("title", "")
+                
+                # 점수 계산 (NLP 분석)
+                calculated_sentiment = sentiment_score(title_text)
+                calculated_tone = tone_label(title_text)
+                calculated_importance = 0.8  # 대시보드 노출 뉴스는 중요도 높게 설정
 
-            # 캐시 업데이트
+                # [중요] 자산(Asset) 자동 주입 로직
+                # 크롤러가 자산을 못 찾으면 점수가 0이 되므로, 기본 자산을 강제로 넣음
+                assets = item.get("impact_assets", [])
+                if not assets:
+                    for leader, defaults in DEFAULT_ASSETS.items():
+                        if leader in item["leader_name"]:
+                            assets = defaults
+                            break
+                    if not assets:
+                        assets = ["Global Market"]
+
+                # DB 저장용 객체 생성
+                event_obj = NewsEventIn(
+                    leader_name=item["leader_name"],
+                    title=title_text,
+                    url=item["url"],
+                    source=item.get("source", "Google News"),
+                    published_at=item["published_at"],
+                    sentiment=item.get("sentiment") or calculated_sentiment,
+                    tone=item.get("tone") or calculated_tone,
+                    importance=calculated_importance,
+                    asset_names=assets 
+                )
+                events_to_save.append(event_obj)
+
+            # DB 저장 및 랭킹 점수 반영
+            try:
+                result = process_ingestion(db, events_to_save) 
+                print(f"💾 [DB Success] Foreground 저장 완료: {result}")
+            except Exception as db_err:
+                print(f"⚠️ [DB Error] 저장 중 오류: {db_err}")
+
             cached_news = raw_data
             last_crawled_time = current_time
             
     except Exception as e:
-        print(f"❌ 크롤링 에러: {e}")
+        print(f"❌ [Crawler Error] 크롤링 실패: {e}")
     
-    # 3. 결과 반환 (프론트엔드가 원하는 포맷)
+    # 3. 비동기 백그라운드 랭킹 업데이트 실행 (사용자 대기 없음)
+    background_tasks.add_task(update_all_leaders_in_background)
+
     return {
         "news": cached_news,
         "last_updated": last_crawled_time.strftime('%Y-%m-%d %H:%M:%S') if last_crawled_time else None,

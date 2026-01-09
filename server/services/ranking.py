@@ -129,5 +129,3 @@ def compute_industry_ranking(db: Session, *, limit: int = 10) -> list[dict]:
     for i, r in enumerate(ranked, start=1):
         r["rank"] = i
     return ranked
-
-
