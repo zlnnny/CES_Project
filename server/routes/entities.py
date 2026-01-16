@@ -50,6 +50,19 @@ def list_entities(entity_type: str | None = None, db: Session = Depends(get_db))
     return db.execute(q.order_by(Entity.entity_type, Entity.category, Entity.name)).scalars().all()
 
 
+@router.get("/entities/{entity_type}/{name}", response_model=EntityOut)
+def get_entity(entity_type: str, name: str, db: Session = Depends(get_db)):
+    """
+    Fetch a single entity by (type, name) for detail pages.
+    """
+    e = db.execute(
+        select(Entity).where(Entity.entity_type == entity_type, Entity.name == name)
+    ).scalar_one_or_none()
+    if not e:
+        raise HTTPException(status_code=404, detail="Entity not found")
+    return e
+
+
 @router.post("/embeddings/recompute", response_model=EmbeddingJobResult)
 def recompute_embeddings(req: EmbeddingJobRequest, db: Session = Depends(get_db)):
     q = select(Entity)

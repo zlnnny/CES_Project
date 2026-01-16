@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
+import threading
 
 from server.crawler import get_realtime_news
 from server.db import get_engine
@@ -32,11 +33,15 @@ def read_root():
 def _startup_create_tables():
     # Minimal setup for local/dev. For production, prefer Alembic migrations.
     # DB가 아직 안 떠있어도 API 자체는 뜰 수 있게(프론트 개발 편의) 실패를 무시합니다.
-    try:
-        Base.metadata.create_all(bind=get_engine())
-        print("✅ DB connected (tables ensured)")
-    except Exception as e:
-        print(f"⚠️ DB not available yet: {e}")
+    # IMPORTANT: never block API startup on DB connectivity.
+    def _run():
+        try:
+            Base.metadata.create_all(bind=get_engine())
+            print("✅ DB connected (tables ensured)")
+        except Exception as e:
+            print(f"⚠️ DB not available yet: {e}")
+
+    threading.Thread(target=_run, daemon=True).start()
 
 
 app.include_router(entities_router.router)
