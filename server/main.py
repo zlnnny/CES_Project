@@ -51,6 +51,30 @@ app.include_router(ranking_router.router)
 
 cached_news = []
 last_crawled_time = None
+_refresh_lock = threading.Lock()
+_refresh_inflight = False
+
+
+def _refresh_news_background():
+    global cached_news, last_crawled_time, _refresh_inflight
+    # Avoid concurrent refresh storms
+    if not _refresh_lock.acquire(blocking=False):
+        return
+    try:
+        if _refresh_inflight:
+            return
+        _refresh_inflight = True
+        current_time = datetime.now()
+        try:
+            new_data = get_latest_frontend_news(target_count=3, time_budget_s=8.0)
+            if new_data:
+                cached_news = new_data
+                last_crawled_time = current_time
+        except Exception:
+            pass
+    finally:
+        _refresh_inflight = False
+        _refresh_lock.release()
 
 @app.get("/api/news/today")
 def read_todays_news(force_refresh: bool = False):
@@ -81,16 +105,11 @@ def read_todays_news(force_refresh: bool = False):
                 "news": cached_news
             }
 
-    # 3. 크롤링 실행 (데이터가 없거나, 시간이 만료됐거나, 강제 요청일 때)
-    try:
-        # Keep this endpoint responsive for the frontend (time-boxed).
-        new_data = get_latest_frontend_news(target_count=3, time_budget_s=8.0)
-        if new_data:
-            cached_news = new_data
-            last_crawled_time = current_time
-    except Exception as e:
-        print(f"❌ 크롤링 실패: {e}")
-        # 실패하면 기존 캐시라도 보냄
+    # 3. Refresh in background (never block UI)
+    if force_refresh or not cached_news:
+        threading.Thread(target=_refresh_news_background, daemon=True).start()
+    elif last_crawled_time and (current_time - last_crawled_time) >= timedelta(minutes=10):
+        threading.Thread(target=_refresh_news_background, daemon=True).start()
     
     # 최종 응답
     return {

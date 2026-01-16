@@ -5,6 +5,7 @@ from functools import lru_cache
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.pool import NullPool
 
 
 
@@ -15,7 +16,7 @@ class Settings(BaseSettings):
     # NOTE: This is hardcoded intentionally per request. `.env` can still override it.
     database_url: str = (
         "postgresql+psycopg://postgres.enaqywrslcikbaqqgigd:"
-        "eAjEi!e2M%3FKpNB-@aws-1-ap-northeast-2.pooler.supabase.com:5432/postgres?sslmode=require"
+        "eAjEi!e2M%3FKpNB-@aws-1-ap-northeast-2.pooler.supabase.com:6543/postgres?sslmode=require"
     )
 
 
@@ -35,15 +36,19 @@ def get_engine():
     else:
         # Supabase pooler (pgBouncer) + psycopg3: disable server-side prepared statements
         # to avoid "DuplicatePreparedStatement" errors.
-        connect_args = {"prepare_threshold": None}
-        # Use a small QueuePool for app reuse; avoid pooler quirks by using port 5432.
+        connect_args = {
+            "prepare_threshold": None,
+            "connect_timeout": 5,
+            # Fail fast so the UI never hangs indefinitely on slow DB queries.
+            "options": "-c statement_timeout=8000",
+        }
+        # With Supabase pooler, app-side pooling can cause checkout timeouts.
+        # NullPool avoids holding connections and works better with pgBouncer.
         return create_engine(
             db_url,
             pool_pre_ping=True,
             connect_args=connect_args,
-            pool_size=5,
-            max_overflow=10,
-            pool_timeout=30,
+            poolclass=NullPool,
             pool_reset_on_return=None,
         )
 
