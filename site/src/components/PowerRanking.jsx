@@ -1,14 +1,119 @@
 import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-// 추가 : 상세페이지용 모달 컴포넌트 불러오기
-import PersonDetailModal from './PersonDetailModal';
+import { useNavigate } from 'react-router-dom';
 
-const TableScroll = styled.div`
+const CardsGrid = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 1.25rem;
+
+    @media (max-width: 900px) {
+        grid-template-columns: 1fr;
+    }
+`;
+
+const Card = styled.button`
+    display: block;
     width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 6px;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(35, 53, 84, 0.9);
+    border-radius: 14px;
+    padding: 18px 18px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+    transition: transform 0.15s ease, border-color 0.2s ease, background 0.2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        border-color: rgba(100, 255, 218, 0.9);
+        box-shadow: 0 20px 55px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(100, 255, 218, 0.18);
+        background: rgba(100, 255, 218, 0.04);
+    }
+
+    &:focus-visible {
+        outline: none;
+        border-color: rgba(100, 255, 218, 0.95);
+        box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.22), 0 20px 55px rgba(0, 0, 0, 0.28);
+    }
+`;
+
+const CardTop = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+`;
+
+const RankBadge = styled.div`
+    font-family: var(--font-en);
+    font-weight: 900;
+    font-size: 1.25rem;
+    color: var(--color-text-main);
+    letter-spacing: 0.4px;
+`;
+
+const ScorePill = styled.div`
+    font-family: var(--font-en);
+    font-weight: 900;
+    font-size: 1.05rem;
+    color: ${props => props.$value >= 0 ? '#ff4d4d' : '#3b82f6'};
+`;
+
+const CardMain = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 14px;
+`;
+
+const CardText = styled.div`
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+`;
+
+const StocksRow = styled.div`
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+`;
+
+const StockChip = styled.span`
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(100, 255, 218, 0.35);
+    background: rgba(100, 255, 218, 0.06);
+    color: var(--color-text-main);
+    font-family: var(--font-en);
+    font-weight: 800;
+    font-size: 0.85rem;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+`;
+
+const MetaLine = styled.div`
+    font-family: var(--font-en);
+    color: var(--color-text-muted);
+    font-size: 0.92rem;
+    opacity: 0.9;
+`;
+
+const CountLine = styled.div`
+    margin-top: 0.75rem;
+    font-family: var(--font-en);
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    opacity: 0.9;
 `;
 
 const ControlsRow = styled.div`
@@ -56,7 +161,6 @@ const SegmentButton = styled.button`
         box-shadow: 0 8px 16px rgba(0,0,0,0.45), inset 0 2px 14px rgba(0,0,0,0.28);
     }
 
-    /* 유광 하이라이트(입체감) */
     &::before {
         content: '';
         position: absolute;
@@ -68,7 +172,6 @@ const SegmentButton = styled.button`
         opacity: ${props => props.active ? 0.6 : 0.35};
     }
 
-    /* 은은한 민트 글로우 */
     &::after {
         content: '';
         position: absolute;
@@ -80,98 +183,10 @@ const SegmentButton = styled.button`
     }
 `;
 
-const TableFrame = styled.div`
-    border: 2px solid var(--color-accent); /* 바깥선만 민트 굵은 테두리 */
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
-`;
-
-const Table = styled.table`
-    width: 100%;
-    min-width: 760px; /* 작은 화면에서 컬럼이 눌리지 않게 */
-    border-collapse: collapse;
-    background: var(--color-bg-card);
-    border-radius: 10px;
-    overflow: hidden;
-    font-family: var(--font-ko);
-
-    th, td {
-        padding: 1.2rem;
-        text-align: left;
-        border-bottom: 1px solid var(--color-border);
-        color: var(--color-text-muted);
-    }
-
-    /* 세로 구분선 */
-    th:not(:last-child),
-    td:not(:last-child) {
-        border-right: 1px solid rgba(35, 53, 84, 0.8);
-    }
-
-    /* 1행(헤더) 가운데 정렬 */
-    thead th {
-        text-align: center;
-    }
-
-    thead {
-        background-color: rgba(255, 255, 255, 0.05);
-    }
-
-    th {
-        color: var(--color-text-main);
-        font-weight: bold;
-        font-family: var(--font-en);
-    }
-    tbody tr { / * 클릭 가능 마우스 포인터 설정 */
-        cursor: pointer; 
-        transition: background-color 0.2s;
-    }    
-    tbody tr:hover {
-        background-color: rgba(100, 255, 218, 0.05);
-    }
-
-    td.rank-1 {
-        color: var(--color-gold);
-    }
-
-    @media (max-width: 820px) {
-        min-width: 700px;
-
-        th, td {
-            padding: 1rem;
-        }
-    }
-
-    @media (max-width: 520px) {
-        min-width: 640px;
-
-        th, td {
-            padding: 0.9rem;
-        }
-    }
-`;
-
-const RankCell = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
+const StockText = styled.span`
     font-family: var(--font-en);
     font-weight: 700;
     color: var(--color-text-main);
-`;
-
-const Delta = styled.span`
-    font-size: 0.95rem;
-    font-weight: 800;
-    color: ${props => props.value >= 0 ? '#ff4d4d' : '#3b82f6'};
-`;
-
-const FigureCell = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 16px;
 `;
 
 const Avatar = styled.div`
@@ -193,43 +208,6 @@ const Avatar = styled.div`
         object-fit: cover;
         display: block;
     }
-
-    @media (max-width: 520px) {
-        width: 54px;
-        height: 54px;
-    }
-`;
-
-const FigureText = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-`;
-
-const Name = styled.div`
-    font-family: var(--font-en);
-    color: var(--color-text-main);
-    font-weight: 800;
-    font-size: 1.05rem;
-`;
-
-const SubLabel = styled.div`
-    font-family: var(--font-en);
-    color: var(--color-text-muted);
-    font-size: 0.85rem;
-    opacity: 0.85;
-`;
-
-const InfluenceScore = styled.span`
-    font-family: var(--font-en);
-    font-weight: 800;
-    color: ${props => props.value >= 0 ? '#ff4d4d' : '#3b82f6'};
-`;
-
-const StockText = styled.span`
-    font-family: var(--font-en);
-    font-weight: 700;
-    color: var(--color-text-main);
 `;
 
 const PowerRanking = () => {
@@ -238,32 +216,30 @@ const PowerRanking = () => {
     const [error, setError] = React.useState(null);
     const [lastUpdatedAt, setLastUpdatedAt] = React.useState(null);
     const [refreshing, setRefreshing] = React.useState(false);
-    const [selectedPerson, setSelectedPerson] = React.useState(null); // 선택된 인물 정보 저장
+    const navigate = useNavigate();
+
+    const LIMIT = 30;
 
     const fetchRanking = React.useCallback(async () => {
         try {
             setError(null);
-            const resp = await axios.get('http://localhost:8000/api/power-ranking?limit=10');
+            const resp = await axios.get(`http://localhost:8000/api/power-ranking?limit=${LIMIT}`, { timeout: 9000 });
             const items = resp?.data?.items;
             if (Array.isArray(items)) setRows(items);
-
-            if (Array.isArray(items)) {
-                setLastUpdatedAt(new Date());
-            }
+            if (Array.isArray(items)) setLastUpdatedAt(new Date());
         } catch (e) {
             setError('Failed to load ranking');
         } finally {
             setLoading(false);
         }
-    }, []);
+    }, [LIMIT]);
 
     const refreshScores = React.useCallback(async () => {
         try {
             setRefreshing(true);
-            // crawl+score+ingest a few random people; ranking polling will reflect updates
             await axios.post('http://localhost:8000/api/news/refresh?count=5&limit_per_person=1');
         } catch {
-            // ignore: ranking polling will show latest state
+            // ignore
         } finally {
             setRefreshing(false);
         }
@@ -271,32 +247,48 @@ const PowerRanking = () => {
 
     React.useEffect(() => {
         fetchRanking();
-        const id = setInterval(fetchRanking, 20000); // poll for near-real-time updates
+        const id = setInterval(fetchRanking, 20000);
         return () => clearInterval(id);
     }, [fetchRanking]);
 
-    React.useEffect(() => {
-        // kick once on mount, then periodically refresh scores (lighter than 20s)
-        refreshScores();
-        const id = setInterval(refreshScores, 120000);
-        return () => clearInterval(id);
-    }, [refreshScores]);
-    // 추가 : 행 클릭 핸들러
     const handleRowClick = (person) => {
-        setSelectedPerson(person);
+        const encoded = encodeURIComponent(person?.name || '');
+        if (!encoded) return;
+        navigate(`/power-rankings/${encoded}`);
     };
+
     const renderAvatar = (r) => (
         <Avatar aria-hidden="true">
             {r.photoUrl
                 ? <img src={r.photoUrl} alt="" />
-                : r.name.split(' ').map(s => s[0]).slice(0, 2).join('')
+                : (r.name || '').split(' ').map(s => s[0]).slice(0, 2).join('')
             }
         </Avatar>
     );
 
+    const displayRows = React.useMemo(() => {
+        if (Array.isArray(rows) && rows.length >= LIMIT) return rows.slice(0, LIMIT);
+        if (Array.isArray(rows) && rows.length > 0) {
+            const filled = rows.slice(0, LIMIT);
+            while (filled.length < LIMIT) {
+                filled.push({ rank: filled.length + 1, name: '', influence: 0, stocks: '-', delta: 0, __skeleton: true });
+            }
+            return filled;
+        }
+        return Array.from({ length: LIMIT }, (_, i) => ({
+            rank: i + 1,
+            name: '',
+            influence: 0,
+            stocks: '-',
+            delta: 0,
+            __skeleton: true,
+        }));
+    }, [rows]);
+
     return (
         <section id="ranking" className="container section-padding">
             <h2 className="section-title">Power Ranking</h2>
+            <CountLine>Showing {displayRows.length || 0} influential figures</CountLine>
 
             <ControlsRow>
                 <Segmented>
@@ -306,88 +298,54 @@ const PowerRanking = () => {
                 </Segmented>
             </ControlsRow>
 
-            <TableFrame>
-                <TableScroll aria-label="Power ranking table scroll container">
-                    <Table>
-                        <thead>
-                            <tr>
-                                <th>Rank</th>
-                                <th>Figure</th>
-                                <th>Influence Score</th>
-                                <th>Stocks</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {loading && (
-                                <tr>
-                                    <td colSpan={4}>
-                                        <StockText>Loading ranking…</StockText>
-                                    </td>
-                                </tr>
-                            )}
+            {!loading && error && <StockText>{error}</StockText>}
 
-                            {!loading && error && (
-                                <tr>
-                                    <td colSpan={4}>
-                                        <StockText>{error}</StockText>
-                                    </td>
-                                </tr>
-                            )}
+            <CardsGrid>
+                {displayRows.map((r) => {
+                    const stocks = (r.stocks || '')
+                        .split(',')
+                        .map(s => s.trim())
+                        .filter(Boolean)
+                        .slice(0, 2);
+                    return (
+                        <Card
+                            key={`card-${r.rank}-${r.name || 'skeleton'}`}
+                            type="button"
+                            onClick={() => !r.__skeleton && handleRowClick(r)}
+                            aria-label={r.__skeleton ? `Loading rank ${r.rank}` : `Open details for ${r.name}`}
+                            disabled={!!r.__skeleton}
+                            style={r.__skeleton ? { opacity: 0.55, cursor: 'default' } : undefined}
+                        >
+                            <CardTop>
+                                <RankBadge>{String(r.rank).padStart(2, '0')}</RankBadge>
+                                <ScorePill $value={r.influence}>
+                                    {r.__skeleton ? '—' : (typeof r.influence === 'number' ? r.influence.toFixed(2) : r.influence)}
+                                </ScorePill>
+                            </CardTop>
 
-                            {!loading && !error && rows.length === 0 && (
-                                <tr>
-                                    <td colSpan={4}>
-                                        <StockText>No ranking data yet. (Waiting for events to be ingested.)</StockText>
-                                    </td>
-                                </tr>
-                            )}
+                            <CardMain>
+                                {r.__skeleton ? <Avatar aria-hidden="true" /> : renderAvatar(r)}
+                                <CardText>
+                                    <div style={{ fontFamily: 'var(--font-en)', color: 'var(--color-text-main)', fontWeight: 900 }}>
+                                        {r.__skeleton ? '—' : r.name}
+                                    </div>
+                                    {!r.__skeleton && lastUpdatedAt && (
+                                        <MetaLine>
+                                            Updated {lastUpdatedAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                        </MetaLine>
+                                    )}
+                                </CardText>
+                            </CardMain>
 
-                            {rows.map((r) => (
-                                <tr key={`total-${r.rank}-${r.name}`} onClick={() => handleRowClick(r)}>
-                                    <td className={r.rank === 1 ? 'rank-1' : undefined}>
-                                        <RankCell>
-                                            <span>{r.rank}</span>
-                                            {typeof r.delta === 'number' && r.delta !== 0 && (
-                                                <Delta value={r.delta}>
-                                                    {r.delta >= 0 ? `+${r.delta}` : r.delta}
-                                                </Delta>
-                                            )}
-                                        </RankCell>
-                                    </td>
-                                    <td>
-                                        <FigureCell>
-                                            {renderAvatar(r)}
-                                            <FigureText>
-                                                <Name>{r.name}</Name>
-                                                {lastUpdatedAt && (
-                                                    <SubLabel>
-                                                        Updated {lastUpdatedAt.toLocaleTimeString()}
-                                                    </SubLabel>
-                                                )}
-                                            </FigureText>
-                                        </FigureCell>
-                                    </td>
-                                    <td>
-                                        <InfluenceScore value={r.influence}>
-                                            {typeof r.influence === 'number' ? r.influence.toFixed(2) : r.influence}
-                                        </InfluenceScore>
-                                    </td>
-                                    <td>
-                                        <StockText>{r.stocks || '-'}</StockText>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </Table>
-                </TableScroll>
-            </TableFrame>
-            {/* 추가: 모달 렌더링 (selectedPerson이 있을 때만 뜸) */}
-            {selectedPerson && (
-                <PersonDetailModal 
-                    person={selectedPerson} 
-                    onClose={() => setSelectedPerson(null)} 
-                />
-            )}
+                            <StocksRow>
+                                {(r.__skeleton ? ['—', '—'] : (stocks.length ? stocks : ['-','-'])).slice(0, 2).map((s, idx) => (
+                                    <StockChip key={`${r.rank}-${r.name || 'skeleton'}-stock-${idx}`}>{s}</StockChip>
+                                ))}
+                            </StocksRow>
+                        </Card>
+                    );
+                })}
+            </CardsGrid>
         </section>
     );
 };

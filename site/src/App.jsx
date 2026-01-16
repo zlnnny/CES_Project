@@ -7,6 +7,7 @@ import PowerRanking from './components/PowerRanking';
 import RankingWidget from './components/RankingWidget';
 import TodaysNews from './components/TodaysNews';
 import Footer from './components/Footer';
+import PersonDetailPage from './pages/PersonDetailPage';
 
 // 메인 페이지 컴포넌트
 const Home = () => {
@@ -27,6 +28,7 @@ function App() {
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/power-rankings/:name" element={<PersonDetailPage />} />
                 {/* 추후 추가될 라우트들 */}
                 {/* <Route path="/analysis/nlp" element={<NLPAnalysis />} /> */}
                 {/* <Route path="/analysis/mapping" element={<AssetMapping />} /> */}
