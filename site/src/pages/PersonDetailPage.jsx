@@ -186,6 +186,40 @@ const Small = styled.span`
   opacity: 0.85;
 `;
 
+const NewsItem = styled.a`
+  display: block;
+  text-decoration: none;
+  border: 1px solid rgba(35, 53, 84, 0.8);
+  background: rgba(255, 255, 255, 0.015);
+  border-radius: 12px;
+  padding: 14px 14px;
+  margin-bottom: 12px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+
+  &:hover {
+    border-color: rgba(100, 255, 218, 0.8);
+    background: rgba(100, 255, 218, 0.03);
+  }
+`;
+
+const NewsSource = styled.div`
+  font-family: var(--font-en);
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  opacity: 0.9;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
+`;
+
+const NewsTitle = styled.div`
+  font-family: var(--font-en);
+  color: var(--color-text-main);
+  font-weight: 900;
+  line-height: 1.35;
+`;
+
 const apiBase = 'http://localhost:8000';
 
 export default function PersonDetailPage() {
@@ -195,6 +229,7 @@ export default function PersonDetailPage() {
   const [entity, setEntity] = useState(null);
   const [rankingItem, setRankingItem] = useState(null);
   const [assets, setAssets] = useState([]);
+  const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -214,6 +249,10 @@ export default function PersonDetailPage() {
         // correlated assets (best-effort)
         const a = await axios.get(`${apiBase}/api/leader/${encodeURIComponent(leaderName)}/assets`, { timeout: 9000 });
         if (isMounted) setAssets(Array.isArray(a.data) ? a.data : []);
+
+        // leader news via crawler (best-effort)
+        const n = await axios.get(`${apiBase}/api/news?leader=${encodeURIComponent(leaderName)}&limit=5`, { timeout: 9000 });
+        if (isMounted) setNews(Array.isArray(n.data) ? n.data : []);
       } catch {
         // keep partials if any
       } finally {
@@ -244,7 +283,7 @@ export default function PersonDetailPage() {
           </Avatar>
           <HeroText>
             <Name>{leaderName}</Name>
-            <Subtitle>{title || 'Influential Figure'}</Subtitle>
+            <Subtitle>{title || '-'}</Subtitle>
           </HeroText>
         </HeroRow>
 
@@ -280,7 +319,7 @@ export default function PersonDetailPage() {
               {loading && <Small>Loading…</Small>}
             </PanelTitleRow>
 
-            {assets.map((a, idx) => {
+            {assets.slice(0, 5).map((a, idx) => {
               const score = Number(a?.score || 0);
               const pct = Math.max(0, Math.min(100, Math.round((score / maxAssetScore) * 100)));
               return (
@@ -306,12 +345,22 @@ export default function PersonDetailPage() {
         <div>
           <Panel>
             <PanelTitleRow>
-              <PanelTitle>About</PanelTitle>
+              <PanelTitle>Recent News Coverage</PanelTitle>
               {loading && <Small>Loading…</Small>}
             </PanelTitleRow>
-            <Small style={{ display: 'block', lineHeight: 1.6 }}>
-              {entity?.key_issues || 'No profile data yet.'}
-            </Small>
+
+            {news.slice(0, 6).map((n, idx) => (
+              <NewsItem key={`${n?.url || idx}`} href={n?.url || '#'} target="_blank" rel="noreferrer">
+                <NewsSource>
+                  <span style={{ color: 'var(--color-accent)', fontWeight: 900 }}>{n?.source || 'news'}</span>
+                  <Small>{n?.published_at ? String(n.published_at).split('T')[0] : String(n?.published_at || '').split(' ')[0]}</Small>
+                  {n?.tone && <Small>· {n.tone}</Small>}
+                </NewsSource>
+                <NewsTitle>{n?.title || ''}</NewsTitle>
+              </NewsItem>
+            ))}
+
+            {!loading && news.length === 0 && <Small>No recent news yet.</Small>}
           </Panel>
         </div>
       </Grid>

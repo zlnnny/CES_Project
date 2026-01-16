@@ -77,6 +77,18 @@ const CardText = styled.div`
     gap: 4px;
 `;
 
+const PersonName = styled.div`
+    font-family: var(--font-en);
+    color: var(--color-text-main);
+    font-weight: 900;
+    font-size: 1.35rem; /* 이름 더 크게 */
+    line-height: 1.2;
+
+    @media (max-width: 520px) {
+        font-size: 1.15rem;
+    }
+`;
+
 const StocksRow = styled.div`
     margin-top: 12px;
     display: flex;
@@ -326,12 +338,10 @@ const PowerRanking = () => {
                             <CardMain>
                                 {r.__skeleton ? <Avatar aria-hidden="true" /> : renderAvatar(r)}
                                 <CardText>
-                                    <div style={{ fontFamily: 'var(--font-en)', color: 'var(--color-text-main)', fontWeight: 900 }}>
-                                        {r.__skeleton ? '—' : r.name}
-                                    </div>
-                                    {!r.__skeleton && lastUpdatedAt && (
+                                    <PersonName>{r.__skeleton ? '—' : r.name}</PersonName>
+                                    {!r.__skeleton && (
                                         <MetaLine>
-                                            Updated {lastUpdatedAt.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                            {r.title_or_company || r.category || ''}
                                         </MetaLine>
                                     )}
                                 </CardText>

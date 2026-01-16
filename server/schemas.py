@@ -80,6 +80,8 @@ class PowerRankingItem(BaseModel):
     rank: int
     delta: int = 0
     name: str
+    category: str | None = None
+    title_or_company: str | None = None
     influence: float
     stocks: str
 

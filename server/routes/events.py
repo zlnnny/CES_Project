@@ -103,10 +103,10 @@ def process_ingestion(db: Session, events: list[NewsEventIn], rho: float = 0.9):
 
 
 @router.get("/news", response_model=list[NewsEventOut])
-def fetch_news(leader: Optional[str] = None, db: Session = Depends(get_db)):
+def fetch_news(leader: Optional[str] = None, limit: int = 5, db: Session = Depends(get_db)):
     if leader:
         print(f"👉 특정 인물 요청: {leader}")
-        raw_data = get_realtime_news(leader, limit=3)
+        raw_data = get_realtime_news(leader, limit=max(1, min(int(limit), 10)))
     else:
         print(f"👉 랜덤 믹스 요청")
         raw_data = get_mixed_realtime_news(total_count=3)
@@ -117,7 +117,10 @@ def fetch_news(leader: Optional[str] = None, db: Session = Depends(get_db)):
             select(Entity).where(Entity.entity_type == "person", Entity.name == item["leader_name"])
         ).scalar_one_or_none()
         if not person:
-            continue
+            # Ensure we can score/ingest even if this person wasn't seeded yet.
+            person = Entity(entity_type="person", name=item["leader_name"])
+            db.add(person)
+            db.flush()
 
         asset_names = item.get("impact_assets") or []
         s = sentiment_score(item.get("title") or "")
