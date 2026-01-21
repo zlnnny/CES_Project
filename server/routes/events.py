@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, BackgroundTasks
-from sqlalchemy import func, select
+from sqlalchemy import func, select, or_, desc, func, case, cast, Float
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
 from typing import Optional, List, Dict
@@ -102,55 +102,69 @@ def process_ingestion(db: Session, events: list[NewsEventIn], rho: float = 0.9):
     return {"inserted_events": inserted_events, "updated_edges": updated_edges}
 
 
-@router.get("/news", response_model=list[NewsEventOut])
-def fetch_news(leader: Optional[str] = None, limit: int = 5, db: Session = Depends(get_db)):
-    if leader:
-        print(f"👉 특정 인물 요청: {leader}")
-        raw_data = get_realtime_news(leader, limit=max(1, min(int(limit), 10)))
+@router.get("/news/stats")
+def get_news_stats(db: Session = Depends(get_db)):
+    """
+    전체 뉴스의 감성 분포(긍정/부정/중립) 개수를 반환합니다.
+    """
+    stats = db.execute(
+        select(
+            func.count().filter(NewsEvent.sentiment > 0.1).label("positive"),
+            func.count().filter(NewsEvent.sentiment < -0.1).label("negative"),
+            func.count().filter(NewsEvent.sentiment.between(-0.1, 0.1)).label("neutral")
+        )
+    ).one()
+    
+    return {
+        "positive": stats.positive,
+        "negative": stats.negative,
+        "neutral": stats.neutral
+    }
+
+# --------------------------------------------------------------------------
+# [수정] 뉴스 조회 API (검색/필터/정렬 완벽 지원)
+# --------------------------------------------------------------------------
+@router.get("/news", response_model=List[NewsEventOut])
+def fetch_news(
+    skip: int = 0, 
+    limit: int = 20, 
+    search: Optional[str] = None,
+    sentiment_filter: Optional[str] = None, 
+    sort_by: str = "latest", 
+    db: Session = Depends(get_db)
+):
+    query = select(NewsEvent)
+
+    # 1. 검색어 필터
+    if search:
+        search_term = f"%{search}%"
+        # 제목, 인물명, 자산명(배열이라 텍스트 변환 후 검색 등) 통합 검색
+        query = query.where(
+            or_(
+                NewsEvent.title.ilike(search_term),
+                NewsEvent.leader_name.ilike(search_term)
+            )
+        )
+
+    # 2. 감성 필터
+    if sentiment_filter:
+        if sentiment_filter == 'positive':
+            query = query.where(NewsEvent.sentiment > 0.1)
+        elif sentiment_filter == 'negative':
+            query = query.where(NewsEvent.sentiment < -0.1)
+        else:
+            query = query.where(NewsEvent.sentiment.between(-0.1, 0.1))
+
+    # 3. 정렬 로직
+    if sort_by == "importance":
+        query = query.order_by(NewsEvent.importance.desc(), NewsEvent.published_at.desc())
     else:
-        print(f"👉 랜덤 믹스 요청")
-        raw_data = get_mixed_realtime_news(total_count=3)
-    
-    events_in = []
-    for item in raw_data:
-        person = db.execute(
-            select(Entity).where(Entity.entity_type == "person", Entity.name == item["leader_name"])
-        ).scalar_one_or_none()
-        if not person:
-            # Ensure we can score/ingest even if this person wasn't seeded yet.
-            person = Entity(entity_type="person", name=item["leader_name"])
-            db.add(person)
-            db.flush()
+        query = query.order_by(NewsEvent.published_at.desc())
 
-        asset_names = item.get("impact_assets") or []
-        s = sentiment_score(item.get("title") or "")
-        t = tone_label(item.get("title") or "")
-        imp = importance_score(
-            title=item.get("title") or "",
-            person=person,
-            asset_hits=len(asset_names),
-            published_at=item.get("published_at"),
-        )
+    # 4. 페이징
+    query = query.offset(skip).limit(limit)
 
-        event_obj = NewsEventIn(
-            leader_name=item["leader_name"],
-            title=item["title"],
-            url=item["url"],
-            source=item["source"],
-            published_at=item["published_at"],
-            sentiment=s,
-            tone=t,
-            importance=imp,
-            asset_names=asset_names,
-        )
-        events_in.append(event_obj)
-
-    process_ingestion(db, events_in, rho=0.9)
-
-    urls = [e.url for e in events_in]
-    saved_events = db.execute(select(NewsEvent).where(NewsEvent.url.in_(urls))).scalars().all()
-    
-    return saved_events
+    return db.execute(query).scalars().all()
 
 
 @router.post("/news/refresh")
@@ -292,3 +306,97 @@ def fetch_todays_news(
         "last_updated": last_crawled_time.strftime('%Y-%m-%d %H:%M:%S') if last_crawled_time else None,
         "status": "fresh"
     }
+    
+
+@router.get("/news", response_model=list[NewsEventOut])
+def fetch_news(
+    skip: int = 0, 
+    limit: int = 20, 
+    search: Optional[str] = None,
+    sentiment_filter: Optional[str] = None, 
+    sort_by: str = "latest", # 👈 정렬 기준 추가 (latest, importance)
+    db: Session = Depends(get_db)
+):
+    query = select(NewsEvent)
+
+    # 1. 검색어 필터
+    if search:
+        search_term = f"%{search}%"
+        query = query.where(
+            or_(
+                NewsEvent.title.ilike(search_term),
+                NewsEvent.leader_name.ilike(search_term),
+                NewsEvent.impact_assets.contains([search]) # 자산 배열 검색 (DB 종류에 따라 다를 수 있음, 일단 시도)
+            )
+        )
+
+    # 2. 감성 필터
+    if sentiment_filter:
+        if sentiment_filter == 'positive':
+            query = query.where(NewsEvent.sentiment > 0.1)
+        elif sentiment_filter == 'negative':
+            query = query.where(NewsEvent.sentiment < -0.1)
+        else:
+            query = query.where(NewsEvent.sentiment.between(-0.1, 0.1))
+
+    # 3. 정렬 로직 (핵심!)
+    if sort_by == "importance":
+        # 중요도가 높은 순서대로, 그다음엔 최신순
+        query = query.order_by(NewsEvent.importance.desc(), NewsEvent.published_at.desc())
+    else:
+        # 기본은 최신순
+        query = query.order_by(NewsEvent.published_at.desc())
+
+    # 4. 페이징
+    query = query.offset(skip).limit(limit)
+
+    results = db.execute(query).scalars().all()
+    return results
+
+@router.post("/news/crawl")
+def crawl_news_by_keyword(
+    query: str, 
+    db: Session = Depends(get_db)
+):
+    print(f"🕵️ [Manual Crawl] 사용자 요청 키워드: {query}")
+    
+    # 1. 크롤러 실행 (실시간 구글 뉴스)
+    # limit=5 정도로 설정해 너무 오래 걸리지 않게 함
+    raw_data = get_realtime_news(query, limit=5)
+    
+    if not raw_data:
+        return {"message": "No news found", "count": 0, "events": []}
+
+    # 2. 데이터 DB 저장 (점수 계산 포함)
+    events_in = []
+    for item in raw_data:
+        # DB에 이미 있는지 중복 체크 (URL 기준)
+        exists = db.execute(select(NewsEvent).where(NewsEvent.url == item["url"])).scalar_one_or_none()
+        if exists:
+            continue
+
+        # 간단한 점수 로직 (크롤러가 가져온 값 활용)
+        # 만약 크롤러가 점수를 안 가져오면 기본값 할당
+        sentiment = item.get("sentiment") if item.get("sentiment") else 0.0
+        
+        # 중요도: 검색 결과는 사용자 관심사니까 높게 설정
+        importance = 0.85 
+
+        event_obj = NewsEvent(
+            leader_name=item.get("leader_name", "Unknown"), # 크롤러가 추출 못하면 Unknown
+            title=item["title"],
+            url=item["url"],
+            source=item.get("source", "Google News"),
+            published_at=item["published_at"],
+            sentiment=sentiment,
+            tone="neutral",
+            importance=importance,
+            impact_assets=item.get("impact_assets", [])
+        )
+        db.add(event_obj)
+        events_in.append(event_obj)
+    
+    db.commit()
+    
+    print(f"✅ [Crawl Success] {len(events_in)}개 뉴스 저장 완료")
+    return {"message": "Success", "count": len(events_in), "query": query}
