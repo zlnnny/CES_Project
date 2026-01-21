@@ -4,7 +4,7 @@ from sqlalchemy import text
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
 import threading
-
+from contextlib import asynccontextmanager
 from server.crawler import get_realtime_news
 from server.db import get_engine
 from server.deps import get_db
@@ -12,8 +12,26 @@ from server.models import Base
 from server.routes import entities as entities_router
 from server.routes import events as events_router
 from server.routes import ranking as ranking_router
+from server.seed_news import seed_data
 from server.frontend_crawler import get_latest_frontend_news
-app = FastAPI()
+# 뉴스 사이트 용 더미 데이터 생성기기
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # 1. DB 테이블 생성 
+    try:
+        Base.metadata.create_all(bind=get_engine())
+        print("✅ DB connected (tables ensured)")
+    except Exception as e:
+        print(f"⚠️ DB not available yet: {e}")
+
+    # 2. 더미 데이터 자동 생성 (Auto-Seeding)
+    try:
+        seed_data()
+    except Exception as e:
+        print(f"⚠️ Seeding skipped or failed: {e}")
+    
+    yield
+app = FastAPI(lifespan=lifespan)
 
 # CORS 설정 (프론트엔드에서 API 호출 허용)
 app.add_middleware(
@@ -76,7 +94,7 @@ def _refresh_news_background():
         _refresh_inflight = False
         _refresh_lock.release()
 
-@app.get("/api/news/today")
+@app.get("/api/news/today_legacy")
 def read_todays_news(force_refresh: bool = False):
     global cached_news, last_crawled_time
     

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
 
+
 const HeaderContainer = styled.header`
     background-color: var(--color-bg-header);
     padding: 1rem 0;
@@ -192,7 +193,7 @@ const Header = () => {
 
                     <NavMenu>
                         <a href="#ranking">Power Ranking</a>
-                        <a href="#news">News</a>
+                        <Link to="/news">News</Link>
                         <a href="#charts">Charts</a>
                     </NavMenu>
                 </NavContent>
