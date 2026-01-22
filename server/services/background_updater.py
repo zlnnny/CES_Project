@@ -15,6 +15,11 @@ CSV_PATH = os.path.join("server", "data", "candidates_people.csv")
 # 너무 많으면 느려지고 차단당함. 10명 넘어가면 굉장히 느려짐짐
 BATCH_SIZE = 5
 
+# Scoring multipliers (tune without DB changes)
+IMPORTANCE_MULTIPLIER = 1.0
+SENTIMENT_MULTIPLIER = 1.0
+BASE_EXPOSURE_MULTIPLIER = 1.0
+
 def load_candidates_from_csv():
     """CSV 파일에서 인물 이름 리스트를 가져옵니다."""
     names = []
@@ -115,7 +120,10 @@ def update_all_leaders_in_background():
 
             # (3) 엣지(관계) 점수 업데이트
             # 점수 공식: 기본노출(0.05) + 감성점수 * 중요도
-            delta = (0.05 * ev.importance) + (float(ev.sentiment or 0) * ev.importance)
+            imp = float(ev.importance or 0.5)
+            effective_imp = imp * IMPORTANCE_MULTIPLIER
+            base_exposure = 0.05 * effective_imp * BASE_EXPOSURE_MULTIPLIER
+            delta = base_exposure + (float(ev.sentiment or 0) * SENTIMENT_MULTIPLIER * effective_imp)
             
             for asset_name in ev.asset_names:
                 asset = db.execute(select(Entity).where(Entity.entity_type=="asset", Entity.name==asset_name)).scalar_one_or_none()

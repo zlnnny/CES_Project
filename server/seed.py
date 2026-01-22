@@ -140,5 +140,3 @@ def seed_entities() -> None:
 
 if __name__ == "__main__":
     seed_entities()
-
-

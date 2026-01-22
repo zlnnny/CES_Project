@@ -16,6 +16,11 @@ from server.services.background_updater import update_all_leaders_in_background
 
 router = APIRouter(prefix="/api", tags=["events"])
 
+# Scoring multipliers (tune without DB changes)
+IMPORTANCE_MULTIPLIER = 1.0
+SENTIMENT_MULTIPLIER = 1.0
+BASE_EXPOSURE_MULTIPLIER = 1.0
+
 # 신규 추가 기본 자산 매핑 (크롤러가 자산을 못 찾을 경우 점수 누락 방지용 안전장치)
 DEFAULT_ASSETS = {
     "Elon Musk": ["Tesla", "SpaceX", "Bitcoin"],
@@ -72,9 +77,10 @@ def process_ingestion(db: Session, events: list[NewsEventIn], rho: float = 0.9):
 
         current_sentiment = float(ev.sentiment) if ev.sentiment is not None else 0.0
         imp = float(ev.importance) if ev.importance is not None else 0.5
+        effective_imp = imp * IMPORTANCE_MULTIPLIER
         
-        base_exposure = 0.15 * imp
-        delta = base_exposure + (current_sentiment * imp)
+        base_exposure = 0.15 * effective_imp * BASE_EXPOSURE_MULTIPLIER
+        delta = base_exposure + (current_sentiment * SENTIMENT_MULTIPLIER * effective_imp)
         
         for asset_name in ev.asset_names:
             asset = db.execute(

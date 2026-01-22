@@ -1,60 +1,62 @@
 from __future__ import annotations
 
 import math
+import os
 import re
+from functools import lru_cache
 from datetime import datetime
 
 from server.models import Entity
 
 
 _WORD_RE = re.compile(r"[a-z0-9]+(?:'[a-z0-9]+)?", re.IGNORECASE)
+_NUM_RE = re.compile(r"\b\d+(?:\.\d+)?%?\b")
 
-# Very lightweight lexicon (no heavy dependencies).
-_POS_WORDS = {
-    "beat",
-    "boost",
-    "bullish",
-    "growth",
+_SBERT_MODEL_NAME = "sentence-transformers/all-MiniLM-L6-v2"
+
+_SENTIMENT_POS_ANCHORS = [
+    "Markets rally after strong earnings and upbeat outlook",
+    "Company reports record growth and raises guidance",
+    "Analysts upgrade the stock on strong demand",
+    "Breakthrough approval drives shares higher",
+]
+_SENTIMENT_NEG_ANCHORS = [
+    "Shares plunge after weak results and lowered guidance",
+    "Company faces lawsuit or investigation amid concerns",
+    "Unexpected slowdown sparks selloff and downgrade",
+    "Regulatory action or sanctions hit the company",
+]
+
+_HAWKISH_ANCHORS = [
+    "Central bank signals rate hikes to fight inflation",
+    "Officials warn of tightening and higher rates",
+    "Policy makers emphasize price stability over growth",
+]
+_DOVISH_ANCHORS = [
+    "Central bank signals rate cuts to support growth",
+    "Officials emphasize easing, liquidity, and stimulus",
+    "Policy makers focus on supporting jobs and demand",
+]
+
+_TONE_MIN_CONF = 0.32
+_IMPORTANCE_URGENCY = {
+    "breaking",
+    "urgent",
+    "surprise",
+    "unexpected",
     "record",
-    "surge",
-    "soar",
-    "gain",
-    "rally",
-    "strong",
+    "biggest",
+    "largest",
+    "first",
+    "historic",
+    "emergency",
+    "beats",
+    "misses",
     "upgrade",
-    "win",
-    "approved",
-    "breakthrough",
-    "partnership",
-    "deal",
-    "expands",
-    "expansion",
-}
-_NEG_WORDS = {
-    "miss",
-    "slump",
-    "drop",
-    "plunge",
-    "fall",
-    "loss",
-    "selloff",
-    "weak",
     "downgrade",
-    "lawsuit",
-    "investigation",
-    "probe",
-    "ban",
-    "sanction",
-    "tariff",
-    "recall",
-    "fraud",
-    "risk",
-    "warning",
-    "cut",
+    "raises",
+    "cuts",
 }
-
-_HAWKISH = {"rate hike", "hike", "tighten", "tightening", "inflation", "tariff", "sanction", "crackdown"}
-_DOVISH = {"rate cut", "cut", "easing", "stimulus", "support", "liquidity", "bailout"}
 
 
 def _tokens(text: str) -> list[str]:
@@ -63,27 +65,30 @@ def _tokens(text: str) -> list[str]:
 
 def sentiment_score(text: str) -> float:
     """
-    Returns [-1, 1] score using a tiny lexicon. Title-only friendly.
+    Returns [-1, 1] score using SBERT similarity to sentiment anchors.
     """
-    toks = _tokens(text)
-    if not toks:
+    if not (text or "").strip():
         return 0.0
-    pos = sum(1 for t in toks if t in _POS_WORDS)
-    neg = sum(1 for t in toks if t in _NEG_WORDS)
-    denom = max(3, pos + neg)
-    return max(-1.0, min(1.0, (pos - neg) / denom))
+    pos = _max_anchor_similarity(text, _SENTIMENT_POS_ANCHORS)
+    neg = _max_anchor_similarity(text, _SENTIMENT_NEG_ANCHORS)
+    denom = max(1e-6, pos + neg)
+    score = (pos - neg) / denom
+    return float(max(-1.0, min(1.0, score)))
 
 
 def tone_label(text: str) -> str:
     """
     Hawkish/Dovish/Neutral heuristic. (Not "sentiment"; more macro-policy flavored.)
     """
-    t = (text or "").lower()
-    hawk = sum(1 for k in _HAWKISH if k in t)
-    dove = sum(1 for k in _DOVISH if k in t)
-    if hawk > dove and hawk > 0:
+    if not (text or "").strip():
+        return "Neutral"
+    hawk = _max_anchor_similarity(text, _HAWKISH_ANCHORS)
+    dove = _max_anchor_similarity(text, _DOVISH_ANCHORS)
+    if max(hawk, dove) < _TONE_MIN_CONF:
+        return "Neutral"
+    if hawk > dove:
         return "Hawkish"
-    if dove > hawk and dove > 0:
+    if dove > hawk:
         return "Dovish"
     return "Neutral"
 
@@ -132,6 +137,15 @@ def importance_score(
     base = 0.45
     base += min(0.45, 0.06 * desc_hits)
     base += min(0.25, 0.05 * float(asset_hits))
+
+    # Add lightweight signals from the incoming title (no DB changes).
+    title_lower = (title or "").lower()
+    urgency_hits = sum(1 for k in _IMPORTANCE_URGENCY if k in title_lower)
+    base += min(0.2, 0.04 * urgency_hits)
+
+    if _NUM_RE.search(title_lower):
+        base += 0.08
+
     base = max(0.05, min(1.0, base))
 
     dt = _parse_published_at(published_at)
@@ -143,3 +157,48 @@ def importance_score(
     return float(max(0.0, min(1.0, base)))
 
 
+@lru_cache(maxsize=1)
+def _get_sbert():
+    try:
+        from sentence_transformers import SentenceTransformer
+    except Exception as exc:
+        raise RuntimeError(
+            "SBERT model unavailable. Install sentence-transformers to enable SBERT-based scoring."
+        ) from exc
+    # Default to CPU to avoid CUDA/CUBLAS issues on mismatched drivers.
+    device = (os.getenv("SBERT_DEVICE") or "cpu").strip().lower()
+    return SentenceTransformer(_SBERT_MODEL_NAME, device=device)
+
+
+@lru_cache(maxsize=8)
+def _anchor_embeddings(anchor_key: str):
+    model = _get_sbert()
+    if anchor_key == "sent_pos":
+        anchors = _SENTIMENT_POS_ANCHORS
+    elif anchor_key == "sent_neg":
+        anchors = _SENTIMENT_NEG_ANCHORS
+    elif anchor_key == "hawk":
+        anchors = _HAWKISH_ANCHORS
+    elif anchor_key == "dove":
+        anchors = _DOVISH_ANCHORS
+    else:
+        anchors = []
+    return model.encode(anchors, normalize_embeddings=True, convert_to_tensor=True)
+
+
+def _max_anchor_similarity(text: str, anchors: list[str]) -> float:
+    model = _get_sbert()
+    text_emb = model.encode(text, normalize_embeddings=True, convert_to_tensor=True)
+    if anchors is _SENTIMENT_POS_ANCHORS:
+        anchor_embs = _anchor_embeddings("sent_pos")
+    elif anchors is _SENTIMENT_NEG_ANCHORS:
+        anchor_embs = _anchor_embeddings("sent_neg")
+    elif anchors is _HAWKISH_ANCHORS:
+        anchor_embs = _anchor_embeddings("hawk")
+    elif anchors is _DOVISH_ANCHORS:
+        anchor_embs = _anchor_embeddings("dove")
+    else:
+        anchor_embs = model.encode(anchors, normalize_embeddings=True, convert_to_tensor=True)
+    # cosine similarity since embeddings are normalized
+    sims = anchor_embs @ text_emb
+    return float(sims.max().item()) if sims.numel() else 0.0
