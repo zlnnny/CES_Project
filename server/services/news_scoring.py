@@ -58,6 +58,13 @@ _IMPORTANCE_URGENCY = {
     "cuts",
 }
 
+# Importance factor multipliers (tune without DB changes)
+RECENCY_MULTIPLIER = 1.0
+DESC_OVERLAP_MULTIPLIER = 1.0
+ASSET_HIT_MULTIPLIER = 1.0
+URGENCY_MULTIPLIER = 1.0
+NUMERIC_MULTIPLIER = 1.0
+
 
 def _tokens(text: str) -> list[str]:
     return [m.group(0).lower() for m in _WORD_RE.finditer(text or "")]
@@ -135,16 +142,16 @@ def importance_score(
     desc_hits = len(title_toks.intersection(desc_terms))
 
     base = 0.45
-    base += min(0.45, 0.06 * desc_hits)
-    base += min(0.25, 0.05 * float(asset_hits))
+    base += min(0.45, 0.06 * desc_hits) * DESC_OVERLAP_MULTIPLIER
+    base += min(0.25, 0.05 * float(asset_hits)) * ASSET_HIT_MULTIPLIER
 
     # Add lightweight signals from the incoming title (no DB changes).
     title_lower = (title or "").lower()
     urgency_hits = sum(1 for k in _IMPORTANCE_URGENCY if k in title_lower)
-    base += min(0.2, 0.04 * urgency_hits)
+    base += min(0.2, 0.04 * urgency_hits) * URGENCY_MULTIPLIER
 
     if _NUM_RE.search(title_lower):
-        base += 0.08
+        base += 0.08 * NUMERIC_MULTIPLIER
 
     base = max(0.05, min(1.0, base))
 
@@ -152,7 +159,7 @@ def importance_score(
     if dt:
         age_h = max(0.0, (datetime.now() - dt).total_seconds() / 3600.0)
         decay = math.exp(-math.log(2) * age_h / max(1e-6, half_life_hours))
-        base *= decay
+        base *= decay * RECENCY_MULTIPLIER
 
     return float(max(0.0, min(1.0, base)))
 
