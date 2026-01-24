@@ -261,6 +261,43 @@ const PowerRanking = ({ limit = 30 }) => {
                 rank: idx + 1
             }));
 
+            // 고도화된 정규화 로직 (10-95% 범위, 비선형 보정, 압도적 1위 가중치)
+            if (combined.length > 0) {
+                const logScores = combined.map(item => Math.log(item.influence + 1.001));
+                const maxLog = Math.max(...logScores);
+                const minLog = Math.min(...logScores);
+                const logRange = maxLog - minLog;
+
+                combined.forEach((item, idx) => {
+                    if (logRange > 0) {
+                        // 1. Min-Max 정규화 (0~1)
+                        let normalized = (logScores[idx] - minLog) / logRange;
+                        
+                        // 2. 비선형 보정 (지수함수를 통해 상위권 점수 획득 난이도 상승)
+                        // x^0.7 곡선을 사용하여 100에 가까워질수록 증가폭 둔화
+                        let nonLinear = Math.pow(normalized, 0.7);
+                        
+                        // 3. 기본 범위 매핑 (10% ~ 90%)
+                        item.relativeScore = 10 + (nonLinear * 80);
+                    } else {
+                        item.relativeScore = 50; // 데이터 부족 시 중간값
+                    }
+                });
+
+                // 4. 압도적 1위 보정 (1위가 2위보다 10% 이상 높을 경우 90~95% 구간으로 확장)
+                if (combined.length > 1) {
+                    const raw1 = combined[0].influence;
+                    const raw2 = combined[1].influence;
+                    const ratio = raw1 / (raw2 || 0.001);
+
+                    if (ratio > 1.1) {
+                        // 격차에 비례하여 최대 5% 보너스 (최대 95% 도달 가능)
+                        const bonus = Math.min(5, (ratio - 1.1) * 10);
+                        combined[0].relativeScore += bonus;
+                    }
+                }
+            }
+
             setRows(limit ? combined.slice(0, limit) : combined);
         } catch (err) {
             console.error(err);
@@ -329,8 +366,8 @@ const PowerRanking = ({ limit = 30 }) => {
                         >
                             <CardTop>
                                 <Rank>{String(r.rank).padStart(2, '0')}</Rank>
-                                <Score $value={r.influence}>
-                                    {r.influence.toFixed(2)} pts
+                                <Score $value={r.relativeScore}>
+                                    {r.relativeScore.toFixed(1)}%
                                 </Score>
                             </CardTop>
                             <CardBody>
