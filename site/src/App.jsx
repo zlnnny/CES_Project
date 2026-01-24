@@ -9,14 +9,23 @@ import TodaysNews from './components/TodaysNews';
 import Footer from './components/Footer';
 import PersonDetailPage from './pages/PersonDetailPage';
 import NewsPage from './pages/NewsPage';
+import PowerRankingPage from './pages/PowerRankingPage';
+import MarketsPage from './pages/MarketsPage';
 
-// 메인 페이지 컴포넌트
+import Hero from './components/Hero';
+
+// Main Home Component
 const Home = () => {
     return (
         <main>
-            <PowerRanking />
+            <Hero />
+            <section id="ranking-section">
+                 <PowerRanking limit={30} />
+            </section>
             <TodaysNews />
-            <Charts />
+            <section id="charts-section">
+                <Charts />
+            </section>
             <RankingWidget />
         </main>
     );
@@ -29,12 +38,11 @@ function App() {
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
+                <Route path="/power-rankings" element={<PowerRankingPage />} />
+                <Route path="/markets" element={<MarketsPage />} />
                 <Route path="/power-rankings/:name" element={<PersonDetailPage />} />
                 <Route path="/news" element={<NewsPage />} />
-                {/* 추후 추가될 라우트들 */}
-                {/* <Route path="/analysis/nlp" element={<NLPAnalysis />} /> */}
-                {/* <Route path="/analysis/mapping" element={<AssetMapping />} /> */}
-                {/* <Route path="/analysis/impact" element={<ImpactViz />} /> */}
+                {/* Future routes */}
             </Routes>
             <Footer />
         </Router>

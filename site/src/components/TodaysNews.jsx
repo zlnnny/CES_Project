@@ -3,7 +3,6 @@ import styled, { keyframes, css } from 'styled-components';
 import axios from 'axios';
 import { FaExternalLinkAlt, FaSyncAlt } from 'react-icons/fa';
 
-// ... (기존 레이아웃 스타일들은 그대로 유지) ...
 const NewsSection = styled.section` padding: 4rem 0; background-color: var(--color-bg-main); `;
 const Container = styled.div` width: 90%; max-width: 1200px; margin: 0 auto; `;
 const SectionTitle = styled.h2` font-size: 2rem; color: var(--color-text-main); margin-bottom: 0; font-family: var(--font-heading); border-left: 5px solid var(--color-accent); padding-left: 1rem; `;
@@ -12,27 +11,27 @@ const NewsCard = styled.div` background-color: var(--color-bg-card, #1e1e1e); bo
 const Header = styled.div` display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; `;
 const LeaderBadge = styled.span` font-size: 0.8rem; background-color: var(--color-accent, #007bff); color: #0b0f14; padding: 0.3rem 0.6rem; border-radius: 20px; font-weight: bold; `;
 const DateText = styled.span` font-size: 0.8rem; color: var(--color-text-muted, #888); `;
-const NewsTitle = styled.h3` font-size: 1.2rem; color: var(--color-text-main, #fff); margin-bottom: 1rem; line-height: 1.4; font-family: var(--font-ko); `;
+const NewsTitle = styled.h3` font-size: 1.2rem; color: var(--color-text-main, #fff); margin-bottom: 1rem; line-height: 1.4; font-family: var(--font-en); `;
 const AnalysisBox = styled.div` background-color: rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; `;
 const ImpactTag = styled.span` display: inline-block; font-size: 0.75rem; background-color: ${props => props.$tone === 'Hawkish' ? 'rgba(255, 99, 71, 0.2)' : props.$tone === 'Dovish' ? 'rgba(100, 149, 237, 0.2)' : 'rgba(128, 128, 128, 0.2)'}; color: ${props => props.$tone === 'Hawkish' ? '#ff6347' : props.$tone === 'Dovish' ? '#6495ed' : '#ccc'}; padding: 0.2rem 0.5rem; border-radius: 4px; margin-right: 0.5rem; margin-bottom: 0.5rem; `;
 const LinkButton = styled.a` display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.8rem; background-color: transparent; border: 1px solid var(--color-border, #555); color: var(--color-text-main, #fff); border-radius: 5px; text-decoration: none; font-weight: bold; transition: background 0.2s; &:hover { background-color: var(--color-border, #333); } svg { margin-left: 0.5rem; } `;
 const EmptyMessage = styled.div` text-align: center; padding: 3rem; color: var(--color-text-muted, #888); background-color: rgba(255, 255, 255, 0.02); border-radius: 10px; font-size: 1.1rem; `;
 
-// [수정됨] 회전 애니메이션
+// Rotation Animation
 const rotate = keyframes`
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 `;
 
-// [수정됨] 상단 헤더 (제목과 리프레시 컨트롤 한 줄 배치)
+// Upper Header (Title and Refresh Controls)
 const HeaderRow = styled.div`
     display: flex;
     justify-content: space-between;
-    align-items: flex-end; /* 텍스트 베이스라인 맞춤 */
+    align-items: flex-end; 
     margin-bottom: 2rem;
 `;
 
-// [수정됨] 리프레시 컨트롤 영역
+// Refresh Control Area
 const RefreshControl = styled.div`
     display: flex;
     align-items: center;
@@ -41,14 +40,14 @@ const RefreshControl = styled.div`
     font-size: 0.9rem;
 `;
 
-// [수정됨] 원형 아이콘 버튼 스타일
+// Circular Icon Button Style
 const IconButton = styled.button`
     background: transparent;
     border: 1px solid var(--color-border, #555); 
     color: var(--color-text-main, #fff);
     width: 32px;
     height: 32px;
-    border-radius: 50%; /* 완전한 원형 */
+    border-radius: 50%; 
     display: flex;
     align-items: center;
     justify-content: center;
@@ -125,13 +124,12 @@ const TodaysNews = () => {
                 <HeaderRow>
                     <SectionTitle>Today's News</SectionTitle>
                     
-                    {/* [UI 변경] 아이콘 버튼 + 시간 텍스트 */}
                     <RefreshControl>
                         <IconButton 
                             onClick={handleRefresh} 
                             disabled={refreshing || loading} 
                             $loading={refreshing}
-                            title="Refresh News" // 마우스 올리면 툴팁
+                            title="Refresh News" 
                         >
                             <FaSyncAlt size={14} />
                         </IconButton>

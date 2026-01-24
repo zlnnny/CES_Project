@@ -72,7 +72,7 @@ const TradingViewWidget = ({ type, settings, style }) => {
         return 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
     }, [type]);
 
-    // NOTE: React dev(StrictMode)에서 effect가 2번 실행될 수 있어, cleanup을 꼭 해준다.
+    // NOTE: React dev (StrictMode) might run effect twice, so perform cleanup.
     const settingsKey = useMemo(() => JSON.stringify(settings ?? {}), [settings]);
 
     useEffect(() => {
@@ -84,7 +84,7 @@ const TradingViewWidget = ({ type, settings, style }) => {
         script.src = scriptSrc;
         script.type = 'text/javascript';
         script.async = true;
-        // 일부 환경에서 innerHTML이 무시되는 케이스가 있어 text를 사용
+        // In some environments innerHTML might be ignored, so use text
         script.text = settingsKey;
 
         script.onload = () => {
@@ -112,7 +112,7 @@ const TradingViewWidget = ({ type, settings, style }) => {
             cancelled = true;
             if (containerRef.current) containerRef.current.innerHTML = '';
         };
-    }, [scriptSrc, settingsKey]); // type/settings 변경 시 재생성
+    }, [scriptSrc, settingsKey]); // Re-create on type or settings change
 
     return (
         <div style={{ width: '100%', height: '100%', minHeight: 160, position: 'relative', ...style }}>
@@ -129,7 +129,7 @@ const TradingViewWidget = ({ type, settings, style }) => {
                 }}
             />
 
-            {/* Debug overlay (temporary): tells us if script is loading/blocked or widget didn't render */}
+            {/* Debug overlay (temporary): indicates script loading status */}
             <div
                 style={{
                     position: 'absolute',
@@ -152,7 +152,7 @@ const TradingViewWidget = ({ type, settings, style }) => {
             </div>
 
             {loadState.status === 'error' && (
-                <div style={{ marginTop: 8, color: 'var(--color-text-muted)', fontFamily: 'var(--font-ko)', fontSize: 12 }}>
+                <div style={{ marginTop: 8, color: 'var(--color-text-muted)', fontFamily: 'var(--font-en)', fontSize: 12 }}>
                     Charts temporarily unavailable (TradingView script blocked). Try disabling adblock or allow `s3.tradingview.com`.
                 </div>
             )}
@@ -164,7 +164,7 @@ const Charts = () => {
     return (
         <section id="charts" className="container section-padding">
             <h2 className="section-title">Charts</h2>
-            <p className="section-subtitle">주요 지수 및 우량주의 실시간 시장 동향을 확인하세요.</p>
+            <p className="section-subtitle">Check real-time market trends for major indices and blue-chip stocks.</p>
             
             {/* 1. Global Indices */}
             <ChartSectionTitle>Global Indices</ChartSectionTitle>
@@ -407,4 +407,3 @@ const Charts = () => {
 };
 
 export default Charts;
-

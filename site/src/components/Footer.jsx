@@ -14,8 +14,8 @@ const Footer = () => {
     return (
         <FooterContainer>
             <div className="container">
-                <p>&copy; 2025 Market Voice | CES Team Project. All Rights Reserved.</p>
-                <p>모든 금융 데이터는 정보 제공 목적으로만 사용되며, 투자 조언이 아닙니다.</p>
+                <p>&copy; 2026 Echonomics | CES Team Project. All Rights Reserved.</p>
+                <p>All financial data is provided for informational purposes only and does not constitute investment advice.</p>
             </div>
         </FooterContainer>
     );

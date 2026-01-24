@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import axios from 'axios';
-// [확인] 여기 FaExpand, FaCompress가 있어야 화살표가 나옵니다.
 import { FaTimes, FaNewspaper, FaChartLine, FaExpand, FaCompress } from 'react-icons/fa';
 
-// 애니메이션
+// Animations
 const fadeIn = keyframes` from { opacity: 0; } to { opacity: 1; } `;
 const slideUp = keyframes` from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } `;
 
-// 스타일 컴포넌트
+// Styled Components
 const Overlay = styled.div`
     position: fixed; top: 0; left: 0; right: 0; bottom: 0;
     background: rgba(0, 0, 0, 0.7);
@@ -22,7 +21,7 @@ const ModalContainer = styled.div`
     background: var(--color-bg-card, #1e1e1e);
     border: 1px solid var(--color-accent);
     
-    /* isMaximized 상태에 따라 크기와 위치 스타일 변경 */
+    /* Responsive sizing based on maximization state */
     width: ${props => props.$isMaximized ? '100vw' : '90%'};
     height: ${props => props.$isMaximized ? '100vh' : 'auto'};
     max-width: ${props => props.$isMaximized ? 'none' : '800px'};
@@ -117,7 +116,7 @@ const NewsItem = styled.a`
     border-left: 3px solid var(--color-accent);
     transition: background 0.2s;
     &:hover { background: rgba(255,255,255,0.05); }
-
+    
     h4 { margin: 0 0 5px 0; color: #eee; font-size: 1rem; }
     span { font-size: 0.8rem; color: #888; }
 `;
@@ -158,11 +157,10 @@ const PersonDetailModal = ({ person, onClose }) => {
                 $isMaximized={isMaximized} 
                 onClick={(e) => e.stopPropagation()}
             >
-                {/* [확인] 여기가 화살표 아이콘 부분입니다 */}
                 <ActionButton 
                     style={{ right: '4.5rem' }} 
                     onClick={() => setIsMaximized(!isMaximized)}
-                    title={isMaximized ? "축소" : "확대"}
+                    title={isMaximized ? "Minimize" : "Maximize"}
                 >
                     {isMaximized ? <FaCompress size={18} /> : <FaExpand size={16} />}
                 </ActionButton>
@@ -170,7 +168,7 @@ const PersonDetailModal = ({ person, onClose }) => {
                 <ActionButton 
                     style={{ right: '1.5rem' }} 
                     onClick={onClose}
-                    title="닫기"
+                    title="Close"
                 >
                     <FaTimes size={18} />
                 </ActionButton>
@@ -191,7 +189,6 @@ const PersonDetailModal = ({ person, onClose }) => {
                     </InfoSection>
                 </Header>
                 
-                {/* ... 아래 내용은 동일 ... */}
                 <SectionTitle><FaChartLine /> Top Impacted Assets</SectionTitle>
                 <AssetGrid>
                     {loading ? <p style={{color:'#666'}}>Loading assets...</p> : 

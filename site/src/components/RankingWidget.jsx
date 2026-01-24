@@ -5,17 +5,17 @@ import { totalRows } from '../data/powerRankingDummy';
 
 const WidgetContainer = styled.div`
     position: fixed;
-    top: calc(var(--header-height, 90px) + 14px); /* 헤더 높이에 맞춰 자동으로 아래로 */
+    top: calc(var(--header-height, 90px) + 14px); /* Automatically adjust below the header */
     left: 20px;
     width: 220px;
-    background-color: rgba(10, 25, 47, 0.85); /* 반투명 네이비 */
+    background-color: rgba(10, 25, 47, 0.85); /* Semi-transparent navy */
     backdrop-filter: blur(5px);
-    border: 2px solid var(--color-accent); /* 민트색 테두리 */
+    border: 2px solid var(--color-accent); /* Mint border */
     border-radius: 10px;
     padding: 15px;
     color: var(--color-text-main);
     z-index: 90;
-    font-family: var(--font-ko);
+    font-family: var(--font-en);
     box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5);
     transition: transform 0.3s ease;
     transform: ${props => props.isOpen ? 'translateX(0)' : 'translateX(calc(-100% - 20px))'};
@@ -42,7 +42,7 @@ const WidgetHeader = styled.div`
 
 const ToggleButton = styled.button`
     position: absolute;
-    right: -30px; /* 위젯 바깥으로 뺌 */
+    right: -30px; /* Positioned outside the widget */
     top: 15px;
     width: 30px;
     height: 30px;
@@ -84,7 +84,7 @@ const RankNumber = styled.span`
 
 const LeaderName = styled.span`
     flex: 1;
-    font-weight: bold; /* 볼드체 요청 반영 */
+    font-weight: bold;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -94,7 +94,7 @@ const LeaderName = styled.span`
 const Score = styled.span`
     font-size: 0.85rem;
     font-weight: bold;
-    color: var(--color-text-main); /* 흰색 */
+    color: var(--color-text-main); /* White */
 `;
 
 const RankingWidget = ({ rows = totalRows }) => {
@@ -124,4 +124,3 @@ const RankingWidget = ({ rows = totalRows }) => {
 };
 
 export default RankingWidget;
-

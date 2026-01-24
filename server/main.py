@@ -44,7 +44,7 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    return {"message": "Market Voice API is running!"}
+    return {"message": "Echonomics API is running!"}
 
 
 @app.on_event("startup")

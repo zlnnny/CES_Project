@@ -1,84 +1,60 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
-    /* 폰트 import는 index.html에서 처리하거나 여기서 @import 사용 */
-    @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Lora:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Inter:wght@200;300;400;500;600;700;800;900&display=swap');
 
     :root {
-        --font-en: 'Times New Roman', Times, serif;
-        /* Heading과 Body 모두 Times New Roman을 최우선으로 적용 */
-        --font-heading: 'Times New Roman', 'Playfair Display', serif;
-        --font-body: 'Times New Roman', 'Lora', serif;
-        --font-ko: 'Gowun Dodum', sans-serif;
+        --font-en: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        --font-heading: 'Plus Jakarta Sans', sans-serif;
+        --font-body: 'Inter', sans-serif;
         
-        /* Dark Theme Colors */
-        --color-bg-main: #0A192F;
-        --color-bg-card: #172A46;
-        --color-bg-header: rgba(10, 25, 47, 0.95);
+        /* Photo-accurate Colors */
+        --color-bg-main: #020617; 
+        --color-bg-card: #0f172a;
+        --color-bg-header: rgba(2, 6, 23, 0.85);
         
-        --color-text-main: #E6F1FF;
-        --color-text-muted: #A8B2D1;
-        --color-text-dark: #0A192F;
+        --color-text-main: #ffffff;
+        --color-text-muted: #94a3b8;
         
-        --color-accent: #64FFDA;
-        --color-gold: #FFD700;
-        --color-border: #233554;
+        --color-accent: #22d3ee; 
+        --color-accent-gradient: linear-gradient(135deg, #0891b2 0%, #22d3ee 100%);
+        --color-border: rgba(255, 255, 255, 0.08);
     }
 
     * {
         box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 
     body {
-        font-family: var(--font-body), var(--font-ko);
+        font-family: var(--font-body);
         background-color: var(--color-bg-main);
         color: var(--color-text-main);
         margin: 0;
-        line-height: 1.6;
-    }
-
-    a {
-        text-decoration: none;
-        color: inherit;
-    }
-
-    ul, li {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+        line-height: 1.5;
+        font-weight: 400;
     }
 
     button {
-        font-family: var(--font-ko);
+        font-family: var(--font-en);
         cursor: pointer;
+        transition: all 0.2s ease;
     }
 
     .container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 20px;
-    }
-
-    .section-padding {
-        padding: 4rem 0;
+        padding: 0 24px;
     }
 
     .section-title {
         font-size: 2.5rem;
-        color: var(--color-text-main);
-        text-align: center;
+        font-weight: 700;
+        letter-spacing: -0.02em;
         margin-bottom: 1rem;
         font-family: var(--font-heading);
-    }
-
-    .section-subtitle {
-        text-align: center;
-        color: var(--color-text-muted);
-        margin-bottom: 3rem;
-        font-size: 1.2rem;
-        font-family: var(--font-ko);
     }
 `;
 
 export default GlobalStyles;
-

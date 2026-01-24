@@ -13,7 +13,6 @@ from sqlalchemy import select
 
 from server.db import SessionLocal
 from server.models import Entity
-from server.services.asset_category import infer_asset_category
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -40,20 +39,86 @@ def _data_dir() -> Path:
 
 
 def _load_people() -> list[dict]:
-    path = _data_dir() / "people.json"
-    data = json.loads(path.read_text(encoding="utf-8"))
-    return data.get("people", [])
+    data_dir = _data_dir()
+    path = data_dir / "people.json"
+    if path.exists():
+        data = json.loads(path.read_text(encoding="utf-8"))
+        return data.get("people", [])
+
+    # Fallback: CSV (local edits often live here)
+    csv_path = data_dir / "candidates_people.csv"
+    if not csv_path.exists():
+        return []
+
+    import csv
+
+    people: list[dict] = []
+    with csv_path.open(encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            name = (row.get("Name") or "").strip()
+            if not name:
+                continue
+            category = (row.get("Category") or "").strip()
+            title = (row.get("Title/Company") or "").strip()
+            issues_raw = (row.get("Market Influence/Key Issues") or "").strip()
+            issues = [s.strip() for s in issues_raw.split(",") if s.strip()]
+
+            descriptors: list[str] = []
+            if category:
+                descriptors.append(f"category: {category}")
+            if title:
+                descriptors.append(title)
+            descriptors.extend(issues)
+
+            people.append({"name": name, "descriptors": descriptors})
+    return people
 
 
 def _load_assets() -> list[dict]:
-    path = _data_dir() / "assets.json"
-    data = json.loads(path.read_text(encoding="utf-8"))
-    return data.get("assets", [])
+    data_dir = _data_dir()
+    path = data_dir / "assets.json"
+    if path.exists():
+        data = json.loads(path.read_text(encoding="utf-8"))
+        if isinstance(data, dict):
+            return data.get("assets", [])
+        elif isinstance(data, list):
+            return data
+
+    # Fallback: legacy asset.json list
+    legacy_path = data_dir / "asset.json"
+    if not legacy_path.exists():
+        return []
+
+    data = json.loads(legacy_path.read_text(encoding="utf-8"))
+    raw_assets = data if isinstance(data, list) else data.get("assets", [])
+    
+    assets: list[dict] = []
+    for item in raw_assets:
+        name = (item.get("name") or "").strip()
+        if not name:
+            continue
+        symbol = (item.get("symbol") or "").strip()
+        keywords: list[str] = []
+        for val in (
+            (item.get("asset_type") or "").strip(),
+            (item.get("sector") or "").strip(),
+            (item.get("primaryPerson") or "").strip(),
+        ):
+            if val:
+                keywords.append(val)
+        assets.append({"name": name, "symbol": symbol, "keywords": keywords})
+    return assets
 
 
 def seed_entities() -> None:
     db = SessionLocal()
     try:
+        from sqlalchemy import delete
+        # 0. Optional: Clear existing entities to avoid mess (User wants clean sync)
+        # db.execute(delete(Entity)) 
+        # Actually, let's just be very aggressive with updates.
+        
         created = 0
         updated = 0
 
@@ -63,25 +128,25 @@ def seed_entities() -> None:
             if not name:
                 continue
 
-            # Map to our Entity schema fields
+            # Mapping for People:
+            # - Entity.name: Person's Name
+            # - Entity.title_or_company: Job Title (usually the 2nd descriptor)
+            # - Entity.key_issues: Key Issues (rest of descriptors)
+            
             descriptors = p.get("descriptors") or []
             category = None
             title = None
-            key_issues = None
+            key_issues_list = []
 
-            # heuristics: we stored "category: X" first
             for d in descriptors:
                 if isinstance(d, str) and d.lower().startswith("category:"):
                     category = d.split(":", 1)[1].strip()
-                    continue
-                if title is None and isinstance(d, str) and len(d) <= 80:
+                elif title is None:
                     title = d
-                    continue
+                else:
+                    key_issues_list.append(d)
 
-            # rest as key issues (comma join)
-            rest = [d for d in descriptors if isinstance(d, str) and not d.lower().startswith("category:")]
-            if rest:
-                key_issues = ", ".join(rest[1:]) if len(rest) > 1 else rest[0]
+            key_issues = ", ".join(key_issues_list) if key_issues_list else None
 
             existing = db.execute(
                 select(Entity).where(Entity.entity_type == "person", Entity.name == name)
@@ -106,40 +171,48 @@ def seed_entities() -> None:
 
         # Assets
         for a in _load_assets():
-            name = (a.get("name") or "").strip()
-            if not name:
+            # Mapping for Assets (per user request):
+            # - Entity.name: Ticker (symbol), e.g., "NVDA"
+            # - Entity.title_or_company: Company Name, e.g., "Nvidia" (Capitalized)
+            # - Entity.key_issues: Keywords/Descriptors
+            
+            ticker = (a.get("symbol") or "").strip()
+            full_name = (a.get("name") or "").strip().title() # Capitalize first letters
+            if not ticker:
                 continue
 
-            # Map asset fields into Entity schema fields
-            symbol = (a.get("symbol") or "").strip() or None
-            sector = (a.get("sector") or "").strip() or None
-            asset_type = (a.get("asset_type") or "").strip() or None
             keywords = a.get("keywords") or []
             key_issues = ", ".join([k for k in keywords if isinstance(k, str) and k.strip()]) or None
-            category = infer_asset_category(
-                name=name,
-                symbol=symbol,
-                key_issues=key_issues,
-                sector=sector,
-                asset_type=asset_type,
-            )
 
+            from sqlalchemy import func
+
+            # Find existing by ticker OR by full_name (case-insensitive to catch messy records)
             existing = db.execute(
-                select(Entity).where(Entity.entity_type == "asset", Entity.name == name)
-            ).scalar_one_or_none()
+                select(Entity).where(
+                    (Entity.entity_type == "asset") & 
+                    (
+                        (func.lower(Entity.name) == ticker.lower()) | 
+                        (func.lower(Entity.name) == full_name.lower()) | 
+                        (func.lower(Entity.title_or_company) == ticker.lower()) |
+                        (func.lower(Entity.title_or_company) == full_name.lower())
+                    )
+                )
+            ).all() # Use .all() to handle potential duplicates manually
+            
             if existing:
-                existing.title_or_company = symbol or existing.title_or_company
-                existing.key_issues = key_issues or existing.key_issues
-                # Only fill if missing; do not overwrite curated categories.
-                existing.category = existing.category or category
+                # Update all found records to the correct format
+                for record in [r[0] for r in existing]:
+                    print(f"Updating {record.name} -> {ticker}, {record.title_or_company} -> {full_name}")
+                    record.name = ticker
+                    record.title_or_company = full_name
+                    record.key_issues = key_issues
                 updated += 1
             else:
                 db.add(
                     Entity(
                         entity_type="asset",
-                        category=category,
-                        name=name,
-                        title_or_company=symbol,
+                        name=ticker,
+                        title_or_company=full_name,
                         key_issues=key_issues,
                     )
                 )
