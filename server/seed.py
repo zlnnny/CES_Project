@@ -13,6 +13,7 @@ from sqlalchemy import select
 
 from server.db import SessionLocal
 from server.models import Entity
+from server.services.asset_category import infer_asset_category
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -111,8 +112,17 @@ def seed_entities() -> None:
 
             # Map asset fields into Entity schema fields
             symbol = (a.get("symbol") or "").strip() or None
+            sector = (a.get("sector") or "").strip() or None
+            asset_type = (a.get("asset_type") or "").strip() or None
             keywords = a.get("keywords") or []
             key_issues = ", ".join([k for k in keywords if isinstance(k, str) and k.strip()]) or None
+            category = infer_asset_category(
+                name=name,
+                symbol=symbol,
+                key_issues=key_issues,
+                sector=sector,
+                asset_type=asset_type,
+            )
 
             existing = db.execute(
                 select(Entity).where(Entity.entity_type == "asset", Entity.name == name)
@@ -120,11 +130,14 @@ def seed_entities() -> None:
             if existing:
                 existing.title_or_company = symbol or existing.title_or_company
                 existing.key_issues = key_issues or existing.key_issues
+                # Only fill if missing; do not overwrite curated categories.
+                existing.category = existing.category or category
                 updated += 1
             else:
                 db.add(
                     Entity(
                         entity_type="asset",
+                        category=category,
                         name=name,
                         title_or_company=symbol,
                         key_issues=key_issues,

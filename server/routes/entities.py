@@ -7,6 +7,7 @@ from sqlalchemy.orm import Session
 from server.deps import get_db
 from server.models import Entity, EntityEmbedding
 from server.schemas import BulkUpsertResult, EmbeddingJobRequest, EmbeddingJobResult, EntityOut, EntityUpsert
+from server.services.asset_category import infer_asset_category
 from server.services.embeddings import canonical_text, embed_texts_sbert
 
 router = APIRouter(prefix="/api", tags=["entities"])
@@ -22,15 +23,30 @@ def bulk_upsert_entities(payload: list[EntityUpsert], db: Session = Depends(get_
         ).scalar_one_or_none()
 
         if existing:
-            existing.category = item.category
+            # Avoid wiping category with null. If missing and this is an asset, try to infer.
+            if item.category is not None:
+                existing.category = item.category
+            elif existing.category is None and item.entity_type == "asset":
+                existing.category = infer_asset_category(
+                    name=item.name,
+                    symbol=item.title_or_company,
+                    key_issues=item.key_issues,
+                )
             existing.title_or_company = item.title_or_company
             existing.key_issues = item.key_issues
             updated += 1
         else:
+            category = item.category
+            if category is None and item.entity_type == "asset":
+                category = infer_asset_category(
+                    name=item.name,
+                    symbol=item.title_or_company,
+                    key_issues=item.key_issues,
+                )
             db.add(
                 Entity(
                     entity_type=item.entity_type,
-                    category=item.category,
+                    category=category,
                     name=item.name,
                     title_or_company=item.title_or_company,
                     key_issues=item.key_issues,
