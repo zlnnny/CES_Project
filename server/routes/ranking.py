@@ -105,25 +105,53 @@ def get_leader_assets(name: str, db: Session = Depends(get_db)):
     if not person:
         return []
 
+    # 1. 뉴스 기반 관계 (InfluenceEdge) 가져오기
     stmt = (
         select(Entity.name, Entity.title_or_company, InfluenceEdge.weight)
         .join(InfluenceEdge, InfluenceEdge.asset_id == Entity.id)
         .where(InfluenceEdge.person_id == person.id)
         .order_by(desc(InfluenceEdge.weight))
-        .limit(10)
+        .limit(7)
     )
     results = db.execute(stmt).all()
 
     data = []
+    seen_tickers = set()
+
     for ticker, full_name, weight in results:
-        # ticker is Entity.name, full_name is Entity.title_or_company
-        # Fallback for display
-        display_ticker = (ticker or "").strip() or "----"
-        display_name = (full_name or "").strip() or ticker or "Unknown Asset"
-        
+        t = (ticker or "").strip()
+        if not t or t in seen_tickers:
+            continue
+        seen_tickers.add(t)
         data.append({
-            "symbol": display_ticker,
-            "name": display_name,
+            "symbol": t,
+            "name": (full_name or "").strip() or t,
             "score": round(float(weight or 0.0), 2)
         })
-    return data
+
+    # 2. 알고리즘 기반 보완 (Jaccard Similarity)
+    # 뉴스 데이터가 부족한 경우(최대 7개 미만), GNN에서 사용하는 것과 동일한 로직으로 프로필 유사도 기반 자산 추천
+    if len(data) < 7:
+        from server.services.gnn_scoring import entity_terms, jaccard
+        p_terms = entity_terms(person)
+        if p_terms:
+            # 모든 자산과 비교 (성능 최적화 필요 시 미리 계산된 테이블 사용 권장)
+            all_assets = db.execute(select(Entity).where(Entity.entity_type == "asset")).scalars().all()
+            scored_assets = []
+            for a in all_assets:
+                if a.name in seen_tickers:
+                    continue
+                a_terms = entity_terms(a)
+                sim = jaccard(p_terms, a_terms)
+                if sim > 0.1: # 최소 임계값
+                    scored_assets.append((a, sim))
+            
+            scored_assets.sort(key=lambda x: x[1], reverse=True)
+            for a, sim in scored_assets[:(7 - len(data))]:
+                data.append({
+                    "symbol": a.name,
+                    "name": (a.title_or_company or "").strip() or a.name,
+                    "score": round(float(sim * 0.5), 2) # 뉴스 기반 점수와 스케일 조정 (임시 가중치 0.5)
+                })
+
+    return data[:7]

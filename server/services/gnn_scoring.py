@@ -29,19 +29,19 @@ _STOP = {
 }
 
 
-def _tokens(text: str | None) -> set[str]:
+def tokens(text: str | None) -> set[str]:
     if not text:
         return set()
     toks = {m.group(0).lower() for m in _TOK_RE.finditer(text)}
     return {t for t in toks if t not in _STOP and len(t) >= 3}
 
 
-def _entity_terms(e: Entity) -> set[str]:
+def entity_terms(e: Entity) -> set[str]:
     # Use all descriptor-ish fields we have in DB.
-    return _tokens(" ".join([e.category or "", e.title_or_company or "", e.key_issues or "", e.name or ""]))
+    return tokens(" ".join([e.category or "", e.title_or_company or "", e.key_issues or "", e.name or ""]))
 
 
-def _jaccard(a: set[str], b: set[str]) -> float:
+def jaccard(a: set[str], b: set[str]) -> float:
     if not a or not b:
         return 0.0
     # Use bitwise operators for set operations, they are usually faster in Python
@@ -91,8 +91,8 @@ def compute_gnn_person_scores(
 
     # Prior edges from descriptor overlap (top-k per person)
     # Pre-tokenize all once
-    person_terms = {p.id: _entity_terms(p) for p in persons}
-    asset_terms = {a.id: _entity_terms(a) for a in assets}
+    person_terms = {p.id: entity_terms(p) for p in persons}
+    asset_terms = {a.id: entity_terms(a) for a in assets}
 
     prior_added = 0
     if assets and prior_lambda > 0:
@@ -106,7 +106,7 @@ def compute_gnn_person_scores(
             
             scored: list[tuple[float, int]] = []
             for aid, at in valid_assets:
-                sim = _jaccard(pt, at)
+                sim = jaccard(pt, at)
                 if sim >= prior_threshold:
                     scored.append((sim, aid))
             
