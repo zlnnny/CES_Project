@@ -434,22 +434,29 @@ const PowerRanking = ({ limit = 30 }) => {
             }
 
             setAllRows(combined);
+            // 초기 로딩 시 필터 적용
             applyFilters(searchQuery, activeFilter, combined);
         } catch (err) {
             console.error(err);
         } finally {
             setLoading(false);
         }
-    }, [applyFilters, searchQuery, activeFilter]);
+    }, [limit]); // searchQuery, activeFilter 의존성 제거
 
     useEffect(() => {
         fetchData();
     }, [fetchData]);
 
+    // 검색어나 필터가 바뀔 때 서버 호출 없이 클라이언트에서 즉시 필터링
+    useEffect(() => {
+        if (allRows.length > 0) {
+            applyFilters(searchQuery, activeFilter, allRows);
+        }
+    }, [searchQuery, activeFilter, allRows, applyFilters]);
+
     const handleSearch = (e) => {
         e.preventDefault();
-        applyFilters(searchQuery, activeFilter, allRows);
-        
+        // applyFilters useEffect가 이미 처리하므로 하이라이트/스크롤 로직만 수행
         const term = searchQuery.trim().toLowerCase();
         if (!term) return;
 
@@ -458,9 +465,7 @@ const PowerRanking = ({ limit = 30 }) => {
             setSearchMessage('');
             setHighlightedId(found.rank);
             const el = itemRefs.current[found.rank];
-            if (el) {
-                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
+            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
             setSearchMessage('This person is not in the ranking.');
             setHighlightedId(null);

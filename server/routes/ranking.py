@@ -13,9 +13,10 @@ from server.services.ranking import compute_country_ranking, compute_industry_ra
 
 router = APIRouter(prefix="/api", tags=["ranking"])
 
-# Keep UI responsive: cache last successful ranking response briefly.
+# Keep UI responsive: cache last successful ranking response.
+# TTL increased to 15 minutes to minimize server load from expensive GNN scoring.
 _CACHE: dict[int, tuple[datetime, PowerRankingResponse]] = {}
-_TTL = timedelta(seconds=15)
+_TTL = timedelta(minutes=15)
 
 def _enrich_items_with_entity_fields(db: Session, items: list[dict]) -> list[dict]:
     """
@@ -54,15 +55,43 @@ def get_power_ranking(limit: int = 10, force: bool = False, db: Session = Depend
                 return cached_resp
 
     try:
-        items = compute_power_ranking(db, limit=lim)
-        country_items = compute_country_ranking(db, limit=min(lim, 10))
-        industry_items = compute_industry_ranking(db, limit=min(lim, 10))
-        items = _enrich_items_with_entity_fields(db, items)
+        # 1. Compute the full pool once (this is the expensive GNN call)
+        # We take a large limit (200) to derive other rankings from it.
+        full_pool = compute_power_ranking(db, limit=max(lim, 200))
+        
+        # 2. Enrich the full pool with entity details (once)
+        full_pool = _enrich_items_with_entity_fields(db, full_pool)
+        
+        # 3. Derive Power Ranking (top N from pool)
+        items = full_pool[:lim]
+        
+        # 4. Derive Country Ranking (best per country from pool)
+        best_by_country: dict[str, dict] = {}
+        from server.services.ranking import _extract_country
+        for p in full_pool:
+            country = _extract_country(p.get("title_or_company"))
+            if not country: continue
+            if country not in best_by_country or p["influence"] > best_by_country[country]["influence"]:
+                best_by_country[country] = {**p, "country": country}
+        country_items = sorted(best_by_country.values(), key=lambda x: x["influence"], reverse=True)[:10]
+        for i, r in enumerate(country_items, 1): r["rank"] = i
+
+        # 5. Derive Industry Ranking (best per industry from pool)
+        best_by_industry: dict[str, dict] = {}
+        from server.services.ranking import _infer_industry_field
+        for p in full_pool:
+            field = _infer_industry_field(p.get("category"), p.get("title_or_company"), None)
+            if not field: continue
+            if field not in best_by_industry or p["influence"] > best_by_industry[field]["influence"]:
+                best_by_industry[field] = {**p, "field": field}
+        industry_items = sorted(best_by_industry.values(), key=lambda x: x["influence"], reverse=True)[:10]
+        for i, r in enumerate(industry_items, 1): r["rank"] = i
+
         resp = PowerRankingResponse(items=items, country_items=country_items, industry_items=industry_items)
         _CACHE[lim] = (now, resp)
         return resp
-    except Exception:
-        # Fail fast: return cached response if we have it, otherwise names-only filler.
+    except Exception as e:
+        print(f"Ranking Error: {e}")
         hit = _CACHE.get(lim)
         if hit:
             return hit[1]

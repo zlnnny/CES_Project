@@ -44,11 +44,12 @@ def _entity_terms(e: Entity) -> set[str]:
 def _jaccard(a: set[str], b: set[str]) -> float:
     if not a or not b:
         return 0.0
-    inter = len(a.intersection(b))
-    if inter == 0:
+    # Use bitwise operators for set operations, they are usually faster in Python
+    inter_len = len(a & b)
+    if inter_len == 0:
         return 0.0
-    union = len(a.union(b))
-    return inter / max(1, union)
+    union_len = len(a | b)
+    return inter_len / union_len
 
 
 def compute_gnn_person_scores(
@@ -83,33 +84,42 @@ def compute_gnn_person_scores(
 
     # Base edges from DB
     edge_w: dict[tuple, float] = {}
-    for e in db.execute(select(InfluenceEdge)).scalars().all():
+    edges_from_db = db.execute(select(InfluenceEdge)).scalars().all()
+    for e in edges_from_db:
         if e.person_id in person_by_id and e.asset_id in asset_by_id:
             edge_w[(e.person_id, e.asset_id)] = float(e.weight or 0.0)
 
     # Prior edges from descriptor overlap (top-k per person)
+    # Pre-tokenize all once
     person_terms = {p.id: _entity_terms(p) for p in persons}
     asset_terms = {a.id: _entity_terms(a) for a in assets}
 
     prior_added = 0
     if assets and prior_lambda > 0:
+        # Pre-filter assets that have at least one term
+        valid_assets = [(aid, terms) for aid, terms in asset_terms.items() if terms]
+        
         for p in persons:
-            pt = person_terms.get(p.id, set())
+            pt = person_terms.get(p.id)
             if not pt:
                 continue
-            scored: list[tuple[float, object]] = []
-            for a in assets:
-                sim = _jaccard(pt, asset_terms.get(a.id, set()))
+            
+            scored: list[tuple[float, int]] = []
+            for aid, at in valid_assets:
+                sim = _jaccard(pt, at)
                 if sim >= prior_threshold:
-                    scored.append((sim, a.id))
-            scored.sort(reverse=True)
+                    scored.append((sim, aid))
+            
+            if not scored:
+                continue
+                
+            scored.sort(key=lambda x: x[0], reverse=True)
             for sim, aid in scored[:prior_topk]:
                 key = (p.id, aid)
                 if key not in edge_w:
                     edge_w[key] = prior_lambda * float(sim)
                     prior_added += 1
                 else:
-                    # add as a small prior bias
                     edge_w[key] = float(edge_w[key]) + prior_lambda * float(sim)
 
     # Degrees for normalization (use abs weights so negatives don't collapse degrees)
