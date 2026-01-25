@@ -10,7 +10,7 @@ const HeroSection = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #030712; /* Solid deep dark background */
+    background-color: #030712;
     overflow: hidden;
     text-align: center;
 `;
@@ -41,8 +41,8 @@ const Badge = styled.div`
     padding: 0.6rem 1.5rem;
     border-radius: 50px;
     border: 1px solid rgba(103, 232, 249, 0.2);
-    font-size: 0.9rem;
-    font-weight: 500; /* Thinner */
+    font-size: 0.85rem;
+    font-weight: 500;
     letter-spacing: 0.05em;
     display: flex;
     align-items: center;
@@ -50,11 +50,16 @@ const Badge = styled.div`
     margin-bottom: 0.5rem;
     backdrop-filter: blur(8px);
     text-transform: uppercase;
+
+    @media (max-width: 480px) {
+        font-size: 0.7rem;
+        padding: 0.4rem 1rem;
+    }
 `;
 
 const Title = styled.h1`
-    font-size: 5.2rem; /* Slightly reduced from 5.8rem */
-    font-weight: 500; /* Thinner */
+    font-size: 5.2rem;
+    font-weight: 600;
     margin: 0;
     color: #ffffff;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -62,24 +67,32 @@ const Title = styled.h1`
     line-height: 1.1;
     max-width: 950px;
     
-    /* Stronger Mint Gradient */
     background: linear-gradient(135deg, #ffffff 10%, #67e8f9 50%, #22d3ee 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
     @media (max-width: 768px) {
+        font-size: 3.5rem;
+    }
+
+    @media (max-width: 480px) {
         font-size: 2.8rem;
     }
 `;
 
 const Description = styled.p`
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     color: #94a3b8;
-    max-width: 750px;
+    max-width: 700px;
     line-height: 1.6;
-    font-weight: 400; /* Thinner */
+    font-weight: 400;
     margin-bottom: 1.5rem;
-    opacity: 0.9;
+    opacity: 0.8;
+
+    @media (max-width: 768px) {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
 `;
 
 const ButtonGroup = styled.div`
@@ -87,9 +100,11 @@ const ButtonGroup = styled.div`
     gap: 1.25rem;
     margin-top: 1rem;
 
-    @media (max-width: 480px) {
+    @media (max-width: 600px) {
         flex-direction: column;
         width: 100%;
+        max-width: 300px;
+        gap: 0.8rem;
     }
 `;
 
@@ -110,7 +125,11 @@ const PrimaryButton = styled.button`
     &:hover {
         transform: translateY(-4px);
         box-shadow: 0 12px 30px rgba(34, 211, 238, 0.5);
-        filter: brightness(1.1);
+    }
+
+    @media (max-width: 600px) {
+        padding: 0.9rem 1.5rem;
+        font-size: 1rem;
     }
 `;
 
@@ -119,7 +138,7 @@ const SecondaryButton = styled.button`
     color: #ffffff;
     padding: 1.1rem 2.5rem;
     font-size: 1.1rem;
-    font-weight: 500; /* Thinner */
+    font-weight: 500;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 14px;
     display: flex;
@@ -132,6 +151,11 @@ const SecondaryButton = styled.button`
         background-color: rgba(255, 255, 255, 0.08);
         border-color: rgba(255, 255, 255, 0.2);
         transform: translateY(-2px);
+    }
+
+    @media (max-width: 600px) {
+        padding: 0.9rem 1.5rem;
+        font-size: 1rem;
     }
 `;
 
@@ -148,23 +172,18 @@ const Hero = () => {
         let height = (canvas.height = window.innerHeight);
 
         const particles = [];
-        const particleCount = 25; 
-        const maxDistance = 450; 
+        const particleCount = Math.min(25, Math.floor(window.innerWidth / 40)); 
+        const maxDistance = window.innerWidth > 768 ? 450 : 250; 
         
-        const colors = [
-            '#3b82f6', // Blue
-            '#f97316', // Orange
-            '#10b981', // Green
-            '#6366f1'  // Indigo
-        ];
+        const colors = ['#3b82f6', '#f97316', '#10b981', '#6366f1'];
 
         class Particle {
             constructor() {
                 this.x = Math.random() * width;
                 this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.25;
-                this.vy = (Math.random() - 0.5) * 0.25;
-                this.radius = Math.random() * 6 + 4; 
+                this.vx = (Math.random() - 0.5) * 0.2;
+                this.vy = (Math.random() - 0.5) * 0.2;
+                this.radius = window.innerWidth > 768 ? Math.random() * 6 + 4 : Math.random() * 3 + 2;
                 this.color = colors[Math.floor(Math.random() * colors.length)];
             }
 
@@ -181,7 +200,7 @@ const Hero = () => {
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
                 ctx.globalAlpha = 0.6;
-                ctx.shadowBlur = 25;
+                ctx.shadowBlur = window.innerWidth > 768 ? 25 : 10;
                 ctx.shadowColor = this.color;
                 ctx.fill();
                 ctx.restore();
@@ -192,12 +211,15 @@ const Hero = () => {
 
         const render = () => {
             ctx.clearRect(0, 0, width, height);
-            
-            // Background fill - SOLID DARK
             ctx.fillStyle = '#030712';
             ctx.fillRect(0, 0, width, height);
 
-            // Draw lines (Edges) - Darker and clearer
+            const bgGrad = ctx.createRadialGradient(width/2, height/2, 0, width/2, height/2, width);
+            bgGrad.addColorStop(0, '#0a122a');
+            bgGrad.addColorStop(1, '#030712');
+            ctx.fillStyle = bgGrad;
+            ctx.fillRect(0, 0, width, height);
+
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
@@ -205,9 +227,9 @@ const Hero = () => {
                     const distance = Math.sqrt(dx * dx + dy * dy);
                     if (distance < maxDistance) {
                         ctx.beginPath();
-                        ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)'; 
-                        ctx.globalAlpha = (1 - distance / maxDistance);
-                        ctx.lineWidth = 1.2;
+                        ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)'; 
+                        ctx.globalAlpha = (1 - distance / maxDistance) * 0.5;
+                        ctx.lineWidth = window.innerWidth > 768 ? 1.2 : 0.6;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
                         ctx.stroke();
@@ -246,7 +268,7 @@ const Hero = () => {
                     Influence Graph
                 </Title>
                 <Description>
-                    Track how real-world news events affect relationships between public figures and financial assets using NLP, embeddings, and graph-based scoring.
+                    Real-time analysis of relationships between public figures and global financial assets.
                 </Description>
                 <ButtonGroup>
                     <PrimaryButton onClick={() => navigate('/power-rankings')}>View Power Rankings</PrimaryButton>

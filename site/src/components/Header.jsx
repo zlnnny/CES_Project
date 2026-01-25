@@ -6,25 +6,33 @@ import { FaSearch } from 'react-icons/fa';
 
 const HeaderContainer = styled.header`
     background-color: var(--color-bg-header);
-    padding: 1.2rem 0; /* Increased padding for taller header */
+    padding: 1rem 0;
     border-bottom: 1px solid var(--color-border);
     position: sticky;
     top: 0;
     z-index: 100;
     backdrop-filter: blur(12px);
+
+    @media (max-width: 768px) {
+        padding: 0.8rem 0;
+    }
 `;
 
 const NavContent = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 20px;
 `;
 
 const SearchContainer = styled.div`
     flex: 1;
     display: flex;
     justify-content: center;
-    margin: 0 40px;
+    
+    @media (max-width: 900px) {
+        display: none; /* Hide main search on tablets/phones to save space */
+    }
 `;
 
 const LogoStack = styled.div`
@@ -32,86 +40,93 @@ const LogoStack = styled.div`
     flex-direction: column;
     gap: 2px;
     line-height: 1;
+    flex-shrink: 0;
 `;
 
 const SearchInputWrapper = styled.div`
     position: relative;
     width: 100%;
-    max-width: 450px; /* Slightly wider */
+    max-width: 400px;
 `;
 
 const SearchInput = styled.input`
     width: 100%;
-    padding: 10px 18px;
+    padding: 8px 16px;
     padding-right: 40px;
-    border: 1.5px solid var(--color-accent); /* Mint border by default */
-    border-radius: 10px;
-    background-color: rgba(34, 211, 238, 0.03); /* Subtle mint tint */
+    border: 1.5px solid var(--color-accent);
+    border-radius: 8px;
+    background-color: rgba(34, 211, 238, 0.03);
     color: var(--color-text-main);
     font-family: var(--font-en);
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 400;
     transition: all 0.2s ease;
 
     &:focus {
         outline: none;
         box-shadow: 0 0 15px rgba(34, 211, 238, 0.2);
-        background-color: rgba(34, 211, 238, 0.06);
-    }
-
-    &::placeholder {
-        color: var(--color-text-muted);
-        opacity: 0.6;
     }
 `;
 
 const SearchIcon = styled.div`
     position: absolute;
-    right: 16px;
+    right: 14px;
     top: 50%;
     transform: translateY(-50%);
     color: var(--color-text-muted);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     opacity: 0.6;
 `;
 
 const Logo = styled(Link)`
-    font-size: 1.8rem;
-    font-weight: 600; /* Slightly thinner than 700 */
+    font-size: 1.6rem;
+    font-weight: 600;
     color: var(--color-accent);
     font-family: var(--font-heading);
     letter-spacing: -0.02em;
     text-decoration: none;
     
-    &:hover {
-        filter: brightness(1.1);
+    @media (max-width: 480px) {
+        font-size: 1.3rem;
     }
 `;
 
 const LogoTagline = styled.div`
     font-family: var(--font-en);
     color: var(--color-text-muted);
-    font-size: 0.8rem;
-    font-weight: 400; /* Slightly thinner than 500 */
+    font-size: 0.7rem;
+    font-weight: 400;
     opacity: 0.8;
     letter-spacing: 0.08em;
+
+    @media (max-width: 480px) {
+        display: none;
+    }
 `;
 
 const NavMenu = styled.nav`
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: 24px;
+    flex-shrink: 0;
 
     a {
         color: var(--color-text-muted);
-        font-size: 1rem;
-        font-weight: 400; /* Slightly thinner than 500 */
+        font-size: 0.95rem;
+        font-weight: 500;
         text-decoration: none;
         transition: all 0.2s;
         font-family: var(--font-en);
         
         &:hover {
             color: var(--color-accent);
+        }
+    }
+
+    @media (max-width: 600px) {
+        gap: 12px;
+        a {
+            font-size: 0.85rem;
         }
     }
 `;
@@ -129,19 +144,8 @@ const Header = () => {
         };
 
         apply();
-
-        let ro;
-        if (typeof ResizeObserver !== 'undefined') {
-            ro = new ResizeObserver(() => apply());
-            ro.observe(el);
-        } else {
-            window.addEventListener('resize', apply);
-        }
-
-        return () => {
-            if (ro) ro.disconnect();
-            window.removeEventListener('resize', apply);
-        };
+        window.addEventListener('resize', apply);
+        return () => window.removeEventListener('resize', apply);
     }, []);
 
     return (
@@ -163,7 +167,7 @@ const Header = () => {
                     </SearchContainer>
 
                     <NavMenu>
-                        <Link to="/power-rankings">Power Ranking</Link>
+                        <Link to="/power-rankings">Rank</Link>
                         <Link to="/news">News</Link>
                         <Link to="/markets">Markets</Link>
                     </NavMenu>
