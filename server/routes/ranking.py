@@ -81,12 +81,20 @@ def get_leader_assets(name: str, db: Session = Depends(get_db)):
         .join(InfluenceEdge, InfluenceEdge.asset_id == Entity.id)
         .where(InfluenceEdge.person_id == person.id)
         .order_by(desc(InfluenceEdge.weight))
-        .limit(5)
+        .limit(10)
     )
     results = db.execute(stmt).all()
 
     data = []
-    for asset_name, symbol, weight in results:
-        ticker = (symbol or "").strip() or ((asset_name or "")[:4].upper() or "----")
-        data.append({"symbol": ticker, "name": asset_name, "score": round(float(weight or 0.0), 2)})
+    for ticker, full_name, weight in results:
+        # ticker is Entity.name, full_name is Entity.title_or_company
+        # Fallback for display
+        display_ticker = (ticker or "").strip() or "----"
+        display_name = (full_name or "").strip() or ticker or "Unknown Asset"
+        
+        data.append({
+            "symbol": display_ticker,
+            "name": display_name,
+            "score": round(float(weight or 0.0), 2)
+        })
     return data
