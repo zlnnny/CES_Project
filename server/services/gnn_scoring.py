@@ -28,6 +28,22 @@ _STOP = {
     "from",
 }
 
+# Manual score multipliers (edit values to tune).
+# Always treated as absolute multipliers (0.85 -> x0.85, 1.18 -> x1.18).
+PEOPLE_SCORE_BOOSTS: dict[str, float] = {
+    "Elon Musk": 1.18,
+    "Mark Zuckerberg": 1.12,
+    "Tim Cook": 1.12,
+    "Jensen Huang": 1.18,
+    "Sam Altman": 1.12,
+    "Joe Biden": 0.01,
+    "Donald Trump": 1.10,
+    "Jerome Powell": 1.15,
+    "Satya Nadella": 10.12,
+    "Sundar Pichai": 1.12,
+    "Gary Dickerson": 0.10,
+}
+
 
 def tokens(text: str | None) -> set[str]:
     if not text:
@@ -165,9 +181,13 @@ def compute_gnn_person_scores(
         for pid in h_p.keys():
             h_p[pid] = float(alpha) * float(base_p.get(pid, 0.0)) + (1.0 - float(alpha)) * float(tmp_p.get(pid, 0.0))
 
+    def _apply_boost(name: str, score: float) -> float:
+        boost = float(PEOPLE_SCORE_BOOSTS.get(name, 1.0))
+        return score * boost
+
     # Build ranking list (include all people, default 0)
-    scored_people = sorted(
-        ((pid, h_p.get(pid, 0.0)) for pid in person_by_id.keys()),
+    scored_people = sorted(        
+        ((pid, _apply_boost(person_by_id[pid].name, float(h_p.get(pid, 0.0)))) for pid in person_by_id.keys()),
         key=lambda x: (x[1], person_by_id[x[0]].name),
         reverse=True,
     )
@@ -194,6 +214,19 @@ def compute_gnn_person_scores(
             }
         )
 
+    # Debug: surface score distribution to track normalization issues in UI.
+    if scored_people:
+        scores = [float(s) for _pid, s in scored_people]
+        finite_scores = [s for s in scores if math.isfinite(s)]
+        if finite_scores:
+            min_s = min(finite_scores)
+            max_s = max(finite_scores)
+            zero_ct = sum(1 for s in finite_scores if abs(s) < 1e-12)
+            nan_ct = len(scores) - len(finite_scores)
+            print(f"[gnn_scoring] scores: min={min_s:.6f} max={max_s:.6f} zeros={zero_ct} non_finite={nan_ct}")
+        else:
+            print("[gnn_scoring] scores: all non-finite")
+
     return (
         items,
         {
@@ -206,5 +239,3 @@ def compute_gnn_person_scores(
             "prior_lambda": float(prior_lambda),
         },
     )
-
-

@@ -17,10 +17,10 @@ from server.services.background_updater import update_all_leaders_in_background
 router = APIRouter(prefix="/api", tags=["events"])
 
 # Scoring multipliers (tune without DB changes)
-IMPORTANCE_MULTIPLIER = 1.0
-SENTIMENT_MULTIPLIER = 1.0
-BASE_EXPOSURE_MULTIPLIER = 1.0
-INDUSTRY_PROP_MULTIPLIER = 0.0
+IMPORTANCE_MULTIPLIER = 2.0
+SENTIMENT_MULTIPLIER = 1.5
+BASE_EXPOSURE_MULTIPLIER = 0.5
+INDUSTRY_PROP_MULTIPLIER = 0.9
 
 # 신규 추가 기본 자산 매핑 (크롤러가 자산을 못 찾을 경우 점수 누락 방지용 안전장치)
 DEFAULT_ASSETS = {
@@ -29,7 +29,7 @@ DEFAULT_ASSETS = {
     "Tim Cook": ["Apple", "Tech"],
     "Jensen Huang": ["Nvidia", "AI Chips"],
     "Sam Altman": ["Microsoft", "OpenAI"],
-    "Joe Biden": ["USD", "Oil"],
+    # "Joe Biden": ["USD", "Oil"],
     "Donald Trump": ["Tariffs", "USD"],
     "Jerome Powell": ["Treasury", "S&P 500"],
     "Satya Nadella": ["Microsoft", "Cloud"],

@@ -302,7 +302,10 @@ export default function PersonDetailPage() {
     if (!items || items.length === 0) return 0;
     
     // NRII Logic: log scaling -> min-max normalization -> power correction -> mapping
-    const logScores = items.map(item => Math.log((item.influence || 0) + 1.001));
+    const logScores = items.map(item => {
+      const safeInfluence = Math.max(item.influence || 0, -0.99);
+      return Math.log(safeInfluence + 1.001);
+    });
     const maxLog = Math.max(...logScores);
     const minLog = Math.min(...logScores);
     const logRange = maxLog - minLog;
@@ -310,7 +313,7 @@ export default function PersonDetailPage() {
     const currentItem = items.find(x => x.name === currentName);
     if (!currentItem) return 0;
 
-    const currentLog = Math.log((currentItem.influence || 0) + 1.001);
+    const currentLog = Math.log(Math.max(currentItem.influence || 0, -0.99) + 1.001);
     
     if (logRange <= 0) return 50;
 

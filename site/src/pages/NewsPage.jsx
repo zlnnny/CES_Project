@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import axios from 'axios';
-import { FaSearch, FaFire, FaGlobe, FaMagic, FaSpinner } from 'react-icons/fa';
+import { FaSearch, FaFire, FaGlobe, FaMagic, FaSpinner, FaNewspaper } from 'react-icons/fa';
 
 // --- 미리 정의된 퀵 필터 키워드 ---
 const QUICK_FILTERS = [
@@ -13,6 +13,19 @@ const QUICK_FILTERS = [
     { label: "Apple" },
     { label: "AI Regulation" }
 ];
+
+const PRIORITY_CRAWL_TARGETS = {
+    "Elon Musk": ["Tesla", "SpaceX", "Bitcoin"],
+    "Mark Zuckerberg": ["Meta", "Virtual Reality"],
+    "Tim Cook": ["Apple", "Tech"],
+    "Jensen Huang": ["Nvidia", "AI Chips"],
+    "Sam Altman": ["Microsoft", "OpenAI"],
+    "Joe Biden": ["USD", "Oil"],
+    "Donald Trump": ["Tariffs", "USD"],
+    "Jerome Powell": ["Treasury", "S&P 500"],
+    "Satya Nadella": ["Microsoft", "Cloud"],
+    "Sundar Pichai": ["Google", "Search"]
+};
 
 // --- Animations ---
 const spin = keyframes`
@@ -294,6 +307,7 @@ const NewsPage = () => {
     // Crawl States
     const [crawlQuery, setCrawlQuery] = useState('');
     const [isCrawling, setIsCrawling] = useState(false);
+    const [crawlMode, setCrawlMode] = useState(null); // "single" | "priority" | null
 
     // Initial Load
     useEffect(() => {
@@ -337,6 +351,7 @@ const NewsPage = () => {
     // Handlers
     const handleCrawl = async () => {
         if (!crawlQuery.trim()) return;
+        setCrawlMode('single');
         setIsCrawling(true);
         try {
             // 1. Request Crawl
@@ -353,6 +368,45 @@ const NewsPage = () => {
             alert("Failed to analyze news. Please try again.");
         } finally {
             setIsCrawling(false);
+            setCrawlMode(null);
+        }
+    };
+
+    const buildPriorityQueue = () => {
+        const queue = [];
+        const seen = new Set();
+        for (const [person, assets] of Object.entries(PRIORITY_CRAWL_TARGETS)) {
+            if (!seen.has(person)) {
+                queue.push(person);
+                seen.add(person);
+            }
+            for (const asset of assets) {
+                if (!seen.has(asset)) {
+                    queue.push(asset);
+                    seen.add(asset);
+                }
+            }
+        }
+        return queue;
+    };
+
+    const handlePriorityCrawl = async () => {
+        setCrawlMode('priority');
+        setIsCrawling(true);
+        try {
+            const queue = buildPriorityQueue();
+            for (const target of queue) {
+                await axios.post(`http://localhost:8000/api/news/crawl?query=${encodeURIComponent(target)}`);
+            }
+            await fetchNews(search, filter);
+            fetchStats();
+            fetchHeadlines();
+        } catch (err) {
+            console.error("Priority crawl error:", err);
+            alert("Failed to run priority crawl. Please try again.");
+        } finally {
+            setIsCrawling(false);
+            setCrawlMode(null);
         }
     };
 
@@ -388,10 +442,17 @@ const NewsPage = () => {
                         />
                     </div>
                     <button onClick={handleCrawl} disabled={isCrawling}>
-                        {isCrawling ? (
+                        {isCrawling && crawlMode === 'single' ? (
                             <><FaSpinner className="spinner"/> Scanning...</>
                         ) : (
                             <><FaMagic /> Analyze</>
+                        )}
+                    </button>
+                    <button onClick={handlePriorityCrawl} disabled={isCrawling}>
+                        {isCrawling && crawlMode === 'priority' ? (
+                            <><FaSpinner className="spinner"/> Priority Scan...</>
+                        ) : (
+                            <><FaNewspaper /> Refresh News</>
                         )}
                     </button>
                 </CrawlSection>

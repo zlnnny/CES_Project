@@ -407,7 +407,10 @@ const PowerRanking = ({ limit = 30 }) => {
 
             // NRII 정규화 로직 (10-95% 범위)
             if (combined.length > 0) {
-                const logScores = combined.map(item => Math.log(item.influence + 1.001));
+                const logScores = combined.map(item => {
+                    const safeInfluence = Math.max(item.influence, -0.99);
+                    return Math.log(safeInfluence + 1.001);
+                });
                 const maxLog = Math.max(...logScores);
                 const minLog = Math.min(...logScores);
                 const logRange = maxLog - minLog;
@@ -425,7 +428,7 @@ const PowerRanking = ({ limit = 30 }) => {
                 if (combined.length > 1) {
                     const raw1 = combined[0].influence;
                     const raw2 = combined[1].influence;
-                    const ratio = raw1 / (raw2 || 0.001);
+                    const ratio = raw2 > 0 ? (raw1 / raw2) : 1.0;
                     if (ratio > 1.1) {
                         const bonus = Math.min(5, (ratio - 1.1) * 10);
                         combined[0].relativeScore += bonus;

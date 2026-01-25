@@ -16,10 +16,10 @@ CSV_PATH = os.path.join("server", "data", "candidates_people.csv")
 BATCH_SIZE = 5
 
 # Scoring multipliers (tune without DB changes)
-IMPORTANCE_MULTIPLIER = 1.0
-SENTIMENT_MULTIPLIER = 1.0
-BASE_EXPOSURE_MULTIPLIER = 1.0
-INDUSTRY_PROP_MULTIPLIER = 0.0
+IMPORTANCE_MULTIPLIER = 2.0
+SENTIMENT_MULTIPLIER = 1.5
+BASE_EXPOSURE_MULTIPLIER = 0.4
+INDUSTRY_PROP_MULTIPLIER = 0.8
 
 def load_candidates_from_csv():
     """CSV 파일에서 인물 이름 리스트를 가져옵니다."""

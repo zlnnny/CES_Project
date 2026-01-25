@@ -12,6 +12,8 @@ from server.services.gnn_scoring import compute_gnn_person_scores
 _COUNTRY_RE = re.compile(r"\bof (?:the )?(?P<country>.+)$", re.IGNORECASE)
 
 
+
+
 def _extract_country(title: str | None) -> str | None:
     if not title:
         return None
