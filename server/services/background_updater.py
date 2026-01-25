@@ -19,6 +19,7 @@ BATCH_SIZE = 5
 IMPORTANCE_MULTIPLIER = 1.0
 SENTIMENT_MULTIPLIER = 1.0
 BASE_EXPOSURE_MULTIPLIER = 1.0
+INDUSTRY_PROP_MULTIPLIER = 0.0
 
 def load_candidates_from_csv():
     """CSV 파일에서 인물 이름 리스트를 가져옵니다."""
@@ -125,18 +126,53 @@ def update_all_leaders_in_background():
             base_exposure = 0.05 * effective_imp * BASE_EXPOSURE_MULTIPLIER
             delta = base_exposure + (float(ev.sentiment or 0) * SENTIMENT_MULTIPLIER * effective_imp)
             
+            assets = (
+                db.execute(
+                    select(Entity).where(Entity.entity_type == "asset", Entity.name.in_(ev.asset_names))
+                )
+                .scalars()
+                .all()
+            )
+            by_name = {a.name: a for a in assets}
             for asset_name in ev.asset_names:
-                asset = db.execute(select(Entity).where(Entity.entity_type=="asset", Entity.name==asset_name)).scalar_one_or_none()
-                if not asset:
-                    asset = Entity(entity_type="asset", name=asset_name)
-                    db.add(asset); db.flush()
-                
-                edge = db.execute(select(InfluenceEdge).where(InfluenceEdge.person_id==leader.id, InfluenceEdge.asset_id==asset.id)).scalar_one_or_none()
+                if asset_name in by_name:
+                    continue
+                asset = Entity(entity_type="asset", name=asset_name)
+                db.add(asset)
+                db.flush()
+                by_name[asset_name] = asset
+
+            delta_by_asset = {a.id: float(delta) for a in by_name.values()}
+
+            if INDUSTRY_PROP_MULTIPLIER and len(by_name) > 1:
+                cat_groups: dict[str, list[Entity]] = {}
+                for a in by_name.values():
+                    if not a.category:
+                        continue
+                    cat_groups.setdefault(a.category, []).append(a)
+                for group in cat_groups.values():
+                    if len(group) < 2:
+                        continue
+                    share_div = len(group) - 1
+                    for src in group:
+                        spill = float(delta_by_asset.get(src.id, 0.0)) * float(INDUSTRY_PROP_MULTIPLIER) / share_div
+                        if spill == 0.0:
+                            continue
+                        for dst in group:
+                            if dst.id == src.id:
+                                continue
+                            delta_by_asset[dst.id] = float(delta_by_asset.get(dst.id, 0.0)) + spill
+
+            for asset in by_name.values():
+                edge = db.execute(
+                    select(InfluenceEdge).where(InfluenceEdge.person_id == leader.id, InfluenceEdge.asset_id == asset.id)
+                ).scalar_one_or_none()
+                asset_delta = float(delta_by_asset.get(asset.id, 0.0))
                 if edge:
                     # 기존 점수에 반영 (0.9는 기존 점수 유지 비율 - Decay)
-                    edge.weight = 0.9 * float(edge.weight or 0.0) + delta
+                    edge.weight = 0.9 * float(edge.weight or 0.0) + asset_delta
                 else:
-                    db.add(InfluenceEdge(person_id=leader.id, asset_id=asset.id, weight=delta))
+                    db.add(InfluenceEdge(person_id=leader.id, asset_id=asset.id, weight=asset_delta))
                 updated += 1
         
         db.commit()

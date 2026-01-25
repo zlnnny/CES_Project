@@ -20,6 +20,7 @@ router = APIRouter(prefix="/api", tags=["events"])
 IMPORTANCE_MULTIPLIER = 1.0
 SENTIMENT_MULTIPLIER = 1.0
 BASE_EXPOSURE_MULTIPLIER = 1.0
+INDUSTRY_PROP_MULTIPLIER = 0.0
 
 # 신규 추가 기본 자산 매핑 (크롤러가 자산을 못 찾을 경우 점수 누락 방지용 안전장치)
 DEFAULT_ASSETS = {
@@ -81,27 +82,58 @@ def process_ingestion(db: Session, events: list[NewsEventIn], rho: float = 0.9):
         
         base_exposure = 0.15 * effective_imp * BASE_EXPOSURE_MULTIPLIER
         delta = base_exposure + (current_sentiment * SENTIMENT_MULTIPLIER * effective_imp)
-        
-        for asset_name in ev.asset_names:
-            asset = db.execute(
-                select(Entity).where(Entity.entity_type == "asset", Entity.name == asset_name)
-            ).scalar_one_or_none()
-            
-            if not asset:
-                asset = Entity(entity_type="asset", name=asset_name)
-                db.add(asset)
-                db.flush()
 
+        assets = (
+            db.execute(
+                select(Entity).where(Entity.entity_type == "asset", Entity.name.in_(ev.asset_names))
+            )
+            .scalars()
+            .all()
+        )
+        by_name = {a.name: a for a in assets}
+        for asset_name in ev.asset_names:
+            if asset_name in by_name:
+                continue
+            asset = Entity(entity_type="asset", name=asset_name)
+            db.add(asset)
+            db.flush()
+            by_name[asset_name] = asset
+
+        # Base delta per asset
+        delta_by_asset = {a.id: float(delta) for a in by_name.values()}
+
+        # Industry spillover within same-category assets from this event
+        if INDUSTRY_PROP_MULTIPLIER and len(by_name) > 1:
+            cat_groups: dict[str, list[Entity]] = {}
+            for a in by_name.values():
+                if not a.category:
+                    continue
+                cat_groups.setdefault(a.category, []).append(a)
+            for group in cat_groups.values():
+                if len(group) < 2:
+                    continue
+                share_div = len(group) - 1
+                for src in group:
+                    spill = float(delta_by_asset.get(src.id, 0.0)) * float(INDUSTRY_PROP_MULTIPLIER) / share_div
+                    if spill == 0.0:
+                        continue
+                    for dst in group:
+                        if dst.id == src.id:
+                            continue
+                        delta_by_asset[dst.id] = float(delta_by_asset.get(dst.id, 0.0)) + spill
+
+        for asset in by_name.values():
             edge = db.execute(
                 select(InfluenceEdge).where(InfluenceEdge.person_id == leader.id, InfluenceEdge.asset_id == asset.id)
             ).scalar_one_or_none()
-            
+
+            asset_delta = float(delta_by_asset.get(asset.id, 0.0))
             if edge:
-                edge.weight = rho * float(edge.weight or 0.0) + delta
+                edge.weight = rho * float(edge.weight or 0.0) + asset_delta
             else:
-                db.add(InfluenceEdge(person_id=leader.id, asset_id=asset.id, weight=delta))
+                db.add(InfluenceEdge(person_id=leader.id, asset_id=asset.id, weight=asset_delta))
                 db.flush()
-            
+
             updated_edges += 1
 
     db.commit()
