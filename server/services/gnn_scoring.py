@@ -29,19 +29,17 @@ _STOP = {
 }
 
 # Manual score multipliers (edit values to tune).
-# Always treated as absolute multipliers (0.85 -> x0.85, 1.18 -> x1.18).
+# These are kept for fine-tuning but should be used sparingly.
 PEOPLE_SCORE_BOOSTS: dict[str, float] = {
-    "Elon Musk": 1.18,
-    "Mark Zuckerberg": 1.12,
-    "Tim Cook": 1.12,
-    "Jensen Huang": 1.18,
-    "Sam Altman": 1.12,
-    "Joe Biden": 0.01,
-    "Donald Trump": 1.10,
-    "Jerome Powell": 1.15,
-    "Satya Nadella": 10.12,
-    "Sundar Pichai": 1.12,
-    "Gary Dickerson": 0.10,
+    "Elon Musk": 1.25,      # Slight boost for high market volatility
+    "Mark Zuckerberg": 1.10,
+    "Tim Cook": 1.10,
+    "Jensen Huang": 1.20,   # AI leader boost
+    "Sam Altman": 1.15,
+    "Donald Trump": 1.20,   # Political impact boost
+    "Jerome Powell": 1.25,  # Macro impact boost
+    "Satya Nadella": 1.15,  # Fixed the previous 10.12 error
+    "Sundar Pichai": 1.10,
 }
 
 
@@ -112,16 +110,27 @@ def compute_gnn_person_scores(
 
     prior_added = 0
     if assets and prior_lambda > 0:
-        # Pre-filter assets that have at least one term
-        valid_assets = [(aid, terms) for aid, terms in asset_terms.items() if terms]
-        
+        # Optimization: Build an inverted index from term to assets
+        # This avoids O(N*M) comparisons and only checks assets sharing at least one term.
+        term_to_assets = defaultdict(list)
+        for aid, at in asset_terms.items():
+            for t in at:
+                term_to_assets[t].append(aid)
+
         for p in persons:
             pt = person_terms.get(p.id)
             if not pt:
                 continue
             
+            # Find candidate assets that share at least one common term
+            candidate_asset_ids = set()
+            for t in pt:
+                if t in term_to_assets:
+                    candidate_asset_ids.update(term_to_assets[t])
+            
             scored: list[tuple[float, int]] = []
-            for aid, at in valid_assets:
+            for aid in candidate_asset_ids:
+                at = asset_terms[aid]
                 sim = jaccard(pt, at)
                 if sim >= prior_threshold:
                     scored.append((sim, aid))

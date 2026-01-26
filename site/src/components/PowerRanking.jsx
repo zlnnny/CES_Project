@@ -380,17 +380,24 @@ const PowerRanking = ({ limit = 30 }) => {
     const fetchData = useCallback(async () => {
         try {
             setLoading(true);
+            setSearchMessage("");
+            const hostname = window.location.hostname;
+            const apiBase = hostname === 'localhost' || hostname === '127.0.0.1' ? 'http://127.0.0.1:8000' : `http://${hostname}:8000`;
+            
+            console.log("Fetching ranking data from:", apiBase);
             const [rankingResp, allPeopleResp] = await Promise.all([
-                axios.get('http://localhost:8000/api/power-ranking?limit=200'),
-                axios.get('http://localhost:8000/api/entities?entity_type=person')
+                axios.get(`${apiBase}/api/power-ranking?limit=200`, { timeout: 30000 }),
+                axios.get(`${apiBase}/api/entities?entity_type=person`, { timeout: 30000 })
             ]);
 
             const ranked = rankingResp.data.items || [];
             const allPeople = allPeopleResp.data || [];
 
-            const rankedNames = new Set(ranked.map(r => r.name.toLowerCase()));
+            console.log(`Loaded ${ranked.length} ranked items and ${allPeople.length} entities.`);
+
+            const rankedNames = new Set(ranked.map(r => (r.name || '').toLowerCase()));
             const unranked = allPeople
-                .filter(p => !rankedNames.has(p.name.toLowerCase()))
+                .filter(p => p.name && !rankedNames.has(p.name.toLowerCase()))
                 .map(p => ({
                     name: p.name,
                     title_or_company: p.title_or_company,
@@ -408,8 +415,8 @@ const PowerRanking = ({ limit = 30 }) => {
             // NRII 정규화 로직 (10-95% 범위)
             if (combined.length > 0) {
                 const logScores = combined.map(item => {
-                    const safeInfluence = Math.max(item.influence, -0.99);
-                    return Math.log(safeInfluence + 1.001);
+                    const val = typeof item.influence === 'number' ? item.influence : 0;
+                    return Math.log(Math.max(val, -0.99) + 1.001);
                 });
                 const maxLog = Math.max(...logScores);
                 const minLog = Math.min(...logScores);
@@ -426,9 +433,9 @@ const PowerRanking = ({ limit = 30 }) => {
                 });
 
                 if (combined.length > 1) {
-                    const raw1 = combined[0].influence;
-                    const raw2 = combined[1].influence;
-                    const ratio = raw2 > 0 ? (raw1 / raw2) : 1.0;
+                    const raw1 = combined[0].influence || 0;
+                    const raw2 = combined[1].influence || 0;
+                    const ratio = raw2 !== 0 ? (raw1 / raw2) : 1.0;
                     if (ratio > 1.1) {
                         const bonus = Math.min(5, (ratio - 1.1) * 10);
                         combined[0].relativeScore += bonus;
@@ -437,20 +444,20 @@ const PowerRanking = ({ limit = 30 }) => {
             }
 
             setAllRows(combined);
-            // 초기 로딩 시 필터 적용
             applyFilters(searchQuery, activeFilter, combined);
         } catch (err) {
-            console.error(err);
+            console.error("Data Fetch Error:", err);
+            setSearchMessage("Service temporarily slow. Retrying...");
+            setTimeout(fetchData, 5000);
         } finally {
             setLoading(false);
         }
-    }, [limit]); // searchQuery, activeFilter 의존성 제거
+    }, [limit, applyFilters, searchQuery, activeFilter]);
 
     useEffect(() => {
         fetchData();
     }, [fetchData]);
 
-    // 검색어나 필터가 바뀔 때 서버 호출 없이 클라이언트에서 즉시 필터링
     useEffect(() => {
         if (allRows.length > 0) {
             applyFilters(searchQuery, activeFilter, allRows);
@@ -459,7 +466,6 @@ const PowerRanking = ({ limit = 30 }) => {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        // applyFilters useEffect가 이미 처리하므로 하이라이트/스크롤 로직만 수행
         const term = searchQuery.trim().toLowerCase();
         if (!term) return;
 
@@ -480,11 +486,18 @@ const PowerRanking = ({ limit = 30 }) => {
         applyFilters(searchQuery, newFilter, allRows);
     };
 
-    if (loading) return (
+    if (loading && rows.length === 0) return (
         <div className="container" style={{ padding: '10rem 0', textAlign: 'center' }}>
             <h3 style={{ color: '#94a3b8', fontWeight: 300, letterSpacing: '0.1em' }}>
                 LOADING RANKINGS...
             </h3>
+        </div>
+    );
+
+    if (!loading && rows.length === 0) return (
+        <div className="container" style={{ padding: '10rem 0', textAlign: 'center' }}>
+            <h3 style={{ color: '#94a3b8', fontWeight: 300 }}>NO DATA FOUND</h3>
+            <p style={{ color: '#64748b' }}>Check if backend is running or change filters.</p>
         </div>
     );
 
