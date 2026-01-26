@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import axios from 'axios';
 import { FaExternalLinkAlt, FaSyncAlt } from 'react-icons/fa';
@@ -17,67 +17,25 @@ const ImpactTag = styled.span` display: inline-block; font-size: 0.75rem; backgr
 const LinkButton = styled.a` display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.8rem; background-color: transparent; border: 1px solid var(--color-border, #555); color: var(--color-text-main, #fff); border-radius: 5px; text-decoration: none; font-weight: bold; transition: background 0.2s; &:hover { background-color: var(--color-border, #333); } svg { margin-left: 0.5rem; } `;
 const EmptyMessage = styled.div` text-align: center; padding: 3rem; color: var(--color-text-muted, #888); background-color: rgba(255, 255, 255, 0.02); border-radius: 10px; font-size: 1.1rem; `;
 
-// Rotation Animation
-const rotate = keyframes`
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+// [New] Skeleton Loading UI
+const pulse = keyframes` 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } `;
+const SkeletonCard = styled.div`
+    height: 300px; background: rgba(255,255,255,0.05); border-radius: 10px;
+    animation: ${pulse} 1.5s infinite ease-in-out;
 `;
 
-// Upper Header (Title and Refresh Controls)
-const HeaderRow = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end; 
-    margin-bottom: 2rem;
-`;
-
-// Refresh Control Area
-const RefreshControl = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--color-text-muted, #aaa);
-    font-size: 0.9rem;
-`;
-
-// Circular Icon Button Style
+const rotate = keyframes` from { transform: rotate(0deg); } to { transform: rotate(360deg); } `;
+const HeaderRow = styled.div` display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; `;
+const RefreshControl = styled.div` display: flex; align-items: center; gap: 8px; color: var(--color-text-muted, #aaa); font-size: 0.9rem; `;
 const IconButton = styled.button`
-    background: transparent;
-    border: 1px solid var(--color-border, #555); 
-    color: var(--color-text-main, #fff);
-    width: 32px;
-    height: 32px;
-    border-radius: 50%; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s;
-    padding: 0;
-
-    &:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: var(--color-accent, #007bff);
-        border-color: var(--color-accent, #007bff);
-    }
-    
-    &:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-    }
-
-    svg {
-        ${props => props.$loading && css`
-            animation: ${rotate} 1s linear infinite;
-        `}
-    }
+    background: transparent; border: 1px solid var(--color-border, #555); color: var(--color-text-main, #fff);
+    width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all 0.2s; padding: 0;
+    &:hover { background: rgba(255, 255, 255, 0.1); color: var(--color-accent, #007bff); border-color: var(--color-accent, #007bff); }
+    &:disabled { opacity: 0.5; cursor: not-allowed; }
+    svg { ${props => props.$loading && css` animation: ${rotate} 1s linear infinite; `} }
 `;
-
-const TimeText = styled.span`
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--color-text-muted, #888);
-`;
+const TimeText = styled.span` font-size: 0.85rem; font-weight: 500; color: var(--color-text-muted, #888); `;
 
 const TodaysNews = () => {
     const [newsData, setNewsData] = useState([]);
@@ -85,36 +43,53 @@ const TodaysNews = () => {
     const [loading, setLoading] = useState(true);
     const [refreshing, setRefreshing] = useState(false);
     const [error, setError] = useState(null);
+    
+    // [중요] 자동 재시도 타이머 관리
+    const retryTimeoutRef = useRef(null);
 
     const fetchNews = async (force = false) => {
         if (force) setRefreshing(true);
-        try {
-            const url = `http://localhost:8000/api/news/today${force ? '?force_refresh=true' : ''}`;
-            const response = await axios.get(url, { timeout: 12000 });
-            
-            const { news, last_updated, message } = response.data;
+        setError(null);
 
-            if (Array.isArray(news)) {
+        try {
+            // 타임아웃을 넉넉하게 15초로 설정 (백엔드 크롤링 대기)
+            const url = `http://localhost:8000/api/news/today${force ? '?force_refresh=true' : ''}`;
+            const response = await axios.get(url, { timeout: 20000 });
+            
+            const { news, last_updated } = response.data;
+
+            if (Array.isArray(news) && news.length > 0) {
                 setNewsData(news);
                 setLastUpdated(last_updated);
-                if (message) console.log(message);
+                setLoading(false);
             } else {
-                setNewsData([]);
+                // 데이터가 비어있으면 3초 뒤 재시도 (백엔드가 크롤링 중일 수 있음)
+                if (!force) {
+                    console.log("Empty data, retrying in 3s...");
+                    retryTimeoutRef.current = setTimeout(() => fetchNews(false), 3000);
+                } else {
+                    setNewsData([]);
+                    setLoading(false);
+                }
             }
         } catch (err) {
-            console.error(err);
-            setError("Failed to load");
+            console.error("Fetch error:", err);
+            setError("Failed to load news. Retrying...");
+            // 에러 시에도 5초 뒤 재시도
+            retryTimeoutRef.current = setTimeout(() => fetchNews(false), 5000);
         } finally {
-            setLoading(false);
             setRefreshing(false);
         }
     };
 
     useEffect(() => {
         fetchNews(false);
+        // 클린업: 컴포넌트 언마운트 시 타이머 취소
+        return () => clearTimeout(retryTimeoutRef.current);
     }, []);
 
     const handleRefresh = () => {
+        clearTimeout(retryTimeoutRef.current); // 수동 갱신 시 기존 타이머 취소
         fetchNews(true);
     };
 
@@ -123,7 +98,6 @@ const TodaysNews = () => {
             <Container>
                 <HeaderRow>
                     <SectionTitle>Today's News</SectionTitle>
-                    
                     <RefreshControl>
                         <IconButton 
                             onClick={handleRefresh} 
@@ -141,42 +115,48 @@ const TodaysNews = () => {
                     </RefreshControl>
                 </HeaderRow>
 
-                {loading && <EmptyMessage>Loading...</EmptyMessage>}
+                {/* 로딩 상태일 때도 기존 데이터가 있으면 유지 (깜빡임 방지) */}
+                {loading && newsData.length === 0 && (
+                    <CardGrid>
+                        {[1, 2, 3].map(n => <SkeletonCard key={n} />)}
+                    </CardGrid>
+                )}
                 
-                {!loading && !error && newsData.length === 0 && (
-                    <EmptyMessage>No news available.</EmptyMessage>
+                {error && newsData.length === 0 && <EmptyMessage>{error}</EmptyMessage>}
+
+                {!loading && newsData.length === 0 && !error && (
+                    <EmptyMessage>No news found. Click refresh to scan.</EmptyMessage>
                 )}
 
-                {!loading && newsData.length > 0 && (
+                {newsData.length > 0 && (
                     <CardGrid>
-                        {newsData.map((item, index) => {
-                            const { leader_name, published_at, title, tone, sentiment, impact_assets, url } = item;
-                            return (
-                                <NewsCard key={index}>
-                                    <div>
-                                        <Header>
-                                            <LeaderBadge>{leader_name || "Global"}</LeaderBadge>
-                                            <DateText>{published_at ? published_at.split(' ')[0] : '-'}</DateText>
-                                        </Header>
-                                        <NewsTitle>{title}</NewsTitle>
-                                        <AnalysisBox>
-                                            <div style={{marginBottom: '0.5rem'}}>
-                                                <ImpactTag $tone={tone}>{tone || 'Neutral'}</ImpactTag>
-                                                <span style={{fontSize: '0.8rem', color:'#aaa'}}>Sentiment: {sentiment ?? 0}</span>
-                                            </div>
-                                            <div>
-                                                {(impact_assets || []).map((asset, i) => (
-                                                    <ImpactTag key={i}>{asset}</ImpactTag>
-                                                ))}
-                                            </div>
-                                        </AnalysisBox>
-                                    </div>
-                                    <LinkButton href={url} target="_blank" rel="noopener noreferrer">
-                                        View Full Article <FaExternalLinkAlt size={12} />
-                                    </LinkButton>
-                                </NewsCard>
-                            );
-                        })}
+                        {newsData.map((item, index) => (
+                            <NewsCard key={index}>
+                                <div>
+                                    <Header>
+                                        <LeaderBadge>{item.leader_name || "Global"}</LeaderBadge>
+                                        <DateText>{item.published_at ? item.published_at.split(' ')[0] : '-'}</DateText>
+                                    </Header>
+                                    <NewsTitle>{item.title}</NewsTitle>
+                                    <AnalysisBox>
+                                        <div style={{marginBottom: '0.5rem'}}>
+                                            <ImpactTag $tone={item.tone}>{item.tone || 'Neutral'}</ImpactTag>
+                                            <span style={{fontSize: '0.8rem', color:'#aaa', marginLeft:'5px'}}>
+                                                Sent: {item.sentiment ?? 0}
+                                            </span>
+                                        </div>
+                                        <div>
+                                            {(item.impact_assets || []).map((asset, i) => (
+                                                <ImpactTag key={i}>{asset}</ImpactTag>
+                                            ))}
+                                        </div>
+                                    </AnalysisBox>
+                                </div>
+                                <LinkButton href={item.url} target="_blank" rel="noopener noreferrer">
+                                    View Full Article <FaExternalLinkAlt size={12} />
+                                </LinkButton>
+                            </NewsCard>
+                        ))}
                     </CardGrid>
                 )}
             </Container>

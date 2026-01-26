@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, BackgroundTasks
-from sqlalchemy import func, select, or_, desc, func, case, cast, Float
+from sqlalchemy import func, select, or_, desc, func, case, cast, Float, String
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
 from typing import Optional, List, Dict
@@ -167,31 +167,42 @@ def fetch_news(
     skip: int = 0, 
     limit: int = 20, 
     search: Optional[str] = None,
-    sentiment_filter: Optional[str] = None, 
+    # [수정 1] 프론트엔드와 이름을 맞춤 (sentiment_filter -> tone_filter)
+    tone_filter: Optional[str] = None, 
     sort_by: str = "latest", 
     db: Session = Depends(get_db)
 ):
     query = select(NewsEvent)
 
-    # 1. 검색어 필터
+    # 1. 검색어 필터 (퀵 셀렉트 고장 원인 해결)
     if search:
         search_term = f"%{search}%"
-        # 제목, 인물명, 자산명(배열이라 텍스트 변환 후 검색 등) 통합 검색
         query = query.where(
             or_(
                 NewsEvent.title.ilike(search_term),
-                NewsEvent.leader_name.ilike(search_term)
+                NewsEvent.leader_name.ilike(search_term),
+                # [핵심 수정] 배열 검색 에러 방지를 위해 텍스트로 변환 후 검색 (가장 안전함)
+                cast(NewsEvent.impact_assets, String).ilike(search_term)
             )
         )
 
-    # 2. 감성 필터
-    if sentiment_filter:
-        if sentiment_filter == 'positive':
+    # 2. 4가지 카테고리 필터링 로직 (Bullish/Bearish/Hawkish/Dovish 연결)
+    if tone_filter:
+        if tone_filter == 'Bullish':
+            # 긍정적인 뉴스 (Sentiment > 0.1)
             query = query.where(NewsEvent.sentiment > 0.1)
-        elif sentiment_filter == 'negative':
+            
+        elif tone_filter == 'Bearish':
+            # 부정적인 뉴스 (Sentiment < -0.1)
             query = query.where(NewsEvent.sentiment < -0.1)
-        else:
-            query = query.where(NewsEvent.sentiment.between(-0.1, 0.1))
+            
+        elif tone_filter == 'Hawkish':
+            # Tone이 'Hawkish'인 뉴스
+            query = query.where(NewsEvent.tone == 'Hawkish')
+            
+        elif tone_filter == 'Dovish':
+            # Tone이 'Dovish'인 뉴스
+            query = query.where(NewsEvent.tone == 'Dovish')
 
     # 3. 정렬 로직
     if sort_by == "importance":
@@ -203,7 +214,6 @@ def fetch_news(
     query = query.offset(skip).limit(limit)
 
     return db.execute(query).scalars().all()
-
 
 @router.post("/news/refresh")
 def refresh_news(count: int = 5, limit_per_person: int = 1, db: Session = Depends(get_db)):

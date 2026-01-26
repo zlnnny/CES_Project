@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import axios from 'axios';
-import { FaSearch, FaFire, FaGlobe, FaMagic, FaSpinner, FaNewspaper } from 'react-icons/fa';
+import { FaSearch, FaFire, FaMagic, FaSpinner, FaNewspaper, FaFilter, FaListUl, FaArrowUp, FaArrowDown, FaBalanceScale } from 'react-icons/fa';
 
-// --- 미리 정의된 퀵 필터 키워드 ---
+// --- Constants ---
 const QUICK_FILTERS = [
     { label: "Elon Musk" },
     { label: "Tesla" },
@@ -176,13 +176,33 @@ const HeadlineCard = styled.div`
     }
 `;
 
-// [Section 3] Control Panel
+// [Section 3] Control Panel (Smart Filters)
+const PanelHeader = styled.div`
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    .title {
+        font-size: 1.2rem; font-weight: 700;
+        color: var(--color-text-main);
+        font-family: var(--font-en);
+        display: flex; align-items: center; gap: 10px;
+    }
+    .icon { color: var(--color-accent); font-size: 1.1rem; }
+    
+    .subtitle {
+        font-size: 0.85rem; color: var(--color-text-muted);
+    }
+`;
+
 const ControlPanel = styled.div`
     background: var(--color-bg-card, #112240);
     border: 1px solid var(--color-border, #233554);
     border-radius: 12px;
-    padding: 1.5rem;
+    padding: 1.8rem;
     margin-bottom: 2rem;
+    position: relative;
 `;
 
 const SearchRow = styled.div`
@@ -227,23 +247,25 @@ const QuickChips = styled.div`
 `;
 
 const FilterTabs = styled.div`
-    display: flex; gap: 20px;
+    display: flex; gap: 15px; flex-wrap: wrap;
     border-bottom: 1px solid var(--color-border);
-    padding-bottom: 10px;
+    padding-bottom: 15px;
     
     button {
-        background: none; border: none;
+        background: transparent; border: 1px solid var(--color-border);
         color: var(--color-text-muted);
-        font-size: 1rem; font-family: var(--font-en);
-        cursor: pointer; padding-bottom: 5px;
-        position: relative;
-        transition: color 0.2s;
+        font-size: 0.95rem; font-family: var(--font-en);
+        cursor: pointer; padding: 8px 16px; border-radius: 8px;
+        display: flex; align-items: center; gap: 8px;
+        transition: all 0.2s;
         
-        &:hover { color: #fff; }
-        &.active { color: #fff; font-weight: bold; }
-        &.active::after {
-            content: ''; position: absolute; bottom: -11px; left: 0; right: 0;
-            height: 2px; background: var(--color-accent);
+        &:hover { border-color: #fff; color: #fff; }
+        
+        &.active {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            font-weight: bold;
         }
     }
 `;
@@ -290,6 +312,12 @@ const NewsItem = styled.div`
     .leader-tag {
         background: rgba(100, 255, 218, 0.1); color: var(--color-accent);
     }
+    
+    .sentiment-badge {
+        font-size: 0.8rem; font-weight: bold; padding: 2px 8px; border-radius: 4px;
+        background: rgba(255,255,255,0.05);
+        color: ${props => props.$color};
+    }
 `;
 
 // --- Main Component ---
@@ -301,7 +329,7 @@ const NewsPage = () => {
     
     // UI States
     const [search, setSearch] = useState('');
-    const [filter, setFilter] = useState('all'); // all, positive, negative
+    const [filter, setFilter] = useState('all'); // 'all' | 'Bullish' | 'Bearish' | 'Hawkish' | 'Dovish'
     const [loading, setLoading] = useState(false);
     
     // Crawl States
@@ -326,13 +354,14 @@ const NewsPage = () => {
         } catch (e) { console.error(e); }
     };
 
-    const fetchNews = async (searchTerm = search, sentimentFilter = filter) => {
+    const fetchNews = async (searchTerm = search, toneFilter = filter) => {
         setLoading(true);
         try {
             const params = {
                 limit: 50,
                 search: searchTerm || undefined,
-                sentiment_filter: sentimentFilter === 'all' ? undefined : sentimentFilter,
+                // [변경] 백엔드에 'tone_filter' 파라미터로 보냄
+                tone_filter: toneFilter === 'all' ? undefined : toneFilter,
                 sort_by: searchTerm ? 'importance' : 'latest'
             };
             const resp = await axios.get('http://localhost:8000/api/news', { params });
@@ -348,21 +377,37 @@ const NewsPage = () => {
         } catch (e) { console.error(e); }
     };
 
+    // [New Logic] Determine visual type based on active filter
+    const getNewsType = (item) => {
+        // 1. 활성 필터가 있다면, 해당 속성을 최우선으로 보여줌 (사용자가 선택한 걸 보여줘야 하므로)
+        if (filter === 'Bullish' && item.sentiment > 0.1) return { label: 'Bullish', color: '#4ade80' };
+        if (filter === 'Bearish' && item.sentiment < -0.1) return { label: 'Bearish', color: '#f87171' };
+        if (filter === 'Hawkish' && item.tone === 'Hawkish') return { label: 'Hawkish', color: '#f59e0b' };
+        if (filter === 'Dovish' && item.tone === 'Dovish') return { label: 'Dovish', color: '#3b82f6' };
+
+        // 2. 필터가 'All'이거나 매칭 안될 때의 기본 우선순위
+        // Tone(금융적 의미)이 Sentiment(단순 긍부정)보다 보통 더 중요한 정보임
+        if (item.tone === 'Hawkish') return { label: 'Hawkish', color: '#f59e0b' };
+        if (item.tone === 'Dovish') return { label: 'Dovish', color: '#3b82f6' };
+        
+        // 그 다음 Sentiment 확인
+        if (item.sentiment > 0.1) return { label: 'Bullish', color: '#4ade80' };
+        if (item.sentiment < -0.1) return { label: 'Bearish', color: '#f87171' };
+        
+        return { label: 'Neutral', color: '#94a3b8' };
+    };
+
     // Handlers
     const handleCrawl = async () => {
         if (!crawlQuery.trim()) return;
         setCrawlMode('single');
         setIsCrawling(true);
         try {
-            // 1. Request Crawl
             await axios.post(`http://localhost:8000/api/news/crawl?query=${encodeURIComponent(crawlQuery)}`);
-            
-            // 2. Update UI
             setSearch(crawlQuery);
-            await fetchNews(crawlQuery, filter); // Fetch newly crawled data
+            await fetchNews(crawlQuery, filter);
             fetchStats();
             setCrawlQuery('');
-            
         } catch (err) {
             console.error("Crawl error:", err);
             alert("Failed to analyze news. Please try again.");
@@ -372,29 +417,11 @@ const NewsPage = () => {
         }
     };
 
-    const buildPriorityQueue = () => {
-        const queue = [];
-        const seen = new Set();
-        for (const [person, assets] of Object.entries(PRIORITY_CRAWL_TARGETS)) {
-            if (!seen.has(person)) {
-                queue.push(person);
-                seen.add(person);
-            }
-            for (const asset of assets) {
-                if (!seen.has(asset)) {
-                    queue.push(asset);
-                    seen.add(asset);
-                }
-            }
-        }
-        return queue;
-    };
-
     const handlePriorityCrawl = async () => {
         setCrawlMode('priority');
         setIsCrawling(true);
         try {
-            const queue = buildPriorityQueue();
+            const queue = Object.keys(PRIORITY_CRAWL_TARGETS).slice(0, 5);
             for (const target of queue) {
                 await axios.post(`http://localhost:8000/api/news/crawl?query=${encodeURIComponent(target)}`);
             }
@@ -476,13 +503,22 @@ const NewsPage = () => {
                     </HeadlineSection>
                 )}
 
-                {/* [3] Control Panel */}
+                {/* [3] Control Panel (Feed Filter) */}
                 <ControlPanel>
+                    <PanelHeader>
+                        <div className="title">
+                            <FaFilter className="icon" /> Smart News Filter
+                        </div>
+                        <div className="subtitle">
+                            Filter and search within {news.length} loaded articles
+                        </div>
+                    </PanelHeader>
+
                     <SearchRow>
                         <div className="search-box">
                             <FaSearch />
                             <input 
-                                placeholder="Filter news by keyword..." 
+                                placeholder="Filter loaded articles by asset, company, or person (e.g. 'Tesla')" 
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
                                 onKeyDown={(e) => e.key === 'Enter' && fetchNews(search, filter)}
@@ -491,7 +527,7 @@ const NewsPage = () => {
                     </SearchRow>
 
                     <QuickChips>
-                        <span className="label"><FaGlobe /> Quick Filter:</span>
+                        <span className="label"><FaListUl /> Quick Select:</span>
                         {QUICK_FILTERS.map((chip) => (
                             <button 
                                 key={chip.label} 
@@ -507,17 +543,19 @@ const NewsPage = () => {
                         <button className={filter === 'all' ? 'active' : ''} onClick={() => handleTabChange('all')}>
                             All News
                         </button>
-                        <button className={filter === 'positive' ? 'active' : ''} onClick={() => handleTabChange('positive')}>
-                            Positive ({stats.positive})
+                        <button className={filter === 'Dovish' ? 'active' : ''} onClick={() => handleTabChange('Dovish')}>
+                            <FaBalanceScale /> Dovish
                         </button>
-                        <button className={filter === 'negative' ? 'active' : ''} onClick={() => handleTabChange('negative')}>
-                            Negative ({stats.negative})
+                        <button className={filter === 'Hawkish' ? 'active' : ''} onClick={() => handleTabChange('Hawkish')}>
+                            <FaBalanceScale /> Hawkish
+                        </button>
+                        <button className={filter === 'Bullish' ? 'active' : ''} onClick={() => handleTabChange('Bullish')}>
+                            <FaArrowUp /> Bullish
+                        </button>
+                        <button className={filter === 'Bearish' ? 'active' : ''} onClick={() => handleTabChange('Bearish')}>
+                            <FaArrowDown /> Bearish
                         </button>
                     </FilterTabs>
-
-                    <div style={{color:'var(--color-text-muted)', fontSize:'0.9rem', marginTop:'10px'}}>
-                        Showing {news.length} articles {search && `for "${search}"`}
-                    </div>
                 </ControlPanel>
 
                 {/* [4] News List */}
@@ -525,38 +563,35 @@ const NewsPage = () => {
                     {loading ? (
                         <p style={{textAlign:'center', padding:'2rem', color:'#8892b0'}}>Loading market data...</p>
                     ) : news.length > 0 ? (
-                        news.map((item, idx) => (
-                            <NewsItem 
-                                key={idx} 
-                                $color={item.sentiment > 0.1 ? '#4ade80' : item.sentiment < -0.1 ? '#f87171' : '#8892b0'}
-                                onClick={() => window.open(item.url, '_blank')}
-                            >
-                                <div className="header">
-                                    <span>{item.source} • {new Date(item.published_at).toLocaleString()}</span>
-                                    <span style={{
-                                        fontWeight: 'bold',
-                                        color: item.sentiment > 0.1 ? '#4ade80' : item.sentiment < -0.1 ? '#f87171' : '#8892b0'
-                                    }}>
-                                        {item.sentiment > 0.1 ? 'Bullish' : item.sentiment < -0.1 ? 'Bearish' : 'Neutral'}
-                                    </span>
-                                </div>
-                                <h3>{item.title}</h3>
-                                <div className="footer">
-                                    <div className="tags">
-                                        <span className="tag leader-tag">{item.leader_name}</span>
-                                        {item.impact_assets?.map(asset => (
-                                            <span key={asset} className="tag">{asset}</span>
-                                        ))}
+                        news.map((item, idx) => {
+                            const { label, color } = getNewsType(item);
+                            return (
+                                <NewsItem 
+                                    key={idx} 
+                                    $color={color}
+                                    onClick={() => window.open(item.url, '_blank')}
+                                >
+                                    <div className="header">
+                                        <span>{item.source} • {new Date(item.published_at).toLocaleString()}</span>
+                                        <span className="sentiment-badge" style={{color: color, background: `${color}15`}}>
+                                            {label}
+                                        </span>
                                     </div>
-                                </div>
-                            </NewsItem>
-                        ))
+                                    <h3>{item.title}</h3>
+                                    <div className="footer">
+                                        <div className="tags">
+                                            <span className="tag leader-tag">{item.leader_name}</span>
+                                            {item.impact_assets?.map(asset => (
+                                                <span key={asset} className="tag">{asset}</span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </NewsItem>
+                            );
+                        })
                     ) : (
-                        <div style={{
-                            textAlign:'center', padding:'4rem', 
-                            border:'1px dashed var(--color-border)', borderRadius:'8px', color:'#8892b0'
-                        }}>
-                            No news found. Try the <b>Intelligence Engine</b> above to analyze this topic.
+                        <div style={{textAlign:'center', padding:'4rem', border:'1px dashed var(--color-border)', borderRadius:'8px', color:'#8892b0'}}>
+                            No news found in this category.
                         </div>
                     )}
                 </NewsList>
