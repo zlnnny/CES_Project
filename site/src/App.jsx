@@ -20,7 +20,7 @@ const Home = () => {
         <main>
             <Hero />
             <section id="ranking-section">
-                 <PowerRanking limit={30} />
+                <PowerRanking limit={30} />
             </section>
             <TodaysNews />
             <section id="charts-section">

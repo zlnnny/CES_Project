@@ -144,7 +144,7 @@ const Header = () => {
         };
 
         apply();
-        window.addEventListener('resize', apply);
+            window.addEventListener('resize', apply);
         return () => window.removeEventListener('resize', apply);
     }, []);
 
@@ -158,12 +158,12 @@ const Header = () => {
                     </LogoStack>
                     
                     <SearchContainer>
-                        <SearchInputWrapper>
+                            <SearchInputWrapper>
                             <SearchInput type="text" placeholder="Search..." />
-                            <SearchIcon>
-                                <FaSearch />
-                            </SearchIcon>
-                        </SearchInputWrapper>
+                                <SearchIcon>
+                                    <FaSearch />
+                                </SearchIcon>
+                            </SearchInputWrapper>
                     </SearchContainer>
 
                     <NavMenu>

@@ -116,7 +116,7 @@ const NewsItem = styled.a`
     border-left: 3px solid var(--color-accent);
     transition: background 0.2s;
     &:hover { background: rgba(255,255,255,0.05); }
-    
+
     h4 { margin: 0 0 5px 0; color: #eee; font-size: 1rem; }
     span { font-size: 0.8rem; color: #888; }
 `;
