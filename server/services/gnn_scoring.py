@@ -150,19 +150,25 @@ def compute_gnn_person_scores(
     # Degrees for normalization (use abs weights so negatives don't collapse degrees)
     deg_p = defaultdict(float)
     deg_a = defaultdict(float)
+    # Count news mentions per person for a frequency boost
+    person_mention_counts = defaultdict(int)
+    
     for (pid, aid), w in edge_w.items():
         aw = abs(float(w))
         if aw <= 0:
             continue
         deg_p[pid] += aw
         deg_a[aid] += aw
+        # Approximate mention count from edge weight counts
+        person_mention_counts[pid] += 1
 
-    # Base person score (online+prior)
+    # Base person score (use magnitude for Power Ranking)
     base_p = defaultdict(float)
     for (pid, _aid), w in edge_w.items():
-        base_p[pid] += float(w)
+        # Power is about magnitude of impact, not just positive sentiment
+        base_p[pid] += abs(float(w))
 
-    # Initialize person features as base
+    # Initialize person features
     h_p = {pid: float(base_p.get(pid, 0.0)) for pid in person_by_id.keys()}
     h_a = {aid: 0.0 for aid in asset_by_id.keys()}
 
@@ -171,9 +177,10 @@ def compute_gnn_person_scores(
         da = deg_a.get(aid, 0.0)
         if dp <= 0 or da <= 0:
             return 0.0
+        # For propagation, we keep the original sign of w
         return float(w) / math.sqrt(dp * da)
 
-    # Message passing iterations
+    # Message passing iterations (Power Ranking primarily uses base impact)
     for _ in range(max(0, int(iters))):
         # people -> asset
         tmp_a = defaultdict(float)
@@ -188,15 +195,18 @@ def compute_gnn_person_scores(
             tmp_p[pid] += norm(pid, aid, w) * h_a.get(aid, 0.0)
 
         for pid in h_p.keys():
-            h_p[pid] = float(alpha) * float(base_p.get(pid, 0.0)) + (1.0 - float(alpha)) * float(tmp_p.get(pid, 0.0))
+            # Combine base magnitude with propagated influence
+            h_p[pid] = float(alpha) * float(base_p.get(pid, 0.0)) + (1.0 - float(alpha)) * abs(float(tmp_p.get(pid, 0.0)))
 
-    def _apply_boost(name: str, score: float) -> float:
+    def _apply_boost(name: str, score: float, pid: int) -> float:
         boost = float(PEOPLE_SCORE_BOOSTS.get(name, 1.0))
-        return score * boost
+        # Add a frequency boost: log scale of mentions
+        freq_boost = 1.0 + (math.log10(person_mention_counts[pid] + 1) * 0.5)
+        return score * boost * freq_boost
 
     # Build ranking list (include all people, default 0)
     scored_people = sorted(        
-        ((pid, _apply_boost(person_by_id[pid].name, float(h_p.get(pid, 0.0)))) for pid in person_by_id.keys()),
+        ((pid, _apply_boost(person_by_id[pid].name, float(h_p.get(pid, 0.0)), pid)) for pid in person_by_id.keys()),
         key=lambda x: (x[1], person_by_id[x[0]].name),
         reverse=True,
     )

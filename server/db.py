@@ -12,11 +12,10 @@ from sqlalchemy.pool import NullPool
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
-    # Default: Supabase Postgres (pooler) for team/shared DB.
-    # NOTE: This is hardcoded intentionally per request. `.env` can still override it.
+    # Direct connection to Supabase (bypassing pooler for stability in GNN compute)
     database_url: str = (
         "postgresql+psycopg://postgres.enaqywrslcikbaqqgigd:"
-        "eAjEi!e2M%3FKpNB-@aws-1-ap-northeast-2.pooler.supabase.com:6543/postgres?sslmode=require"
+        "eAjEi!e2M%3FKpNB-@aws-1-ap-northeast-2.pooler.supabase.com:5432/postgres?sslmode=require"
     )
 
 

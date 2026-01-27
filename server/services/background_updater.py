@@ -76,7 +76,14 @@ def update_all_leaders_in_background():
                     
                     # 자산 매핑 (없으면 기본값)
                     assets = item.get("impact_assets", [])
-                    if not assets: assets = ["Global Market"]
+                    if not assets:
+                        from server.routes.events import DEFAULT_ASSETS
+                        for leader, defaults in DEFAULT_ASSETS.items():
+                            if leader in name:
+                                assets = defaults
+                                break
+                        if not assets:
+                            assets = ["Global Market"]
 
                     events_to_save.append(NewsEventIn(
                         leader_name=name,
@@ -123,8 +130,14 @@ def update_all_leaders_in_background():
             # 점수 공식: 기본노출(0.05) + 감성점수 * 중요도
             imp = float(ev.importance or 0.5)
             effective_imp = imp * IMPORTANCE_MULTIPLIER
-            base_exposure = 0.05 * effective_imp * BASE_EXPOSURE_MULTIPLIER
-            delta = base_exposure + (float(ev.sentiment or 0) * SENTIMENT_MULTIPLIER * effective_imp)
+            
+            # Calculate market impact (magnitude of the news)
+            market_impact = abs(float(ev.sentiment or 0)) * SENTIMENT_MULTIPLIER * effective_imp
+            base_exposure = 0.20 * effective_imp * BASE_EXPOSURE_MULTIPLIER
+            
+            # Influence delta is primarily driven by exposure and impact magnitude
+            delta = base_exposure + (market_impact * 0.7) + (float(ev.sentiment or 0) * 0.3 * effective_imp)
+            delta = max(0.05, delta)
             
             assets = (
                 db.execute(

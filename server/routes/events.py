@@ -22,14 +22,14 @@ SENTIMENT_MULTIPLIER = 1.5
 BASE_EXPOSURE_MULTIPLIER = 0.5
 INDUSTRY_PROP_MULTIPLIER = 0.9
 
-# 신규 추가 기본 자산 매핑 (크롤러가 자산을 못 찾을 경우 점수 누락 방지용 안전장치)
+# 신규 추가 기본 자산 매핑 (정확한 리더-기업 매칭으로 수정)
 DEFAULT_ASSETS = {
     "Elon Musk": ["Tesla", "SpaceX", "Bitcoin"],
     "Mark Zuckerberg": ["Meta", "Virtual Reality"],
     "Tim Cook": ["Apple", "Tech"],
     "Jensen Huang": ["Nvidia", "AI Chips"],
     "Sam Altman": ["Microsoft", "OpenAI"],
-    # "Joe Biden": ["USD", "Oil"],
+    "Brian Niccol": ["SBUX", "Starbucks"],
     "Donald Trump": ["Tariffs", "USD"],
     "Jerome Powell": ["Treasury", "S&P 500"],
     "Satya Nadella": ["Microsoft", "Cloud"],
@@ -80,8 +80,16 @@ def process_ingestion(db: Session, events: list[NewsEventIn], rho: float = 0.9):
         imp = float(ev.importance) if ev.importance is not None else 0.5
         effective_imp = imp * IMPORTANCE_MULTIPLIER
         
-        base_exposure = 0.15 * effective_imp * BASE_EXPOSURE_MULTIPLIER
-        delta = base_exposure + (current_sentiment * SENTIMENT_MULTIPLIER * effective_imp)
+        # Calculate market impact (magnitude of the news)
+        # Even negative news increases "Power/Influence"
+        market_impact = abs(current_sentiment) * SENTIMENT_MULTIPLIER * effective_imp
+        base_exposure = 0.20 * effective_imp * BASE_EXPOSURE_MULTIPLIER
+        
+        # Influence delta is primarily driven by the existence of the news (exposure)
+        # and its magnitude (impact), with a slight adjustment for actual sentiment direction.
+        # We ensure delta is at least 0.05 for any important news.
+        delta = base_exposure + (market_impact * 0.7) + (current_sentiment * 0.3 * effective_imp)
+        delta = max(0.05, delta)
 
         assets = (
             db.execute(

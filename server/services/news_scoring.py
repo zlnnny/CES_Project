@@ -73,31 +73,54 @@ def _tokens(text: str) -> list[str]:
 def sentiment_score(text: str) -> float:
     """
     Returns [-1, 1] score using SBERT similarity to sentiment anchors.
+    Falls back to keyword matching if SBERT is unavailable.
     """
     if not (text or "").strip():
         return 0.0
-    pos = _max_anchor_similarity(text, _SENTIMENT_POS_ANCHORS)
-    neg = _max_anchor_similarity(text, _SENTIMENT_NEG_ANCHORS)
-    denom = max(1e-6, pos + neg)
-    score = (pos - neg) / denom
-    return float(max(-1.0, min(1.0, score)))
+    
+    try:
+        pos = _max_anchor_similarity(text, _SENTIMENT_POS_ANCHORS)
+        neg = _max_anchor_similarity(text, _SENTIMENT_NEG_ANCHORS)
+        denom = max(1e-6, pos + neg)
+        score = (pos - neg) / denom
+        return float(max(-1.0, min(1.0, score)))
+    except Exception:
+        # Simple keyword-based fallback
+        text_lower = text.lower()
+        pos_keywords = ["rally", "upbeat", "growth", "raises", "upgrade", "demand", "approval", "higher", "beats", "bullish", "positive"]
+        neg_keywords = ["plunge", "weak", "lowered", "concerns", "slowdown", "selloff", "downgrade", "hit", "misses", "bearish", "negative", "investigates"]
+        
+        pos_score = sum(1 for k in pos_keywords if k in text_lower)
+        neg_score = sum(1 for k in neg_keywords if k in text_lower)
+        
+        if pos_score > neg_score: return 0.3
+        if neg_score > pos_score: return -0.3
+        return 0.0
 
 
 def tone_label(text: str) -> str:
     """
-    Hawkish/Dovish/Neutral heuristic. (Not "sentiment"; more macro-policy flavored.)
+    Hawkish/Dovish/Neutral heuristic.
+    Falls back to keyword matching if SBERT is unavailable.
     """
     if not (text or "").strip():
         return "Neutral"
-    hawk = _max_anchor_similarity(text, _HAWKISH_ANCHORS)
-    dove = _max_anchor_similarity(text, _DOVISH_ANCHORS)
-    if max(hawk, dove) < _TONE_MIN_CONF:
+    
+    try:
+        hawk = _max_anchor_similarity(text, _HAWKISH_ANCHORS)
+        dove = _max_anchor_similarity(text, _DOVISH_ANCHORS)
+        if max(hawk, dove) < _TONE_MIN_CONF:
+            return "Neutral"
+        if hawk > dove:
+            return "Hawkish"
+        if dove > hawk:
+            return "Dovish"
         return "Neutral"
-    if hawk > dove:
-        return "Hawkish"
-    if dove > hawk:
-        return "Dovish"
-    return "Neutral"
+    except Exception:
+        text_lower = text.lower()
+        if any(k in text_lower for k in ["hike", "tighten", "stability", "inflation"]): return "Hawkish"
+        if any(k in text_lower for k in ["cut", "easing", "liquidity", "stimulus"]): return "Dovish"
+        return "Neutral"
 
 
 def _descriptor_terms(person: Entity) -> set[str]:
