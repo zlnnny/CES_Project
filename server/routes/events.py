@@ -35,7 +35,7 @@ DEFAULT_ASSETS = {
     "Satya Nadella": ["Microsoft", "Cloud"],
     "Sundar Pichai": ["Google", "Search"]
 }
-
+g
 # 대시보드 속도 최적화를 위한 인메모리 캐시
 cached_news: List[Dict] = []
 last_crawled_time: Optional[datetime] = None
